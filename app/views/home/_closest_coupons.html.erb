@@ -1,0 +1,12 @@
+<h2>Nearby Coupons</h2>
+<ul>
+	<% @coupons.each do |coupon| %>
+		<li>
+			<%= image_tag(coupon.image_url) %>
+			<h2><%= coupon.title %></h2>
+			<p>
+				<%= sanitize(coupon.description) %>
+			</p>
+		</li>
+	<% end %>
+</ul>
