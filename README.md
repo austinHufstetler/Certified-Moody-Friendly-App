@@ -1,5 +1,7 @@
 # README
 
+![GitHub Logo](offtherails_logo.png)
+
 ## Models
 * Event
 * Coupon
@@ -26,3 +28,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+###Notes
+
+Logo: Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Makr">LogoMakr.com</a> https://logomakr.com/7XzEvO
