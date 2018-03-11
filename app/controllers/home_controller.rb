@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
   	@coupons = Coupon.all
-  	@events = Event.all
+  	@upcoming_events = Event.order(:start_date)
   end
 end
