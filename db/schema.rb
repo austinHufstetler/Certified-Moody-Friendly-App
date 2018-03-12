@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20180310044203) do
     t.string "title"
     t.text "description"
     t.string "image_url"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20180310044203) do
     t.string "title"
     t.text "description"
     t.string "image_url"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,6 +3,18 @@
 <% end %>
 
 <h1>Events</h1>
+
+<%= month_calendar events: @events do |date, events| %>
+  <%= date.day %>
+    <% events.each do |event| %>
+    <div>
+      <%= event.title %>
+    </div>
+  <% end %>
+<% end %>
+
+
+
 <table>
   <tfoot>
     <tr>
@@ -23,7 +35,7 @@
           <%= truncate(strip_tags(event.description),
           length: 80) %>
 
-          <br><br> Start: <%= event.start_date %> <br> End: <%= event.end_date %>
+          <br><br> Start: <%= event.start_time %> <br> End: <%= event.end_time %>
 
         </p>
       </td>

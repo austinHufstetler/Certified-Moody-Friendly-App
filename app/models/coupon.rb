@@ -1,5 +1,5 @@
 class Coupon < ApplicationRecord
-	validates :title, :description, :image_url, :start_date, :end_date, presence: true
+	validates :title, :description, :image_url, :start_time, :end_time, presence: true
 	validates :image_url, allow_blank: true, format: {
 		with:
 		%r{\.(gif|jpg|png)\Z}i,
