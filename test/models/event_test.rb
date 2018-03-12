@@ -8,8 +8,8 @@ class EventTest < ActiveSupport::TestCase
 		assert event.errors[:title].any?
 		assert event.errors[:description].any?
 		assert event.errors[:image_url].any?
-		assert event.errors[:start_date].any?
-		assert event.errors[:end_date].any?
+		assert event.errors[:start_time].any?
+		assert event.errors[:end_time].any?
 	end
 
 end

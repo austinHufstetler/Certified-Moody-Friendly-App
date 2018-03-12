@@ -8,8 +8,8 @@ class CouponTest < ActiveSupport::TestCase
 		assert coupon.errors[:title].any?
 		assert coupon.errors[:description].any?
 		assert coupon.errors[:image_url].any?
-		assert coupon.errors[:start_date].any?
-		assert coupon.errors[:end_date].any?
+		assert coupon.errors[:start_time].any?
+		assert coupon.errors[:end_time].any?
 	end
 
 end

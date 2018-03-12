@@ -17,7 +17,7 @@ class CouponsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create coupon" do
     assert_difference('Coupon.count') do
-      post coupons_url, params: { coupon: { description: @coupon.description, end_date: @coupon.end_date, image_url: @coupon.image_url, start_date: @coupon.start_date, title: @coupon.title } }
+      post coupons_url, params: { coupon: { description: @coupon.description, end_time: @coupon.end_time, image_url: @coupon.image_url, start_time: @coupon.start_time, title: @coupon.title } }
     end
 
     assert_redirected_to coupon_url(Coupon.last)
@@ -34,7 +34,7 @@ class CouponsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update coupon" do
-    patch coupon_url(@coupon), params: { coupon: { description: @coupon.description, end_date: @coupon.end_date, image_url: @coupon.image_url, start_date: @coupon.start_date, title: @coupon.title } }
+    patch coupon_url(@coupon), params: { coupon: { description: @coupon.description, end_time: @coupon.end_time, image_url: @coupon.image_url, start_time: @coupon.start_time, title: @coupon.title } }
     assert_redirected_to coupon_url(@coupon)
   end
 
