@@ -9,11 +9,10 @@
 		list-style: none;
 		padding: 1%;
 		margin: 0;
-		overflow:auto;
+		overflow-y:scroll;
+		height: 300px;
 		li {
 			padding: 1em;
-			display:inline;
-			float:left;
 			margin: 0;
 			border-bottom: solid thin #ddd;
 			// This makes sure our <li> has enough height
@@ -21,7 +20,7 @@
 			&::after {
 				clear: both;
 				content: " ";
-				display: inline;
+				display: block;
 			}
 			img {
 				float: left;
@@ -30,7 +29,7 @@
 				margin-bottom: 1em;
 				box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,0.75);
 				height: auto;
-				width: 250px;
+				width: 150px;
 			}
 		}
 	}
