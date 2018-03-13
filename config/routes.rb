@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :accounts
   resources :events
   resources :coupons
   get 'home/index'
