@@ -2,8 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .home {
-	max-width: 80em;
+	background-color: #D2E0EB;
+	padding: 5px;
+	width: 100%;
+	border: 2px solid black;
+	h1.centered{
+		text-align: center;
+	}
+	h2.centered{
+		text-align: center;
+	}
 	ul.catalog {
 		border-top: solid 0.250em;
 		list-style: none;
@@ -36,6 +46,8 @@
 			}
 			div.checkbox{
 				float: right;
+				background-color: #E0DA84;
+				padding: 10px;
 			}
 		}
 	}
