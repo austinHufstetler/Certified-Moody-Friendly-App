@@ -22,6 +22,9 @@
 				content: " ";
 				display: block;
 			}
+			p{
+				float:left;
+			}
 			img {
 				float: left;
 				padding: 1em;
@@ -30,6 +33,9 @@
 				box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,0.75);
 				height: auto;
 				width: 150px;
+			}
+			div.checkbox{
+				float: right;
 			}
 		}
 	}
