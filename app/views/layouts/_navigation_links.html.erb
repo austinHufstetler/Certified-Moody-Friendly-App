@@ -1,6 +1,11 @@
 
 <li><%= link_to 'Home', home_index_path %></li>
-<li><a href="#">My Account</a></li>
 <li><%= link_to 'Coupons', coupons_path %></li>
 <li><%= link_to 'Events', events_path %></li>
-<li><a href="#">Login</a></li>
+<% if account_signed_in? %>  
+	<li><%= link_to 'Edit account', edit_account_registration_path%></li>  
+	<li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete' %></li>
+<% else %>  
+	<li><%= link_to 'Sign in', new_account_session_path %></li>  
+	<li><%= link_to 'Sign up', new_account_registration_path %></li>
+<% end %>
