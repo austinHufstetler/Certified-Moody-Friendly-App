@@ -1,0 +1,5 @@
+<% if notice %>
+    <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<%= react_component("CouponCatalog", coupon_catalog: @coupons, prerender: false) %>

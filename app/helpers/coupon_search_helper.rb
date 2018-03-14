@@ -1,0 +1,2 @@
+module CouponSearchHelper
+end

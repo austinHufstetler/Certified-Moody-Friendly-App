@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'event_search/index'
+
+  get 'coupon_search/index'
+
   devise_for :accounts
   resources :events
   resources :coupons
