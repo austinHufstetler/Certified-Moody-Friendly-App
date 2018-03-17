@@ -15,18 +15,23 @@
 		text-align: center;
 	}
 	ul.catalog {
+
+		width: 90%;
 		border-top: solid 0.250em;
+		border-bottom: solid 0.250em;
 		list-style: none;
 		padding: 1%;
-		margin: 0;
+		margin: auto;
 		overflow-y:scroll;
-		height: 300px;
+		height: 325px;
 		background-color: white;
 		padding: 1em;
 		li {
 			padding: 1em;
 			margin: 0;
 			border-bottom: solid thin #ddd;
+			display:inline;
+			float: left;
 			// This makes sure our <li> has enough height
 			// to hold the entire image, since it's floated
 			&::after {
@@ -47,7 +52,7 @@
 				width: 150px;
 			}
 			div.checkbox{
-				float: right;
+				float: left;
 				background-color: #E0DA84;
 				padding: 10px;
 			}
