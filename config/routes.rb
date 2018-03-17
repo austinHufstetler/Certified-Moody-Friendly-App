@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'coupon_search/index'
 
-  devise_for :accounts
+  devise_for :accounts,:controllers => { :registrations => 'registrations' }
   resources :events
   resources :coupons
   get 'home/index'
