@@ -20,5 +20,6 @@ export default class Coupon extends React.Component {
         <td></td>  
       </tr>
     )
-  };
+  }; 
+
 }
