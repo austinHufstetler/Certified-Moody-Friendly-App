@@ -8,7 +8,7 @@ export default class CouponList extends React.Component {
     var self = this;
 
     this.props.coupons.forEach(function(coupon) {
-      coupons.push(<Coupon coupon={coupon}
+    coupons.push(<Coupon coupon={coupon}
                          key={'coupon' + coupon.id}/>);
       }
     );

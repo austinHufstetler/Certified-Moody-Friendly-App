@@ -11,7 +11,7 @@ export default class CouponCatalog extends React.Component {
         var self = this;
 
         axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
-        axios.get('/')
+        axios.get('/coupons')
             .then(function (response) {
                 console.log(response.data);
                 self.setState({ coupons: response.data })
