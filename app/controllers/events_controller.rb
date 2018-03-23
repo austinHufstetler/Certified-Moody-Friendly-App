@@ -4,7 +4,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    if(params[:business_id])
+      @business = Business.find(params[:business_id])
+      @events = @business.events
+    else
+      @events = Event.all
+    end
   end
 
   # GET /events/1
@@ -25,6 +30,11 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+
+    if(current_account && current_account.accountable_type == "Business")
+      @event.business = current_account.accountable
+    end
+
 
     respond_to do |format|
       if @event.save
