@@ -6,4 +6,5 @@ class Coupon < ApplicationRecord
 		%r{\.(gif|jpg|png)\Z}i,
 		message: 'must be a URL for GIF, JPG or PNG image.'
 	}
+	belongs_to :business
 end

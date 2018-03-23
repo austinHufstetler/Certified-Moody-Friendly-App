@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   resources :militaries, only: [:edit, :update]
   resources :businesses, only: [:edit, :update]
 
+  resources :businesses do
+    resources :coupons
+    resources :events
+  end
+
   get 'home/index'
 
   root 'home#index'
