@@ -4,7 +4,12 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all
+    if(params[:business_id])
+      @business = Business.find(params[:business_id])
+      @coupons = @business.coupons
+    else
+      @coupons = Coupon.all
+    end
   end
 
   # GET /coupons/1
@@ -25,6 +30,10 @@ class CouponsController < ApplicationController
   # POST /coupons.json
   def create
     @coupon = Coupon.new(coupon_params)
+
+    if(current_account && current_account.accountable_type == "Business")
+      @coupon.business = current_account.accountable
+    end
 
     respond_to do |format|
       if @coupon.save

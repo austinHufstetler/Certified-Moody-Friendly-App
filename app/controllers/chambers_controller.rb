@@ -1,5 +1,6 @@
 class ChambersController < ApplicationController
 	before_action :set_chamber, only: [:edit, :update]
+	before_action :authenticate_account!
 	# GET /buyers/1/edit
 	def edit
 	end
