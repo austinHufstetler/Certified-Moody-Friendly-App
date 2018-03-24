@@ -72,17 +72,17 @@ class EventsController < ApplicationController
   end
 
   def like
-    @event.liked_by current_user
+    @event.liked_by current_account
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back(fallback_location: root_path)  }
       format.js
       end
    end
 
   def unlike
-    @event.unliked_by current_user
+    @event.unliked_by current_account
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back(fallback_location: root_path)  }
       format.js
       end
    end

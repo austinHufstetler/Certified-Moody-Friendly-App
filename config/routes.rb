@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :events do
     member do
-      put 'like'
+      get 'like'
       get 'unlike'
      end
    end
