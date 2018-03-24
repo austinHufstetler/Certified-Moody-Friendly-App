@@ -7,4 +7,5 @@ class Event < ApplicationRecord
 		message: 'must be a URL for GIF, JPG or PNG image.'
 	}
 	belongs_to :business
+	acts_as_votable
 end

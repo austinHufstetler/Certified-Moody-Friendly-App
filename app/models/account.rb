@@ -3,6 +3,8 @@ class Account < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :accountable, polymorphic: true
 
+  acts_as_voter
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

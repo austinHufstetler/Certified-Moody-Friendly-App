@@ -1,6 +1,6 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  
   # GET /coupons
   # GET /coupons.json
   def index
@@ -69,6 +69,22 @@ class CouponsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like
+    @coupon.liked_by current_account
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+      end
+   end
+
+  def unlike
+    @coupon.unliked_by current_account
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+      end
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.

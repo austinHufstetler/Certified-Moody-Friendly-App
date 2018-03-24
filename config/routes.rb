@@ -18,6 +18,20 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  resources :events do
+    member do
+      get 'like'
+      get 'unlike'
+     end
+   end
+
+  resources :coupons do
+    member do
+      get 'like'
+      get 'unlike'
+     end
+   end
+
   get 'home/index'
 
   root 'home#index'
