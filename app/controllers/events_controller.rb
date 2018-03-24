@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :like, :unlike]
 
   # GET /events
   # GET /events.json
@@ -70,6 +70,22 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like
+    @event.liked_by current_user
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+      end
+   end
+
+  def unlike
+    @event.unliked_by current_user
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+      end
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.

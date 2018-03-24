@@ -12,9 +12,19 @@
 				Ends:   <%= coupon.end_time %>
 			</p>
 			<br>
-			<div class="checkbox">
-				  <label><input type="checkbox" value="">Favorite</label>
-			</div>
+			<% if current_account %>
+				<% if current_account.accountable_type == "Military" %>
+					<% if current_account.voted_for? coupon %>
+					  <%= link_to '', unlike_coupon_path(coupon.id), remote: true,
+					                        id: "like_#{coupon.id}",
+					                        class: "glyphicon glyphicon-heart" %>
+					<% else %>
+					  <%= link_to '', like_coupon_path(coupon.id), remote: true,
+					                        id: "like_#{coupon.id}",
+					                        class: "glyphicon glyphicon-heart-empty" %>
+					<% end %>
+				<% end %>
+			<% end %>
 		</li>
 	<% end %>
 </ul>
