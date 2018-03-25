@@ -1,0 +1,2 @@
+module FavoriteCouponsHelper
+end

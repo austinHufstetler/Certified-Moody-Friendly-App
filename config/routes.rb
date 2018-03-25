@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'favorite_events/index'
+
+  get 'favorite_coupons/index'
+
   get 'event_search/index'
 
   get 'coupon_search/index'
