@@ -1,11 +1,6 @@
-
-<h1 class="centered">Home</h1>
 <script src="//maps.google.com/maps/api/js?key=AIzaSyDjIvow_oNXKMo1tkWEzEeqPA2ZdSdOcH0"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
-<script>
-	handler = Gmaps.build('Google');
-	handler.buildMap({ internal: {id: 'basic_map' }});
-</script>script>
+<h1 class="centered">Home</h1>
 <div style='width: 800px;'>
   <div id="basic_map" style='width: 800px; height: 400px;'></div>
 </div>
@@ -15,11 +10,15 @@
 <div>
 	<%= render 'home/closest_coupons' %>
 </div>
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
 <div>
 	<%= render 'home/upcoming_events' %>
 </div>
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+<script>
+	handler = Gmaps.build('Google');
+handler.buildMap({ internal: {id: 'basic_map' }});
+</script>
 
 

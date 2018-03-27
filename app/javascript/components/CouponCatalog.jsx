@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import CouponList from './CouponList';
 import CouponSearch from './CouponSearch';
+import Lodash from 'lodash';
 
 export default class CouponCatalog extends React.Component {
 
@@ -9,7 +10,6 @@ export default class CouponCatalog extends React.Component {
 
     componentDidMount = () => {
         var self = this;
-
         axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
         axios.get('/coupons')
             .then(function (response) {
