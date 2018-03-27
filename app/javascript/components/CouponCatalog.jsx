@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import CouponList from './CouponList';
 import CouponSearch from './CouponSearch';
-import Lodash from 'lodash';
 
 export default class CouponCatalog extends React.Component {
 
