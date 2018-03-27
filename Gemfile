@@ -16,6 +16,9 @@ group :production do
     gem 'pg', '0.18.4'
     gem 'rails_12factor', '0.0.2'
 end
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
