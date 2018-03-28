@@ -2,10 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import CouponList from './CouponList';
 import CouponSearch from './CouponSearch';
+import CouponFilter from './CouponFilter';
 
 export default class CouponCatalog extends React.Component {
 
-    state = { coupons: [] };
+    state = { coupons: [], selectoption: ' '};
 
     componentDidMount = () => {
         var self = this;
@@ -25,13 +26,19 @@ export default class CouponCatalog extends React.Component {
       this.setState({ coupons: coupons });
     }; 
 
+    handleChange =(selectedoption)=>{
+        this.setState({selectoption});
+    }
+
     render = () => {
         return (
           <div className="container">
             <div className="row">
-                    <div className="col-md-12">
-                        <CouponSearch handleSearch={this.handleSearch} />
-                    </div>
+                    <table className="table noborder">
+                        <td><CouponSearch handleSearch={this.handleSearch}  /> </td>
+                        <td class="dropdown-menu"><CouponFilter handleChange={this.handleChange} /></td>
+                    </table>
+
                 </div>
             <div className="row">
               <div className="col-md-12">
