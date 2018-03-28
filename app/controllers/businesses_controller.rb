@@ -1,12 +1,19 @@
 class BusinessesController < ApplicationController
 	before_action :set_business, only: [:edit, :update]
 	before_action :authenticate_account!
+
+	def pundit_user
+		current_account
+	end
+
 	# GET /buyers/1/edit
 	def edit
+		authorize @business
 	end
 	# PATCH/PUT /buyers/1
 	# PATCH/PUT /buyers/1.json
 	def update
+		authorize @business
 		respond_to do |format|
 			if @business.update(business_params)
 				format.html { redirect_to home_index_url, notice: "The profile of the business #{@business.name} was successfully updated." }
