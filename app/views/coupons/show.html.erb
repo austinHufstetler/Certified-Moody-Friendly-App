@@ -12,7 +12,8 @@
 
 <p>
   <strong>Image url:</strong>
-  <%= @coupon.image_url %>
+  <br>
+  <%= image_tag(@coupon.image_url, width: 150) if @coupon.image_url.present? %>
 </p>
 
 <p>

@@ -10,4 +10,10 @@ class CouponSearchController < ApplicationController
     end
 
   end
+
+
+  def search
+    	coupons = Coupon.where("title LIKE '%#{params[:query]}%'")
+    	render json: coupons
+	end
 end

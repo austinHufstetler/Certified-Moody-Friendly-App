@@ -8,3 +8,10 @@
 // layout file, like app/views/layouts/application.html.erb
 
 console.log('Hello World from Webpacker')
+
+import CouponCatalog from 'components/CouponCatalog';
+
+import WebpackerReact from 'webpacker-react'
+
+WebpackerReact.setup({CouponCatalog}) 
+

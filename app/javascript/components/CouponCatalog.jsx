@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import CouponList from './CouponList';
+import CouponSearch from './CouponSearch';
 
 export default class CouponCatalog extends React.Component {
 
@@ -18,11 +19,20 @@ export default class CouponCatalog extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-    };  
+    }; 
+
+    handleSearch = (coupons) => {
+      this.setState({ coupons: coupons });
+    }; 
 
     render = () => {
         return (
           <div className="container">
+            <div className="row">
+                    <div className="col-md-12">
+                        <CouponSearch handleSearch={this.handleSearch} />
+                    </div>
+                </div>
             <div className="row">
               <div className="col-md-12">
                   <CouponList coupons ={this.state.coupons}/>

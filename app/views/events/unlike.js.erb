@@ -1,0 +1,2 @@
+$(".like_event_<%= @event.id %>").removeClass('glyphicon-heart').addClass('glyphicon-heart-empty');
+$(".like_event_<%= @event.id %>").attr("href", '/events/<%= @event.id %>/like');

@@ -1,0 +1,15 @@
+<% if @military.name.nil? or @military.name == "" %>
+	<h2>Edit Military's Profile</h2>
+<% else %>
+	<h2>Edit <%= @military.name %>'s Profile</h2>
+<% end %>
+<%= simple_form_for(@military, as: @military, url: military_path(@military), html: { method: :patch }) do |f| %>
+	<%= f.error_notification %>
+	<div class="form-inputs">
+		<%= f.input :name, required: true, autofocus: true %>
+		<%= f.input :address, required: true %>
+	</div>
+	<div class="form-actions">
+		<%= f.button :submit, "Update" %>
+	</div>
+<% end %>

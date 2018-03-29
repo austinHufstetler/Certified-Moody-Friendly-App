@@ -1,11 +1,33 @@
 
 <li><%= link_to 'Home', home_index_path %></li>
-<li><%= link_to 'Coupons', coupons_path %></li>
+<li><%= link_to 'Coupons', coupon_search_index_path %></li>
 <li><%= link_to 'Events', events_path %></li>
 <% if account_signed_in? %>  
-	<li><%= link_to 'Edit account', edit_account_registration_path%></li>  
+	<% if current_account.accountable_type == "Military" %>
+		<li><%= link_to 'Profile', edit_military_path(current_account.accountable_id) %></li>
+		<li><%= link_to 'Account Settings', edit_account_registration_path%></li>
+	<% elsif current_account.accountable_type == "Business" %>
+
+		<li role="presentation" class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+				aria-haspopup="true" aria-expanded="false">
+				My Settings <span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<li><%= link_to 'Profile', edit_business_path(current_account.accountable_id) %></li>
+				<li><%= link_to 'Account Settings', edit_account_registration_path%></li>
+			</ul>
+		</li>
+
+		<li><%= link_to 'My Coupons', business_coupons_path(current_account.accountable_id) %></li>
+		<li><%= link_to 'My Events', business_events_path(current_account.accountable_id) %></li>
+	<% else %>
+		<li><%= link_to 'Profile', edit_chamber_path(current_account.accountable_id) %></li>
+		<li><%= link_to 'Account Settings', edit_account_registration_path%></li>
+	<% end %>
+
 	<li><%= link_to 'Sign out', destroy_account_session_path, :method=>'delete' %></li>
 <% else %>  
 	<li><%= link_to 'Sign in', new_account_session_path %></li>  
 	<li><%= link_to 'Sign up', new_account_registration_path %></li>
 <% end %>
+

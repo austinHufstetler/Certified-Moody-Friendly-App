@@ -10,3 +10,27 @@
 .navbar-nav a{
 	color: white !important;
 }
+
+.navbar-nav a:hover{
+	background-color: black !important;
+}
+
+.navbar-nav > li > .dropdown-menu {   
+ 	background-color: #0C3C60;  
+ }
+
+ .dropdown-toggle:focus{
+ 	background-color: #0C3C60 !important;
+ }
+
+
+
+.glyphicon.glyphicon-heart{
+	font-size: 50px;
+	color: red;
+}
+
+.glyphicon.glyphicon-heart-empty{
+	font-size: 50px;
+	color: red;
+}

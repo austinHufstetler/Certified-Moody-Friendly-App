@@ -1,10 +1,15 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all
+    if(params[:business_id])
+      @business = Business.find(params[:business_id])
+      @coupons = @business.coupons
+    else
+      @coupons = Coupon.all
+    end
   end
 
   # GET /coupons/1
@@ -25,6 +30,10 @@ class CouponsController < ApplicationController
   # POST /coupons.json
   def create
     @coupon = Coupon.new(coupon_params)
+
+    if(current_account && current_account.accountable_type == "Business")
+      @coupon.business = current_account.accountable
+    end
 
     respond_to do |format|
       if @coupon.save
@@ -60,6 +69,22 @@ class CouponsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like
+    @coupon.liked_by current_account
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+      end
+   end
+
+  def unlike
+    @coupon.unliked_by current_account
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+      end
+   end
 
   private
     # Use callbacks to share common setup or constraints between actions.

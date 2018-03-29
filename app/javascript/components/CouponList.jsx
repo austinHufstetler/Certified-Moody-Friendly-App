@@ -5,8 +5,10 @@ export default class CouponList extends React.Component {
   render = () => {
     var coupons = [];
 
+    var self = this;
+
     this.props.coupons.forEach(function(coupon) {
-      coupons.push(<Coupon coupon={coupon}
+    coupons.push(<Coupon coupon={coupon}
                          key={'coupon' + coupon.id}/>);
       }
     );
@@ -18,8 +20,6 @@ export default class CouponList extends React.Component {
             <th className="col-md-2">Image url</th>          
             <th className="col-md-2">Title</th>
             <th className="col-md-6">Description</th>
-            <th className="col-md-1">Price</th>
-            <th className="col-md-1">Popularity</th>            
           </tr>
         </thead>
         <tbody>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313161336) do
+ActiveRecord::Schema.define(version: 20180323211350) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,8 +25,26 @@ ActiveRecord::Schema.define(version: 20180313161336) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "accountable_type"
+    t.integer "accountable_id"
+    t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "logo_url"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chambers", force: :cascade do |t|
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "coupons", force: :cascade do |t|
@@ -37,6 +55,8 @@ ActiveRecord::Schema.define(version: 20180313161336) do
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "business_id"
+    t.index ["business_id"], name: "index_coupons_on_business_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -47,6 +67,30 @@ ActiveRecord::Schema.define(version: 20180313161336) do
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "business_id"
+    t.index ["business_id"], name: "index_events_on_business_id"
+  end
+
+  create_table "militaries", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "branch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.integer "votable_id"
+    t.string "voter_type"
+    t.integer "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
 end

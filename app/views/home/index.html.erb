@@ -1,8 +1,43 @@
 
-<h1 class="centered">Home</h1>
 
-<%= render 'home/most_popular_coupons' %>
-<%= render 'home/closest_coupons' %>
-<%= render 'home/upcoming_events' %>
+<div class="container-fluid">
+	<div style="font-size:10em; text-align: center">
+		<%= link_to '', coupon_search_index_path(), remote: false,
+			class: "glyphicon glyphicon-search" %>
+	</div>
+	<div>
+		<%= render 'home/most_popular_coupons' %>
+	</div>
 
+</div>
 
+<div class="container-fluid" style="padding: 5em">
+	<div style="font-size:10em; text-align: center">
+		<%= link_to '', events_path(), remote: false,
+			class: "glyphicon glyphicon-calendar" %>
+	</div>
+	<div>
+		<%= render 'home/upcoming_events' %>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div style="font-size:10em; text-align: center">
+		<%= link_to '', coupon_search_index_path(), remote: false,
+			class: "glyphicon glyphicon-briefcase" %>
+		<h2> Moody Friendly Businesses</h2>
+	</div>
+
+</div>
+<!--
+<div>
+	<%= render 'home/most_popular_coupons' %>
+</div>
+<div>
+	<%= render 'home/closest_coupons' %>
+</div>
+<div>
+	<%= render 'home/upcoming_events' %>
+</div>
+
+-->
