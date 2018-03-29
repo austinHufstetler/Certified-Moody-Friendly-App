@@ -1,0 +1,6 @@
+<br>
+<% @businesses = Business.all %>
+<% @businesses.each do |business| %>
+  <%= business.name %><br/>
+  <%= business.address %><br/>
+<% end %>
