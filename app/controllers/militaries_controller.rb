@@ -2,12 +2,18 @@ class MilitariesController < ApplicationController
 	before_action :set_military, only: [:edit, :update]
 	before_action :authenticate_account!
 
+	def pundit_user
+		current_account
+	end
+
 	# GET /buyers/1/edit
 	def edit
+		authorize @military
 	end
 	# PATCH/PUT /buyers/1
 	# PATCH/PUT /buyers/1.json
 	def update
+		authorize @military
 		respond_to do |format|
 			if @military.update(military_params)
 				format.html { redirect_to home_index_url, notice: "The profile of the military #{@military.name} was successfully updated." }

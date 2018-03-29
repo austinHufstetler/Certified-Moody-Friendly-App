@@ -4,6 +4,37 @@
 <div style='width: 800px;'>
   <div id="basic_map" style='width: 800px; height: 400px;'></div>
 </div>
+
+
+<div class="container-fluid">
+	<div style="font-size:10em; text-align: center">
+		<%= link_to '', coupon_search_index_path(), remote: false,
+			class: "glyphicon glyphicon-search" %>
+	</div>
+	<div>
+		<%= render 'home/most_popular_coupons' %>
+	</div>
+
+</div>
+
+<div class="container-fluid" style="padding: 5em">
+	<div style="font-size:10em; text-align: center">
+		<%= link_to '', events_path(), remote: false,
+			class: "glyphicon glyphicon-calendar" %>
+	</div>
+	<div>
+		<%= render 'home/upcoming_events' %>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div style="font-size:10em; text-align: center">
+		<%= link_to '', coupon_search_index_path(), remote: false,
+			class: "glyphicon glyphicon-briefcase" %>
+		<h2> Moody Friendly Businesses</h2>
+	</div>
+
+</div>
 <div>
 	<%= render 'home/most_popular_coupons' %>
 </div>
@@ -20,5 +51,3 @@
 	handler = Gmaps.build('Google');
 handler.buildMap({ internal: {id: 'basic_map' }});
 </script>
-
-
