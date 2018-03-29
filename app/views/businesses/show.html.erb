@@ -1,32 +1,4 @@
 
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
-    .navbar {
-      margin-bottom: 50px;
-      border-radius: 0;
-    }
-    
-    /* Remove the jumbotron's default bottom margin */ 
-     .jumbotron {
-      margin-bottom: 0;
-    }
-   
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-  </style>
-</head>
--
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +25,12 @@
       background-color: #f2f2f2;
       padding: 25px;
     }
+
+    .scroll-box{
+      max-height: 350px;
+      overflow-y: scroll;
+      width: 80%;
+    }
   </style>
 </head>
 <body>
@@ -72,17 +50,32 @@
 <div class="container">    
   <div class="row">
 <h2> coupons </h2>
-<div class="list-group">
+<div class="list-group scroll-box">
+
 	<% @coupons.each do |coupon| %>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1"><%= coupon.title %></h5>
-      <small>coupon</small>
-    </div>
-    <p class="mb-1"><%= coupon.description %></p>
-    <small>Expires: <%= coupon.end_time %></small>
-  </a>
-  <% end %>
+
+	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
+            <td>
+      	    <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1"><%= coupon.title %></h2>
+      	      <p class="mb-1"><%= coupon.description %></p>
+      	    </div>
+          </td>
+          <td>
+            <div class="d-flex w-100 justify-content-between">
+      	     
+      	     <small>Expires: <%= coupon.end_time %></small>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+	  </a>
+  	<% end %>
 </div>
   </div>
 </div><br><br>
@@ -90,15 +83,28 @@
 <div class="container">    
   <div class="row">
 <h2> events </h2>
-<div class="list-group">
+<div class="list-group scroll-box">
 	<% @events.each do |event| %>
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1"><%= event.title %></h5>
-      <small>event</small>
-    </div>
-    <p class="mb-1"><%= event.description %></p>
-    <small>Ends: <%= event.end_time %></small>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+            <td>
+            <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1"><%= event.title %></h2>
+              <p class="mb-1"><%= event.description %></p>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex w-100 justify-content-between">
+             
+             <small>Expires: <%= event.end_time %></small>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </a>
   <% end %>
 </div>
