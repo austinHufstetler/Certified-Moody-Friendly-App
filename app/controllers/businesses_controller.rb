@@ -1,9 +1,14 @@
 class BusinessesController < ApplicationController
-	before_action :set_business, only: [:edit, :update]
-	before_action :authenticate_account!
+	before_action :set_business, only: [:edit, :update, :show]
+	before_action :authenticate_account!, except: [:index, :show]
 
 	def pundit_user
 		current_account
+	end
+
+	def show
+		@coupons = @business.coupons
+		@events = @business.events
 	end
 
 	# GET /buyers/1/edit
