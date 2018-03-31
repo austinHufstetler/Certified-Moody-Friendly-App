@@ -20,13 +20,12 @@ export default class CouponFilter extends React.Component{
       direction = this.props.order == "asc" ? <span className="glyphicon glyphicon-chevron-up" aria-hidden="true"></span> : <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
     }
     return(
-      <span onChange={this.handleChange}>
+      <span onClick={this.handleChange}>
       	<select value={this.state.value} onChange={this.handleChange}>
             <option value="expiration">Expiration</option>
             <option value="Title">Title</option>
           </select>
         {display_name}
-        {direction}
       </span>
     );
   }

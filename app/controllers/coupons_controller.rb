@@ -10,6 +10,9 @@ class CouponsController < ApplicationController
     else
       @coupons = Coupon.all
     end
+    respond_to do |format|
+      format.json {render json: Coupon.order(sort_by + ' ' + order)}
+    end
   end
 
   # GET /coupons/1
@@ -95,5 +98,13 @@ class CouponsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
       params.require(:coupon).permit(:title, :description, :image_url, :start_time, :end_time)
+    end
+
+    def sort_by
+       %w(title
+          end_time).include?(params[:sort_by]) ? params[:sort_by] : 'title'
+    end
+    def order
+       %w(asc desc).include?(params[:order]) ? params[:order] : 'asc'
     end
 end
