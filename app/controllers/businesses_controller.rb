@@ -1,9 +1,15 @@
 class BusinessesController < ApplicationController
-	before_action :set_business, only: [:edit, :update]
-	before_action :authenticate_account!
+	before_action :set_business, only: [:edit, :update, :show]
+	before_action :set_businesses, only: [:edit, :update, :show, :index]
+	before_action :authenticate_account!, except: [:index, :show]
 
 	def pundit_user
 		current_account
+	end
+
+	def show
+		@coupons = @business.coupons
+		@events = @business.events
 	end
 
 	# GET /buyers/1/edit
@@ -31,7 +37,11 @@ class BusinessesController < ApplicationController
 		@business = Business.find(params[:id])
 	end
 
+	def set_businesses
+		@businesses = Business.all
+	end
+
 	def business_params
-		params.require(:business).permit(:name, :address)
+		params.require(:business).permit(:name, :address, :logo_url)
 	end
 end

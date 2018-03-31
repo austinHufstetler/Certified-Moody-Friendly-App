@@ -1,19 +1,5 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-.home {
-	background-color: #D2E0EB;
-	padding: 5px;
-	width: 100%;
-	border: 2px solid black;
-	h1.centered{
-		text-align: center;
-	}
-	h2.centered{
-		text-align: center;
-	}
+.businesses{
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
     .navbar {
       margin-bottom: 50px;
       border-radius: 0;
@@ -37,6 +23,19 @@
       margin-left: auto;
       margin-right: auto;
       border: 5px solid grey;
+    }
+
+    .long-scroll-box{
+      max-height: 80%;
+      overflow-y: scroll;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid grey;
+    }
+
+    h2.centered{
+    text-align: center;
     }
 
 }
