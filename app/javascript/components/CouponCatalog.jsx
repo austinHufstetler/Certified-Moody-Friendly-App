@@ -6,7 +6,7 @@ import CouponFilter from './CouponFilter';
 
 export default class CouponCatalog extends React.Component {
 
-    state = { coupons: [], selectoption: ' '};
+    state = { coupons: [], sort: "title", order: "asc"};
 
     componentDidMount = () => {
         var self = this;
@@ -26,9 +26,23 @@ export default class CouponCatalog extends React.Component {
       this.setState({ coupons: coupons });
     }; 
 
-    handleChange =(selectedoption)=>{
-        this.setState({selectoption});
-    }
+    handleChange =(name, order)=>{
+        if (this.state.sort != name) {
+                order = 'asc';
+        }
+
+        var self = this;
+
+        axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
+        axios.get('/coupons', {params: {sort_by: name, order: order }}).then(function (response) {
+            console.log(response.data);
+            self.setState({ coupons: response.data, sort: name, order: order });
+        })
+        .catch(function (error) {
+            console.log(error);
+            alert('Cannot sort events: ', error);
+        });
+    };
 
     render = () => {
         return (
@@ -36,7 +50,7 @@ export default class CouponCatalog extends React.Component {
             <div className="row">
                     <table className="table noborder">
                         <td><CouponSearch handleSearch={this.handleSearch}  /> </td>
-                        <td class="dropdown-menu"><CouponFilter handleChange={this.handleChange} /></td>
+                        <td ><CouponFilter handleChange={this.handleChange} /></td>
                     </table>
 
                 </div>
