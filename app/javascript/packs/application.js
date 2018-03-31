@@ -14,3 +14,4 @@ import CouponCatalog from 'components/CouponCatalog';
 import WebpackerReact from 'webpacker-react'
 
 WebpackerReact.setup({CouponCatalog}) 
+

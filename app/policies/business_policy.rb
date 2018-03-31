@@ -1,9 +1,14 @@
 class BusinessPolicy
 	attr_reader :current_account, :model
+	
 
 	def initialize(current_account, model)
 		@current_account = current_account
 		@business = model
+	end
+
+	def show?
+
 	end
 
 	def edit?
