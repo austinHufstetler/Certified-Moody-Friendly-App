@@ -3,33 +3,44 @@ class CouponsController < ApplicationController
   
   # GET /coupons
   # GET /coupons.json
+
+  def pundit_user
+    current_account
+  end
+
   def index
     if(params[:business_id])
-      @business = Business.find(params[:business_id])
+    @business = Business.find(params[:business_id])
       @coupons = @business.coupons
     else
       @coupons = Coupon.all
     end
+
+
   end
 
   # GET /coupons/1
   # GET /coupons/1.json
   def show
+
   end
 
   # GET /coupons/new
   def new
     @coupon = Coupon.new
+    authorize @coupon
   end
 
   # GET /coupons/1/edit
   def edit
+    authorize @coupon
   end
 
   # POST /coupons
   # POST /coupons.json
   def create
     @coupon = Coupon.new(coupon_params)
+    authorize @coupon
 
     if(current_account && current_account.accountable_type == "Business")
       @coupon.business = current_account.accountable
@@ -49,6 +60,7 @@ class CouponsController < ApplicationController
   # PATCH/PUT /coupons/1
   # PATCH/PUT /coupons/1.json
   def update
+    authorize @coupon
     respond_to do |format|
       if @coupon.update(coupon_params)
         format.html { redirect_to @coupon, notice: 'Coupon was successfully updated.' }
@@ -63,10 +75,16 @@ class CouponsController < ApplicationController
   # DELETE /coupons/1
   # DELETE /coupons/1.json
   def destroy
+    authorize @coupon
     @coupon.destroy
     respond_to do |format|
-      format.html { redirect_to coupons_url, notice: 'Coupon was successfully destroyed.' }
-      format.json { head :no_content }
+      if(current_account and current_account.accountable_type = "Business")
+         format.html { redirect_to business_coupons_url(current_account.accountable_id), notice: 'Coupon was successfully destroyed.' }
+         format.json { head :no_content }
+      else
+         format.html { redirect_to coupons_url, notice: 'Coupon was successfully destroyed.' }
+         format.json { head :no_content }
+      end
     end
   end
 
