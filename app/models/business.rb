@@ -7,6 +7,6 @@ class Business < ApplicationRecord
 		message: 'must be a URL for GIF, JPG or PNG image.'
 	}
 	has_one :account, as: :accountable
-	has_many :coupons
-	has_many :events
+	has_many :coupons,dependent: :destroy
+	has_many :events,dependent: :destroy
 end
