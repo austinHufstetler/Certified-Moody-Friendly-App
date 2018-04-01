@@ -6,7 +6,7 @@ export default class Coupon extends React.Component {
     title: PropTypes.string,
     description: PropTypes.string,
     image_url: PropTypes.string,
-    end_time: PropTypes.datetime,
+    end_time: PropTypes.string,
   };
 
   render = () => {

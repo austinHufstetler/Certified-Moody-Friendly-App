@@ -26,7 +26,7 @@ export default class CouponCatalog extends React.Component {
       this.setState({ coupons: coupons });
     }; 
 
-    handleChange =(name, order)=>{
+    handleCouponFilter =(name, order)=>{
         if (this.state.sort != name) {
                 order = 'asc';
         }
@@ -48,15 +48,16 @@ export default class CouponCatalog extends React.Component {
         return (
           <div className="container">
             <div className="row">
-                    <table className="table noborder">
-                        <td><CouponSearch handleSearch={this.handleSearch}  /> </td>
-                        <td ><CouponFilter handleChange={this.handleChange} /></td>
-                    </table>
+                    <div className="col-md-12">
+                        <CouponSearch handleSearch={this.handleSearch}  /> 
+                        
+                    </div>
 
                 </div>
             <div className="row">
               <div className="col-md-12">
-                  <CouponList coupons ={this.state.coupons}/>
+                  <CouponList coupons ={this.state.coupons}
+                              handleCouponFilter={this.handleCouponFilter}/>
               </div>
             </div>
           </div>

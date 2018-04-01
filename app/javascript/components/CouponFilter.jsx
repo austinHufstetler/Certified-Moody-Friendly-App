@@ -1,11 +1,7 @@
 import React from 'react';
-import axios from 'axios';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
 
 export default class CouponFilter extends React.Component{
 
-  state = {value:""};
   handleChange = (e) => {
     e.preventDefault();
     var order = this.props.order == 'desc' ? 'asc' : 'desc';
@@ -21,11 +17,8 @@ export default class CouponFilter extends React.Component{
     }
     return(
       <span onClick={this.handleChange}>
-      	<select value={this.state.value} onChange={this.handleChange}>
-            <option value="expiration">Expiration</option>
-            <option value="Title">Title</option>
-          </select>
         {display_name}
+        {direction}
       </span>
     );
   }

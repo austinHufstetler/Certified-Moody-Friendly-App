@@ -5,7 +5,7 @@ import CouponFilter from './CouponFilter';
 export default class CouponList extends React.Component {
 
   handleCouponFilter = (name, order) => {
-    this.props.handleSortColumn(name, order);
+    this.props.handleCouponFilter(name, order);
   };
   render = () => {
     var coupons = [];
@@ -23,9 +23,26 @@ export default class CouponList extends React.Component {
         <thead>
           <tr>
             <th className="col-md-2">Image url</th>          
-            <th className="col-md-2">Title </th>
-            <th className="col-md-4">Description</th>
-            <th className="col-md-2">Expiration Date</th>
+            <th className="col-md-2 sortable">
+                <CouponFilter name="title"
+                            text="Title"
+                            sort={this.props.sort}
+                            order={this.props.order}
+                            handleCouponFilter={this.handleCouponFilter}/>
+             </th>
+            <th className="col-md-4 sortable">
+              <CouponFilter name = "description"
+                            text= "Description"
+                            sort={this.props.sort}
+                            order={this.props.order}
+                            handleCouponFilter={this.handleCouponFilter}/></th>
+            <th className="col-md-2 sortable">
+                <CouponFilter name="expiration"
+                              text="Expiration Date"
+                              sort={this.props.sort}
+                              order={this.props.order}
+                              handleCouponFilter={this.handleCouponFilter}/>
+            </th>
           
 
           </tr>

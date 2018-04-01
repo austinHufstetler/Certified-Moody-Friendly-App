@@ -15,6 +15,6 @@
 	  }
 	}
 }
-.noborder td, .noborder th {
-    border: none !important;
-}
+th.sortable {
+        cursor: pointer;
+    }
