@@ -30,19 +30,8 @@ export default class CouponList extends React.Component {
                             order={this.props.order}
                             handleCouponFilter={this.handleCouponFilter}/>
              </th>
-            <th className="col-md-4 sortable">
-              <CouponFilter name = "description"
-                            text= "Description"
-                            sort={this.props.sort}
-                            order={this.props.order}
-                            handleCouponFilter={this.handleCouponFilter}/></th>
-            <th className="col-md-2 sortable">
-                <CouponFilter name="expiration"
-                              text="Expiration Date"
-                              sort={this.props.sort}
-                              order={this.props.order}
-                              handleCouponFilter={this.handleCouponFilter}/>
-            </th>
+            <th className="col-md-2 ">Description</th>
+          
           
 
           </tr>
