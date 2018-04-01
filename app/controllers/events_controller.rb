@@ -10,8 +10,7 @@ class EventsController < ApplicationController
   def index
     if(params[:business_id])
       @business = Business.find(params[:business_id])
-      @my_events = @business.events
-      @events = Event.all
+      @events = @business.events
     else
       @events = Event.all
     end
@@ -77,8 +76,7 @@ class EventsController < ApplicationController
     @event.destroy
     respond_to do |format|
       if(current_account and current_account.accountable_type == "Business")
-        business = Business.find(params[:id])
-        format.html { redirect_to business_events_url(params[:business_id]), notice: 'Event was successfully destroyed.' }
+        format.html { redirect_to business_events_url(current_account.accountable_id), notice: 'Event was successfully destroyed.' }
         format.json { head :no_content }
       else
         format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }

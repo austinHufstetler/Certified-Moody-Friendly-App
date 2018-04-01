@@ -11,8 +11,7 @@ class CouponsController < ApplicationController
   def index
     if(params[:business_id])
     @business = Business.find(params[:business_id])
-      @my_coupons = @business.coupons
-      @coupons = Coupon.all
+      @coupons = @business.coupons
     else
       @coupons = Coupon.all
     end
@@ -79,8 +78,13 @@ class CouponsController < ApplicationController
     authorize @coupon
     @coupon.destroy
     respond_to do |format|
-      format.html { redirect_to coupons_url, notice: 'Coupon was successfully destroyed.' }
-      format.json { head :no_content }
+      if(current_account and current_account.accountable_type = "Business")
+         format.html { redirect_to business_coupons_url(current_account.accountable_id), notice: 'Coupon was successfully destroyed.' }
+         format.json { head :no_content }
+      else
+         format.html { redirect_to coupons_url, notice: 'Coupon was successfully destroyed.' }
+         format.json { head :no_content }
+      end
     end
   end
 

@@ -24,39 +24,6 @@
     </tr>
   </tfoot>
   <tbody>
-    <% if current_account and current_account.accountable_type == "Business" %>
-    <% @my_events and @my_events.each do |event| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td class="image">
-        <%= image_tag(event.image_url, class: 'list_image') %>
-      </td>
-      <td class="description">
-        <h1><%= event.title %></h1>
-        <p>
-          <%= truncate(strip_tags(event.description),
-          length: 80) %>
-
-          <br><br> Start: <%= event.start_time %> <br> End: <%= event.end_time %>
-
-        </p>
-      </td>
-      
-      <td class="actions">
-      <ul>
-        <li><%= link_to 'Show', event %></li>
-        <li><%= link_to 'Edit', edit_event_path(event) %></li>
-        <li>
-        <%= link_to 'Destroy',
-          event,
-          method: :delete,
-          data: { confirm: 'Are you sure?' } 
-        %>
-        </li>
-      </ul>
-      </td>
-    </tr>
-      <% end %>
-    <% else %>
     <% @events.each do |event| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td class="image">
@@ -87,7 +54,6 @@
       </ul>
       </td>
     </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>

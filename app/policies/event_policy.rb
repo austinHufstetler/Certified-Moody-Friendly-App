@@ -39,7 +39,7 @@ class EventPolicy
 
 	def edit?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account == @event.business.account
 		else
 			false
 		end
@@ -47,7 +47,7 @@ class EventPolicy
 
 	def update?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account == @event.business.account
 		else
 			false
 		end
@@ -55,7 +55,7 @@ class EventPolicy
 
 	def destroy?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account == @event.business.account
 		else
 			false
 		end
