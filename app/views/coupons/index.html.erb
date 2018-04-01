@@ -12,6 +12,40 @@
     </tr>
   </tfoot>
   <tbody>
+
+    <% if current_account and current_account.accountable_type == "Business" %>
+      <% @my_coupons and @my_coupons.each do |coupon| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="image">
+          <%= image_tag(coupon.image_url, class: 'list_image') %>
+        </td>
+        <td class="description">
+          <h1><%= coupon.title %></h1>
+          <p>
+            <%= truncate(strip_tags(coupon.description),
+            length: 80) %>
+
+            <br><br> Start: <%= coupon.start_time %> <br> End: <%= coupon.end_time %>
+
+          </p>
+        </td>
+        
+        <td class="actions">
+        <ul>
+          <li><%= link_to 'Show', coupon %></li>
+          <li><%= link_to 'Edit', edit_coupon_path(coupon) %></li>
+          <li>
+          <%= link_to 'Destroy',
+            coupon,
+            method: :delete,
+            data: { confirm: 'Are you sure?' } 
+          %>
+          </li>
+        </ul>
+        </td>
+      </tr>
+      <% end %>
+    <% else %>
     <% @coupons.each do |coupon| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td class="image">
@@ -42,6 +76,7 @@
       </ul>
       </td>
     </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
