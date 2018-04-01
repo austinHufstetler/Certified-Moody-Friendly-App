@@ -1,3 +1,5 @@
+
+
 <% if @business.name.nil? or @business.name == "" %>
 	<h2>Edit Business's Profile</h2>
 <% else %>
@@ -8,6 +10,8 @@
 	<div class="form-inputs">
 		<%= f.input :name, required: true, autofocus: true %>
 		<%= f.input :address, required: true %>
+		<%= f.input :logo_url, as: :file %>
+
 	</div>
 	<div class="form-actions">
 		<%= f.button :submit, "Update" %>
