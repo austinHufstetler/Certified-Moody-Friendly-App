@@ -23,6 +23,7 @@ gem 'fog'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'bcrypt', '~> 3.1.11'
 # Bootstrap
 gem 'bootstrap-sass'
 # JQuery
