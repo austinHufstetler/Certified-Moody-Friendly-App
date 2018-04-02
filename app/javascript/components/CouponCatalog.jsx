@@ -6,7 +6,9 @@ import CouponFilter from './CouponFilter';
 
 export default class CouponCatalog extends React.Component {
 
-    state = { coupons: [], sort: "title", order: "asc"};
+    state = { coupons: [], 
+              sort: "title", 
+              order: "asc"};
 
     componentDidMount = () => {
         var self = this;
@@ -26,23 +28,24 @@ export default class CouponCatalog extends React.Component {
       this.setState({ coupons: coupons });
     }; 
 
-    handleCouponFilter =(name, order)=>{
-        if (this.state.sort != name) {
-                order = 'asc';
-        }
+    handleCouponFilter = (name, order) => {
+    if (this.state.sort != name) {
+      order = 'asc';
+    }
 
-        var self = this;
+    var self = this;
 
-        axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
-        axios.get('/coupons', {params: {sort_by: name, order: order }}).then(function (response) {
-            console.log(response.data);
-            self.setState({ coupons: response.data, sort: name, order: order });
-        })
-        .catch(function (error) {
-            console.log(error);
-            alert('Cannot sort events: ', error);
-        });
-    };
+    axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
+    axios.get('/coupons', {params: {sort_by: name, order: order }})
+      .then(function (response) {
+        console.log(response.data);
+        self.setState({ coupons: response.data, sort: name, order: order });
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert('Cannot sort events: ', error);
+    });
+};
 
     render = () => {
         return (
@@ -57,6 +60,8 @@ export default class CouponCatalog extends React.Component {
             <div className="row">
               <div className="col-md-12">
                   <CouponList coupons ={this.state.coupons}
+                              sort={this.state.sort}
+                              order={this.state.order}
                               handleCouponFilter={this.handleCouponFilter}/>
               </div>
             </div>
