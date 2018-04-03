@@ -16,9 +16,14 @@ class CouponsController < ApplicationController
       @coupons = Coupon.all
     end
 
-    respond_to do |format|
+
+     respond_to do |format|
+      format.html{}
       format.json {render json: Coupon.order(sort_by + ' ' + order)}
-    end
+      
+      end
+
+
 
   end
 
