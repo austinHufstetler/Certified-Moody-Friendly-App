@@ -26,8 +26,8 @@
 
 
 	<% @businesses.each do |business| %>
-
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <%= link_to business, class:"link-to-text" do %>
+	  <div class="list-group-item list-group-item-action flex-column align-items-start">
       <table class="table">
         <tbody>
           <tr>
@@ -43,7 +43,8 @@
         </tr>
       </tbody>
     </table>
-	  </a>
+	  </div>
+    <% end %>
   	<% end %>
 </div>
   </div>
