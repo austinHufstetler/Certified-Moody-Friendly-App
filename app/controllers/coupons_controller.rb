@@ -10,11 +10,19 @@ class CouponsController < ApplicationController
 
   def index
     if(params[:business_id])
-    @business = Business.find(params[:business_id])
+      @business = Business.find(params[:business_id])
       @coupons = @business.coupons
     else
       @coupons = Coupon.all
     end
+
+
+     respond_to do |format|
+      format.html{}
+      format.json {render json: Coupon.order(sort_by + ' ' + order)}
+      
+      end
+
 
 
   end
@@ -114,4 +122,14 @@ class CouponsController < ApplicationController
     def coupon_params
       params.require(:coupon).permit(:title, :description, :image_url, :start_time, :end_time)
     end
+
+    def sort_by
+       %w(title).include?(params[:sort_by]) ? params[:sort_by] : 'title'
+    end
+    def order
+       %w(asc desc).include?(params[:order]) ? params[:order] : 'asc'
+    end
+
+    
+    
 end
