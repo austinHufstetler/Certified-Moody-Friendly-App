@@ -1,28 +1,43 @@
 <h2 class="centered">Upcoming Events</h2>
-<ul class="catalog">
+ <div class="row">
+<div class="list-group scroll-box">
+
 	<% @upcoming_events.each do |event| %>
-		<li>
-			<%= link_to image_tag(event.image_url), event %>
-			<h3><%= event.title %></h3>
-			<p>
-				<%= sanitize(event.description) %>
-				<br>
-				Starts: <%= event.start_time %>
-				<br>
-				Ends:   <%= event.end_time %>
-			</p>
-			<br>
+
+	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+            <td>
+      	    <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1"><%= event.title %></h2>
+      	      <p class="mb-1"><%= event.description %></p>
+      	    </div>
+          </td>
+          <td>
+            <div class="d-flex w-100 justify-content-between">
+      	     
+      	     <small>Expires: <%= event.end_time %></small>
+          </div>
+          </td>
+          <td>
 			<% if current_account %>
 				<% if current_account.accountable_type == "Military" %>
 					<% if current_account.voted_for? event %>
 					  <%= link_to '', unlike_event_path(event.id), remote: true,
-					                        class: "glyphicon glyphicon-heart like_event_#{event.id}" %>
+					                        class: "glyphicon glyphicon-heart like_#{event.id}" %>
 					<% else %>
 					  <%= link_to '', like_event_path(event.id), remote: true,
-					                        class: "glyphicon glyphicon-heart-empty like_event_#{event.id}" %>
+					                        class: "glyphicon glyphicon-heart-empty like_#{event.id}" %>
 					<% end %>
 				<% end %>
 			<% end %>
-		</li>
-	<% end %>
-</ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+	  </a>
+  	<% end %>
+</div>
+  </div>

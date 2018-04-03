@@ -6,6 +6,10 @@ class Event < ApplicationRecord
 		%r{\.(gif|jpg|png)\Z}i,
 		message: 'must be a URL for GIF, JPG or PNG image.'
 	}
+	geocoded_by :address
+  	after_validation :geocode
+  	reverse_geocoded_by :latitude, :longitude
+	after_validation :reverse_geocode
 	belongs_to :business
 	acts_as_votable
 end
