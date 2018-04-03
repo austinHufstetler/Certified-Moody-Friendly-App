@@ -6,6 +6,7 @@ export default class Coupon extends React.Component {
     title: PropTypes.string,
     description: PropTypes.string,
     image_url: PropTypes.string,
+
   };
 
   render = () => {
@@ -16,7 +17,7 @@ export default class Coupon extends React.Component {
         </td>      
         <td>{this.props.coupon.title}</td>
         <td dangerouslySetInnerHTML={{__html: this.props.coupon.description}}></td>   
-        <td></td>
+        
         <td></td>  
       </tr>
     )
