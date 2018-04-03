@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<% if current_account and current_account.accountable_type = "Military" %>
+<body>
+
+<br>
+<div class="jumbotron">
+  <div class="container text-center">   
+  </div>
+</div>
+
+<br>
+
+
+
+
+<div class="container">    
+  <div class="row">
+ <h2 class="centered"> Coupons </h2>
+<div class="list-group scroll-box">
+
+
+	<% @liked_stuff.each do |coupon| %>
+  <% if coupon.instance_of? Coupon %>
+
+	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
+            <td>
+      	    <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1"><%= coupon.title %></h2>
+      	      <p class="mb-1"><%= coupon.description %></p>
+      	    </div>
+          </td>
+          <td>
+            <div class="d-flex w-100 justify-content-between">
+      	     
+      	     <small>Expires: <%= coupon.end_time %></small>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+	  </a>
+
+    <% end %>
+  	<% end %>
+</div>
+  </div>
+</div><br><br>
+
+<div class="container">    
+  <div class="row">
+<h2 class="centered"> Events </h2>
+<div class="list-group scroll-box">
+  <% @liked_stuff.each do |event| %>
+  <% if event.instance_of? Event %>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+            <td>
+            <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1"><%= event.title %></h2>
+              <p class="mb-1"><%= event.description %></p>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex w-100 justify-content-between">
+             
+             <small>Expires: <%= event.end_time %></small>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </a>
+    <% end %>
+  <% end %>
+</div>
+  </div>
+</div><br><br>
+
+
+
+
+
+<footer class="container-fluid text-center">
+  <p>Online Store Copyright</p>  
+  <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form>
+</footer>
+
+</body>
+
+<% end %>

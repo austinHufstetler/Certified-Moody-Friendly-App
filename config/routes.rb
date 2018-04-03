@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get 'coupon_search/index'
 
+  get 'businesses/index'
+
+  get 'militaries/my_page'
+
   get 'search', to: 'coupon_search#search'
 
   devise_for :accounts,:controllers => { :registrations => 'registrations' }

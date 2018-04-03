@@ -26,10 +26,10 @@
 				<% if current_account.accountable_type == "Military" %>
 					<% if current_account.voted_for? event %>
 					  <%= link_to '', unlike_event_path(event.id), remote: true,
-					                        class: "glyphicon glyphicon-heart like_#{event.id}" %>
+					                        class: "glyphicon glyphicon-heart like_event_#{event.id}" %>
 					<% else %>
 					  <%= link_to '', like_event_path(event.id), remote: true,
-					                        class: "glyphicon glyphicon-heart-empty like_#{event.id}" %>
+					                        class: "glyphicon glyphicon-heart-empty like_event_#{event.id}" %>
 					<% end %>
 				<% end %>
 			<% end %>
