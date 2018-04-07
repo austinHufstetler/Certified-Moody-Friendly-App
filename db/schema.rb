@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323211350) do
+ActiveRecord::Schema.define(version: 20180407193438) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20180323211350) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "chambers", force: :cascade do |t|
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 20180323211350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "business_id"
+    t.string "category"
     t.index ["business_id"], name: "index_coupons_on_business_id"
   end
 
