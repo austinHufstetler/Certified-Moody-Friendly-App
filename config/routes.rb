@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :accounts
+    resources :businesses
+    resources :chambers
+    resources :coupons
+    resources :events
+    resources :militaries
+
+    root to: "accounts#index"
+  end
+
   get 'favorite_events/index'
 
   get 'favorite_coupons/index'
