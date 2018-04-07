@@ -1,6 +1,7 @@
 class CouponSearchController < ApplicationController
   def index
   	@coupons = Coupon.all
+    #@business= Business.all 
 
     
     respond_to do |format|
@@ -13,9 +14,11 @@ class CouponSearchController < ApplicationController
   end
 
 
-  def search
-    	coupons = Coupon.where("title LIKE '%#{params[:query]}%'")
-    	render json: coupons
+ def search
+    #	coupons = Coupon.where("title LIKE '%#{params[:query]}%'")
+    #	render json: coupons
+      coupons = Coupon.where("title LIKE '%#{params[:query]}%'")
+      render json: coupons
 	end
 
   private
