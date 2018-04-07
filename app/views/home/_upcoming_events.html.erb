@@ -21,6 +21,7 @@
       	     <small>Expires: <%= event.end_time %></small>
           </div>
           </td>
+         <td class="mobi"> <%= image_tag(event.business.logo_url, style: "width: 150px") %> </td>
           <td class="mobi">
 			<% if current_account %>
 				<% if current_account.accountable_type == "Military" %>
