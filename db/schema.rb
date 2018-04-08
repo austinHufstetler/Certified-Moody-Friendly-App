@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407193438) do
+ActiveRecord::Schema.define(version: 20180408184913) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 20180407193438) do
     t.datetime "updated_at", null: false
     t.string "accountable_type"
     t.integer "accountable_id"
+    t.boolean "approved", default: false, null: false
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
+    t.index ["approved"], name: "index_accounts_on_approved"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
