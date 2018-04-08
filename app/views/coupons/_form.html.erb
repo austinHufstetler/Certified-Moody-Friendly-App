@@ -31,6 +31,13 @@
     <%= form.datetime_select :start_time, id: :coupon_start_time %>
   </div>
 
+   
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, ['food', 'beauty', 'health', 'automotive', 'other']%>
+  </div>
+
   <div class="field">
     <%= form.label :end_time %>
     <%= form.datetime_select :end_time, id: :coupon_end_time %>
