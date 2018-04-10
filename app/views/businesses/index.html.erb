@@ -37,6 +37,7 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
+                  <%= link_to 'report', report_business_path(business.id), remote: true %>
       	    </div>
           </td>
           <td>
