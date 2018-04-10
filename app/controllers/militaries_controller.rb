@@ -6,6 +6,7 @@ class MilitariesController < ApplicationController
 		current_account
 	end
 
+
 	# GET /buyers/1/edit
 	def edit
 		authorize @military

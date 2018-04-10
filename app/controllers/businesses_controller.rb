@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
-	before_action :set_business, only: [:edit, :update, :show]
+	before_action :set_business, only: [:edit, :update, :show, :report]
 	before_action :set_businesses, only: [:edit, :update, :show, :index]
-	before_action :authenticate_account!, except: [:index, :show]
+	before_action :authenticate_account!, except: [:index, :show, :report]
 
 	def pundit_user
 		current_account
@@ -29,6 +29,13 @@ class BusinessesController < ApplicationController
 				format.json { render json: @business.errors, status: :unprocessable_entity }
 			end
 		end
+	end
+
+	def report
+
+		report = @business.reports.new
+		report.save
+
 	end
 	
 

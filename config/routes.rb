@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'reports/new'
+
+  get 'reports/update'
+
+  get 'reports/edit'
+
+  get 'reports/destroy'
+
+  get 'reports/index'
+
+  get 'reports/show'
+
   namespace :admin do
     resources :accounts
     resources :businesses
@@ -36,6 +48,9 @@ Rails.application.routes.draw do
   resources :businesses do
     resources :coupons
     resources :events
+    member do
+      get 'report'
+     end
   end
 
   resources :events do
