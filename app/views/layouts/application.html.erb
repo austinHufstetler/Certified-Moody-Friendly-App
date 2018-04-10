@@ -10,14 +10,22 @@
   </head>
 
   <body>
+      <% if notice %>
+          <aside id="notice"><%= notice %></aside>
+      <% end %>
 
     <main class='<%= controller.controller_name %>'>
+
       <%= yield %>
     </main>
 
+
+
     <footer>
     	<%= render 'layouts/navigation' %>
+
     </footer>
+  
     
   </body>
 </html>
