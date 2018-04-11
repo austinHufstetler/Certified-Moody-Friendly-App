@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   devise_for :accounts,:controllers => { :registrations => 'registrations' }
   resources :events
   resources :coupons
+  resources :reports
 
   resources :chambers, only: [:edit, :update]
   resources :militaries, only: [:edit, :update]
