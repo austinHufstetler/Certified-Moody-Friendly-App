@@ -13,6 +13,7 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= event.title %></h2>
       	      <p class="mb-1"><%= event.description %></p>
+              <%= link_to 'report', report_event_path(event.id), remote: true %>
       	    </div>
           </td >
           <td class="mobi">

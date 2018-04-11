@@ -18,6 +18,17 @@
         		<%= business.name %>
         		<br>
         		<%= image_tag(business.logo_url, class: 'list_image') %>
+        	<% elsif report.reportable_type == "Coupon" %>
+        		<% coupon =  Coupon.find(report.reportable_id)%>
+        		<%= coupon.title %>
+        		<br>
+        		<%= image_tag(coupon.image_url, class: 'list_image') %>
+        	<% else %>
+        		<% event =  Event.find(report.reportable_id)%>
+        		<%= event.title %>
+        		<br>
+        		<%= image_tag(event.image_url, class: 'list_image') %>
+
         	<% end %>
         </p>
       

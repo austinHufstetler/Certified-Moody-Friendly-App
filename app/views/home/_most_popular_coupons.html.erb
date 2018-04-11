@@ -13,6 +13,7 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= coupon.title %></h2>
       	      <p class="mb-1"><%= coupon.description %></p>
+              <%= link_to 'report', report_coupon_path(coupon.id), remote: true %>
       	    </div>
           </td>
           <td class="mobi">

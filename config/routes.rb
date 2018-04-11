@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     member do
       get 'like'
       get 'unlike'
+      get 'report'
      end
    end
 
@@ -65,6 +66,7 @@ Rails.application.routes.draw do
     member do
       get 'like'
       get 'unlike'
+      get 'report'
      end
    end
 
