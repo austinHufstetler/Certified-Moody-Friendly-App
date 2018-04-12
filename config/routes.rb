@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   get 'militaries/my_page'
 
+  get 'chambers/approvals'
+
   get 'search', to: 'coupon_search#search'
 
 
@@ -51,6 +53,7 @@ Rails.application.routes.draw do
     resources :events
     member do
       get 'report'
+      get 'approve'
      end
   end
 

@@ -59,6 +59,14 @@
 							<li><%= link_to 'Account Settings', edit_account_registration_path%></li>
 						</ul>
 					</li>
+					<li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+							aria-haspopup="true" aria-expanded="false">
+							My Pages <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><%= link_to 'Business Approvals', chambers_approvals_path() %></li>
+						</ul>
+					</li>
 					<li><%= link_to 'Admin', admin_accounts_path() %></li>
 				<% end %>
 
