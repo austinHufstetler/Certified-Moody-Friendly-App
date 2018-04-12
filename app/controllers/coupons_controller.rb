@@ -34,9 +34,13 @@ class CouponsController < ApplicationController
   end
 
   # GET /coupons/new
-  def new
-    @coupon = Coupon.new
-    authorize @coupon
+  def new  
+   # begin
+      @coupon = Coupon.new
+      authorize @coupon
+    #rescue Exception
+     # redirect_to business_coupons_url(current_account.accountable_id)
+    #end
   end
 
   # GET /coupons/1/edit

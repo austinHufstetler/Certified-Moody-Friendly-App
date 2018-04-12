@@ -11,16 +11,6 @@ class Account < ApplicationRecord
   ACCOUNT_TYPES=["Military", "Business", "Chamber"]
   attr_accessor :type
 
-  def active_for_authentication? 
-    (super && approved?) || (accountable_type != "Business")
-  end 
-  
-  def inactive_message 
-    if !approved? 
-      :not_approved 
-    else 
-      super # Use whatever other message 
-    end 
-  end
+
 
 end

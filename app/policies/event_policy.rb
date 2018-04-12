@@ -15,7 +15,7 @@ class EventPolicy
 
 	def show?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" 
 		else
 			false
 		end
@@ -23,7 +23,7 @@ class EventPolicy
 
 	def new?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" and  current_account.approved == true
 		else
 			false
 		end
@@ -31,7 +31,7 @@ class EventPolicy
 
 	def create?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" and  current_account.approved == true
 		else
 			false
 		end

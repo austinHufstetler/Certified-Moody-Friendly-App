@@ -23,8 +23,12 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
-    authorize @event
+    begin
+      @event = Event.new
+      authorize @event
+    rescue Exception
+      redirect_to business_events_url(current_account.accountable_id)
+    end
   end
 
   # GET /events/1/edit
