@@ -117,8 +117,10 @@ class CouponsController < ApplicationController
    end
 
   def report
-
     report = @coupon.reports.new
+    if(current_account)
+      report.email = current_account.email
+    end
     report.save
 
   end

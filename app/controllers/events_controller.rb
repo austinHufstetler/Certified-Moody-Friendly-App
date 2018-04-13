@@ -108,6 +108,9 @@ class EventsController < ApplicationController
   def report
 
     report = @event.reports.new
+    if(current_account)
+      report.email = current_account.email
+    end
     report.save
 
   end
