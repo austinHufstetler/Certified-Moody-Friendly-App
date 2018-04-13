@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410001540) do
+ActiveRecord::Schema.define(version: 20180412194748) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20180410001540) do
     t.datetime "updated_at", null: false
     t.string "reportable_type"
     t.integer "reportable_id"
+    t.string "email"
     t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable_type_and_reportable_id"
   end
 
