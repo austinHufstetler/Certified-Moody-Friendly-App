@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import CouponDropdown from './CouponDropdown';
 
 export default class CouponSearch extends React.Component {
 
