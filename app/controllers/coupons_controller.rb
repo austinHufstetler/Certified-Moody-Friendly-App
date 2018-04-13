@@ -1,5 +1,5 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :like, :unlike, :report]
   
   # GET /coupons
   # GET /coupons.json
@@ -111,6 +111,13 @@ class CouponsController < ApplicationController
       format.js
       end
    end
+
+  def report
+
+    report = @coupon.reports.new
+    report.save
+
+  end
 
 
   private

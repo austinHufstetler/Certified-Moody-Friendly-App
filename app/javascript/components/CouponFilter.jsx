@@ -2,6 +2,7 @@ import React from 'react';
 
 export default class CouponFilter extends React.Component{
 
+  // handeling sort by asd and desc  
   handleSort = (e) => {
     e.preventDefault();
     var order = this.props.order == 'desc' ? 'asc' : 'desc';

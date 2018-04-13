@@ -4,6 +4,8 @@ import CouponFilter from './CouponFilter';
 
 export default class CouponList extends React.Component {
 
+  // filtering the coupons 
+  
   handleCouponFilter = (name, order) => {
     this.props.handleCouponFilter(name, order);
   };

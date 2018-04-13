@@ -35,11 +35,13 @@ Rails.application.routes.draw do
   get 'militaries/my_page'
 
   get 'search', to: 'coupon_search#search'
+  get 'couponSearch', to: 'coupon_search#couponSearch'
 
 
   devise_for :accounts,:controllers => { :registrations => 'registrations' }
   resources :events
   resources :coupons
+  resources :reports
 
   resources :chambers, only: [:edit, :update]
   resources :militaries, only: [:edit, :update]
@@ -57,6 +59,7 @@ Rails.application.routes.draw do
     member do
       get 'like'
       get 'unlike'
+      get 'report'
      end
    end
 
@@ -64,6 +67,7 @@ Rails.application.routes.draw do
     member do
       get 'like'
       get 'unlike'
+      get 'report'
      end
    end
 

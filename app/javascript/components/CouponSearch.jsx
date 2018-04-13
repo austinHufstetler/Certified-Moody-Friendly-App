@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import CouponDropdown from './CouponDropdown';
 
 export default class CouponSearch extends React.Component {
+
   handleSearch = () => {
     var query = ReactDOM.findDOMNode(this.refs.query).value;
 
@@ -26,6 +28,7 @@ export default class CouponSearch extends React.Component {
              className="form-control"
              placeholder="Type the title of the coupon you are searching here..."
              ref="query" />
+   
     );
   };
 }

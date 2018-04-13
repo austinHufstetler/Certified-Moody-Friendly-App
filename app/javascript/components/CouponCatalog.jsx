@@ -46,6 +46,7 @@ export default class CouponCatalog extends React.Component {
         alert('Cannot sort events: ', error);
     });
 };
+     
 
     render = () => {
         return (
