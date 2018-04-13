@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402141949) do
+ActiveRecord::Schema.define(version: 20180412194748) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 20180402141949) do
     t.datetime "updated_at", null: false
     t.string "accountable_type"
     t.integer "accountable_id"
+    t.boolean "approved", default: false, null: false
     t.index ["accountable_type", "accountable_id"], name: "index_accounts_on_accountable_type_and_accountable_id"
+    t.index ["approved"], name: "index_accounts_on_approved"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180402141949) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "business_id"
+    t.string "category"
     t.index ["business_id"], name: "index_coupons_on_business_id"
   end
 
@@ -79,6 +82,16 @@ ActiveRecord::Schema.define(version: 20180402141949) do
     t.string "branch"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "reportable_type"
+    t.integer "reportable_id"
+    t.string "email"
+    t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable_type_and_reportable_id"
   end
 
   create_table "votes", force: :cascade do |t|

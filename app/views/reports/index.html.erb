@@ -1,0 +1,50 @@
+
+
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h1>Reports</h1>
+<table>
+  <tbody>
+
+    <% @reports.each do |report| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td class="description">
+        <h1><%= report.reportable_type %></h1>
+        <p> 
+        	<% if report.reportable_type == "Business" %> 
+        		<% business =  Business.find(report.reportable_id)%>
+        		<%= business.name %>
+        		<br>
+        		<%= image_tag(business.logo_url, class: 'list_image') %>
+        	<% elsif report.reportable_type == "Coupon" %>
+        		<% coupon =  Coupon.find(report.reportable_id)%>
+        		<%= coupon.title %>
+        		<br>
+        		<%= image_tag(coupon.image_url, class: 'list_image') %>
+        	<% else %>
+        		<% event =  Event.find(report.reportable_id)%>
+        		<%= event.title %>
+        		<br>
+        		<%= image_tag(event.image_url, class: 'list_image') %>
+
+        	<% end %>
+        </p>
+      
+      <td class="actions">
+      <ul>
+        <li><%= link_to 'Show', report %></li>
+        <li><%= link_to 'Edit', edit_report_path(report) %></li>
+        <li>
+        <%= link_to 'Destroy',
+          report, method: :delete,
+          data: { confirm: 'Are you sure?' }
+        %>
+        </li>
+      </ul>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

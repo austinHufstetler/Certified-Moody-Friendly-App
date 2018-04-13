@@ -1,5 +1,5 @@
 class CouponsController < ApplicationController
-  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :set_coupon, only: [:show, :edit, :update, :destroy, :like, :unlike, :report]
   
   # GET /coupons
   # GET /coupons.json
@@ -34,9 +34,13 @@ class CouponsController < ApplicationController
   end
 
   # GET /coupons/new
-  def new
-    @coupon = Coupon.new
-    authorize @coupon
+  def new  
+   # begin
+      @coupon = Coupon.new
+      authorize @coupon
+    #rescue Exception
+     # redirect_to business_coupons_url(current_account.accountable_id)
+    #end
   end
 
   # GET /coupons/1/edit
@@ -112,6 +116,16 @@ class CouponsController < ApplicationController
       end
    end
 
+  def report
+    report = @coupon.reports.new
+    if(current_account)
+      report.email = current_account.email
+    end
+    report.save
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_coupon
@@ -120,7 +134,7 @@ class CouponsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
-      params.require(:coupon).permit(:title, :description, :image_url, :start_time, :end_time)
+      params.require(:coupon).permit(:title, :description, :image_url, :start_time, :end_time, :category)
     end
 
     def sort_by

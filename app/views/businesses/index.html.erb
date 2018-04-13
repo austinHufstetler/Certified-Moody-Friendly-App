@@ -26,6 +26,7 @@
 
 
 	<% @businesses.each do |business| %>
+  <% if business.name != nil %>
     <%= link_to business, class:"link-to-text" do %>
 	  <div class="list-group-item list-group-item-action flex-column align-items-start">
       <table class="table">
@@ -36,6 +37,7 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
+                  <%= link_to 'flag as inappropriate', report_business_path(business.id), remote: true, data: {confirm: 'Are you sure you want to report this business?'} %>
       	    </div>
           </td>
           <td>
@@ -44,6 +46,7 @@
       </tbody>
     </table>
 	  </div>
+    <% end %>
     <% end %>
   	<% end %>
 </div>

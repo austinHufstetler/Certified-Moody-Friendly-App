@@ -18,7 +18,6 @@ export default class Coupon extends React.Component {
         <td>{this.props.coupon.title}</td>
         <td dangerouslySetInnerHTML={{__html: this.props.coupon.description}}></td>   
         
-        <td></td>  
       </tr>
     )
   }; 

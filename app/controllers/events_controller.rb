@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :like, :unlike, :report]
 
   def pundit_user
     current_account
@@ -23,8 +23,12 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
-    authorize @event
+    begin
+      @event = Event.new
+      authorize @event
+    rescue Exception
+      redirect_to business_events_url(current_account.accountable_id)
+    end
   end
 
   # GET /events/1/edit
@@ -100,6 +104,16 @@ class EventsController < ApplicationController
       format.js
       end
    end
+
+  def report
+
+    report = @event.reports.new
+    if(current_account)
+      report.email = current_account.email
+    end
+    report.save
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -4,6 +4,18 @@ class ChambersController < ApplicationController
 	# GET /buyers/1/edit
 	def edit
 	end
+
+	def approvals
+		pending_accounts = Account.where(:accountable_type=>"Business", :approved=>false)
+		@pending_businesses = []
+		pending_accounts.each do |account|
+			business = Business.find(account.accountable_id)
+  			@pending_businesses<< business
+		end
+
+
+	end
+
 	# PATCH/PUT /buyers/1
 	# PATCH/PUT /buyers/1.json
 	def update
@@ -23,6 +35,7 @@ class ChambersController < ApplicationController
 	def set_chamber
 		@chamber = Chamber.find(params[:id])
 	end
+
 
 	def chamber_params
 		params.require(:chamber).permit(:address)

@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+  get 'reports/new'
+
+  get 'reports/update'
+
+  get 'reports/edit'
+
+  get 'reports/destroy'
+
+  get 'reports/index'
+
+  get 'reports/show'
+
+  namespace :admin do
+    resources :accounts
+    resources :businesses
+    resources :chambers
+    resources :coupons
+    resources :events
+    resources :militaries
+
+    root to: "accounts#index"
+  end
+
   get 'favorite_events/index'
 
   get 'favorite_coupons/index'
@@ -11,11 +34,15 @@ Rails.application.routes.draw do
 
   get 'militaries/my_page'
 
+  get 'chambers/approvals'
+
   get 'search', to: 'coupon_search#search'
+
 
   devise_for :accounts,:controllers => { :registrations => 'registrations' }
   resources :events
   resources :coupons
+  resources :reports
 
   resources :chambers, only: [:edit, :update]
   resources :militaries, only: [:edit, :update]
@@ -24,12 +51,17 @@ Rails.application.routes.draw do
   resources :businesses do
     resources :coupons
     resources :events
+    member do
+      get 'report'
+      get 'approve'
+     end
   end
 
   resources :events do
     member do
       get 'like'
       get 'unlike'
+      get 'report'
      end
    end
 
@@ -37,6 +69,7 @@ Rails.application.routes.draw do
     member do
       get 'like'
       get 'unlike'
+      get 'report'
      end
    end
 

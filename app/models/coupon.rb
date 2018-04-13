@@ -8,4 +8,5 @@ class Coupon < ApplicationRecord
 	}
 	belongs_to :business
 	acts_as_votable
+	has_many :reports, as: :reportable, dependent: :destroy
 end

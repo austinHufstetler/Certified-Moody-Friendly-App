@@ -5,5 +5,5 @@ class Business < ApplicationRecord
   	after_validation :geocode
 	has_many :coupons,dependent: :destroy
 	has_many :events,dependent: :destroy
-	
+	has_many :reports, as: :reportable, dependent: :destroy
 end

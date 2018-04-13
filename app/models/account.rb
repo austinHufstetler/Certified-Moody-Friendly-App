@@ -11,4 +11,6 @@ class Account < ApplicationRecord
   ACCOUNT_TYPES=["Military", "Business", "Chamber"]
   attr_accessor :type
 
+
+
 end
