@@ -1,50 +1,128 @@
 
 
-<% if notice %>
-  <aside id="notice"><%= notice %></aside>
-<% end %>
 
-<h1>Reports</h1>
-<table>
-  <tbody>
 
-    <% @reports.each do |report| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td class="description">
-        <h1><%= report.reportable_type %></h1>
-        <p> 
-        	<% if report.reportable_type == "Business" %> 
-        		<% business =  Business.find(report.reportable_id)%>
-        		<%= business.name %>
-        		<br>
-        		<%= image_tag(business.logo_url, class: 'list_image') %>
-        	<% elsif report.reportable_type == "Coupon" %>
-        		<% coupon =  Coupon.find(report.reportable_id)%>
-        		<%= coupon.title %>
-        		<br>
-        		<%= image_tag(coupon.image_url, class: 'list_image') %>
-        	<% else %>
-        		<% event =  Event.find(report.reportable_id)%>
-        		<%= event.title %>
-        		<br>
-        		<%= image_tag(event.image_url, class: 'list_image') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        	<% end %>
-        </p>
-      
-      <td class="actions">
-      <ul>
-        <li><%= link_to 'Show', report %></li>
-        <li><%= link_to 'Edit', edit_report_path(report) %></li>
-        <li>
-        <%= link_to 'Destroy',
-          report, method: :delete,
-          data: { confirm: 'Are you sure?' }
-        %>
-        </li>
-      </ul>
-      </td>
-    </tr>
+</head>
+<body>
+
+<br>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1> Flagged </h1>      
+  </div>
+</div>
+
+<br>
+
+
+<div class="container">    
+  <div class="row">
+<div class="list-group long-scroll-box">
+
+
+  <% @reports.each do |report| %>
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table">
+        <tbody>
+          <% if report.reportable_type == "Business" %> 
+              <% business =  Business.find(report.reportable_id)%>
+            <tr>
+                <td> <%= image_tag(business.logo_url, width: 150) if business.logo_url.present? %> </td>
+                <td>
+                <div class="d-flex w-100 justify-content-between">
+                  <h2 class="mb-1"><%= business.name %></h2>
+                  <p class="mb-1"><%= business.address %></p>
+                  <p class="mb-1"><%= business.description %></p>
+                </div>
+              </td>
+              <td>
+                <%= link_to 'Show', business %>
+                <br>
+                <%= link_to 'Edit Business', edit_business_path(business.id) %>
+                <br>
+                <%= link_to 'Delete Report',
+                  report, method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+                <br>
+                <%= link_to 'Delete Business',
+                  business, method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+              </td>
+            </tr>
+          <% elsif report.reportable_type == "Coupon" %> 
+              <% coupon =  Coupon.find(report.reportable_id)%>
+            <tr>
+                <td> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
+                <td>
+                <div class="d-flex w-100 justify-content-between">
+                  <h2 class="mb-1"><%= coupon.title %></h2>
+                  <p class="mb-1"><%= coupon.business.name %></p>
+                  <p class="mb-1"><%= coupon.description %></p>
+                </div>
+              </td>
+              <td>
+                <%= link_to 'Show', coupon %>
+                <br>
+                <%= link_to 'Edit Business', edit_coupon_path(coupon.id) %>
+                <br>
+                <%= link_to 'Delete Report',
+                  report, method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+                <br>
+                <%= link_to 'Delete Coupon',
+                  coupon, method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+              </td>
+            </tr>
+          <% elsif report.reportable_type == "Event" %> 
+              <% event =  Event.find(report.reportable_id)%>
+            <tr>
+                <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+                <td>
+                <div class="d-flex w-100 justify-content-between">
+                  <h2 class="mb-1"><%= event.title %></h2>
+                  <p class="mb-1"><%= event.business.name %></p>
+                  <p class="mb-1"><%= event.description %></p>
+                </div>
+              </td>
+              <td>
+                <%= link_to 'Show', event %>
+                <br>
+                <%= link_to 'Edit Business', edit_event_path(event.id) %>
+                <br>
+                <%= link_to 'Delete Report',
+                  report, method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+                <br>
+                <%= link_to 'Delete Event',
+                  event, method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+              </td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+    </div>
     <% end %>
-  </tbody>
-</table>
+</div>
+  </div>
+</div><br><br>
+
+
+
+</body>
+
+

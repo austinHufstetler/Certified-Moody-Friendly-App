@@ -91,10 +91,10 @@ class CouponsController < ApplicationController
     @coupon.destroy
     respond_to do |format|
       if(current_account and current_account.accountable_type = "Business")
-         format.html { redirect_to business_coupons_url(current_account.accountable_id), notice: 'Coupon was successfully destroyed.' }
+         format.html { redirect_back fallback_location: root_path, notice: 'Coupon was successfully destroyed.' }
          format.json { head :no_content }
       else
-         format.html { redirect_to coupons_url, notice: 'Coupon was successfully destroyed.' }
+         format.html { redirect_back fallback_location: root_path, notice: 'Coupon was successfully destroyed.' }
          format.json { head :no_content }
       end
     end

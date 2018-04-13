@@ -39,7 +39,7 @@ class CouponPolicy
 
 	def edit?
 		if (@current_account)
-			current_account == @coupon.business.account 
+			current_account == @coupon.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
@@ -47,7 +47,7 @@ class CouponPolicy
 
 	def update?
 		if (@current_account)
-			current_account == @coupon.business.account 
+			current_account == @coupon.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
@@ -55,7 +55,7 @@ class CouponPolicy
 
 	def destroy?
 		if (@current_account)
-			current_account == @coupon.business.account
+			current_account == @coupon.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
