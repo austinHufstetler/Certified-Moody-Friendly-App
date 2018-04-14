@@ -36,4 +36,16 @@ class RegistrationsController < Devise::RegistrationsController
 		super
 	end
 
+	protected
+
+	def after_sign_in_path_for(resource)
+	  if(resource.type == "Business")
+		edit_business_path(resource.accountable_id)
+	  elsif(resource.type == "Military")
+	  	edit_military_path(resource.accountable_id)
+	  else
+	  	root_path
+	  end #your path
+	end
+
 end
