@@ -57,6 +57,11 @@
                   data: { confirm: 'Are you sure?' }
                 %>
               </td>
+                <td>
+                <div class="d-flex w-100 justify-content-between">
+                  <h3 class="mb-1"><%= report.count %> flags</h3>
+                </div>
+              </td>
             </tr>
           <% elsif report.reportable_type == "Coupon" %> 
               <% coupon =  Coupon.find(report.reportable_id)%>
@@ -84,6 +89,11 @@
                   data: { confirm: 'Are you sure?' }
                 %>
               </td>
+                <td>
+                <div class="d-flex w-100 justify-content-between">
+                  <h3 class="mb-1"><%= report.count %> flags</h3>
+                </div>
+              </td>
             </tr>
           <% elsif report.reportable_type == "Event" %> 
               <% event =  Event.find(report.reportable_id)%>
@@ -110,6 +120,11 @@
                   event, method: :delete,
                   data: { confirm: 'Are you sure?' }
                 %>
+              </td>
+                <td>
+                <div class="d-flex w-100 justify-content-between">
+                  <h3 class="mb-1"><%= report.count %> flags</h3>
+                </div>
               </td>
             </tr>
           <% end %>

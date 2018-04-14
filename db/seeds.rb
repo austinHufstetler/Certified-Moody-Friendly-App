@@ -11,20 +11,20 @@
 
 Business.transaction do
 Business.delete_all
-Business.create( :name => 'Cr8ive Zone', :address => "3320 Bemiss Rd, Valdosta, GA 31605",  logo_url: open('app/assets/images/cr8ivezone.png'))
-Business.create( :name => 'Ray Norton Tire & Auto Center', :address => "2606 Bemiss Rd, Valdosta, GA 31602",  logo_url: open('app/assets/images/raynorton.png'))
-Business.create( :name => '1st America Home Medical Equipment', :address => "212 Northside Dr, Valdosta, GA 31602",  logo_url: open('app/assets/images/1stamericanhome.png'))
-Business.create( :name => '1st Franklin Financial Corporation', :address => "1900 Gornto Rd Suite G, Valdosta, GA 31602",  logo_url: open('app/assets/images/1stfranklin.png'))
-Business.create( :name => '306 North', :address => "306 N Patterson St, Valdosta, GA 31601",  logo_url: open('app/assets/images/306north.jpeg'))
+Business.create!( :name => 'Cr8ive Zone', :address => "3320 Bemiss Rd, Valdosta, GA 31605",  logo_url: open('app/assets/images/cr8ivezone.png'))
+Business.create!( :name => 'Ray Norton Tire & Auto Center', :address => "2606 Bemiss Rd, Valdosta, GA 31602",  logo_url: open('app/assets/images/raynorton.png'))
+Business.create!( :name => '1st America Home Medical Equipment', :address => "212 Northside Dr, Valdosta, GA 31602",  logo_url: open('app/assets/images/1stamericanhome.png'))
+Business.create!( :name => '1st Franklin Financial Corporation', :address => "1900 Gornto Rd Suite G, Valdosta, GA 31602",  logo_url: open('app/assets/images/1stfranklin.png'))
+Business.create!( :name => '306 North', :address => "306 N Patterson St, Valdosta, GA 31601",  logo_url: open('app/assets/images/306north.jpeg'))
 end
 
 Account.transaction do
 Account.delete_all
-Account.create( :email => 'business1@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("Cr8ive Zone"))
-Account.create( :email => 'business2@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("Ray Norton Tire & Auto Center"))
-Account.create( :email => 'business3@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st America Home Medical Equipment"))
-Account.create( :email => 'business4@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st Franklin Financial Corporation"))
-Account.create( :email => 'business5@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("306 North"))
+Account.create!( :email => 'business1@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("Cr8ive Zone"))
+Account.create!( :email => 'business2@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("Ray Norton Tire & Auto Center"))
+Account.create!( :email => 'business3@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st America Home Medical Equipment"))
+Account.create!( :email => 'business4@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st Franklin Financial Corporation"))
+Account.create!( :email => 'business5@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("306 North"))
 end
 
 Coupon.transaction do

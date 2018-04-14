@@ -50,11 +50,19 @@ class BusinessesController < ApplicationController
 
 	def report
 
-		report = @business.reports.new
-		if(current_account)
-			report.email = current_account.email
-		end
-		report.save
+	    if(Report.where(:reportable_type => "Business",:reportable_id => @business.id).blank?)
+	      report = @business.reports.new
+	      report.count = 1
+	      if(current_account)
+	        report.email = current_account.email
+	      end
+	      report.save
+	  else
+	    report = Report.where(:reportable_type => "Business",:reportable_id => @business.id).take
+	    current_count = report.count
+	    report.count = current_count + 1
+	    report.save
+	  end
 
 	end
 	
