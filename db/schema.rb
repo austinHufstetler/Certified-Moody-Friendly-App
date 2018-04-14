@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412194748) do
+ActiveRecord::Schema.define(version: 20180414034225) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(version: 20180412194748) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
   end
 
   create_table "chambers", force: :cascade do |t|
@@ -91,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180412194748) do
     t.string "reportable_type"
     t.integer "reportable_id"
     t.string "email"
+    t.integer "count", default: 0
     t.index ["reportable_type", "reportable_id"], name: "index_reports_on_reportable_type_and_reportable_id"
   end
 

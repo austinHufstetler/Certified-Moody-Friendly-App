@@ -1,35 +1,49 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @coupon.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Description:</strong>
-  <%= @coupon.description %>
-</p>
+      <!-- Portfolio Item Heading -->
+      <h1 class="my-4"><%= @coupon.title %>
+        <small><%= @coupon.business.name %></small>
+      </h1>
 
-<p>
-  <strong>Image url:</strong>
-  <br>
-  <%= image_tag(@coupon.image_url, width: 150) if @coupon.image_url.present? %>
-</p>
+      <!-- Portfolio Item Row -->
+      <div class="row">
 
-<p>
-  <strong>Category:</strong>
-  <%= @coupon.category %>
-</p>
+        <div class="col-md-2">
+          <%= image_tag(@coupon.image_url, width: 150) if @coupon.image_url.present? %>
+        </div>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @coupon.start_time %>
-</p>
+        <div class="col-md-2">
+          <h3 class="my-3">Description</h3>
+          <p><%=@coupon.description%></p>
+        </div>
 
-<p>
-  <strong>End time:</strong>
-  <%= @coupon.end_time %>
-</p>
+        <div class="col-md-2">
+          <h3 class="my-3">Details</h3>
+          <ul>
+            <li><%= @coupon.end_time %></li>
+            <li><%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+<%= link_to 'Back', coupons_path %></li>
+          </ul>
+        </div>
 
-<%= link_to 'Edit', edit_coupon_path(@coupon) %> |
-<%= link_to 'Back', coupons_path %>
+        <div class="col-md-2">
+        <% if current_account %>
+              <% if current_account.accountable_type == "Military" %>
+                <% if current_account.voted_for? @coupon %>
+                  <%= link_to '', unlike_coupon_path(@coupon.id), remote: true,
+                                        class: "glyphicon glyphicon-heart like_#{@coupon.id}" %>
+                <% else %>
+                  <%= link_to '', like_coupon_path(@coupon.id), remote: true,
+                                        class: "glyphicon glyphicon-heart-empty like_#{@coupon.id}" %>
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>
+
+      </div>

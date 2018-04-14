@@ -117,11 +117,19 @@ class CouponsController < ApplicationController
    end
 
   def report
-    report = @coupon.reports.new
-    if(current_account)
-      report.email = current_account.email
-    end
+    if(Report.where(:reportable_type => "Coupon",:reportable_id => @coupon.id).blank?)
+      report = @coupon.reports.new
+      report.count = 1
+      if(current_account)
+        report.email = current_account.email
+      end
+      report.save
+  else
+    report = Report.where(:reportable_type => "Coupon",:reportable_id => @coupon.id).take
+    current_count = report.count
+    report.count = current_count + 1
     report.save
+  end
 
   end
 
