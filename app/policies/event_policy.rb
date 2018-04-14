@@ -61,6 +61,10 @@ class EventPolicy
 		end
 	end
 
+	def report?
+		@current_account
+	end
+
 	class Scope < Struct.new(:current_account, :model)
 		def resolve
 			model.where(business: current_account.accountable)

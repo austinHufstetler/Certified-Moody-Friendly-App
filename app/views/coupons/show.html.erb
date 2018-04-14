@@ -21,16 +21,15 @@
         <div class="col-md-2">
           <h3 class="my-3">Description</h3>
           <p><%=@coupon.description%></p>
+          <%= @coupon.end_time %>
+          <br>
+          <br>
+          <% if current_account and current_account.accountable_type == "Business" %>
+            <%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+        <% end %>
+        <%= link_to 'Back', coupons_path %>
         </div>
 
-        <div class="col-md-2">
-          <h3 class="my-3">Details</h3>
-          <ul>
-            <li><%= @coupon.end_time %></li>
-            <li><%= link_to 'Edit', edit_coupon_path(@coupon) %> |
-<%= link_to 'Back', coupons_path %></li>
-          </ul>
-        </div>
 
         <div class="col-md-2">
         <% if current_account %>

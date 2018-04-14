@@ -106,19 +106,24 @@ class EventsController < ApplicationController
    end
 
   def report
+    report = @event.reports.new
     if(Report.where(:reportable_type => "Event",:reportable_id => @event.id).blank?)
-      report = @event.reports.new
-      report.count = 1
-      if(current_account)
-        report.email = current_account.email
-      end
+      
+      report.email = current_account.email
       report.save
-  else
-    report = Report.where(:reportable_type => "Event",:reportable_id => @event.id).take
-    current_count = report.count
-    report.count = current_count + 1
-    report.save
-  end
+    else
+      @reports = Report.where(:reportable_type => "Event",:reportable_id => @event.id)
+      flag = true
+      @reports.each do |current_report|
+        if(current_report.email == current_account.email)
+          flag = false
+        end
+      end
+      if(flag == true)
+        report.email = current_account.email
+        report.save
+      end
+    end
   end
 
   private

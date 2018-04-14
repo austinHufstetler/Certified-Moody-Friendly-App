@@ -61,6 +61,14 @@ class CouponPolicy
 		end
 	end
 
+	def report?
+		if(@current_account)
+			true
+		else
+			false
+		end
+	end
+
 	class Scope < Struct.new(:current_account, :model)
 		def resolve
 			model.where(business: current_account.accountable)
