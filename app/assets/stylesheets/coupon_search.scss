@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.coupon_search{
+background-color: #D2E0EB;
+padding: 1em;
+
 .spa_entry {
 	td {
 	  min-width: 100px;
@@ -17,4 +21,5 @@
 }
 th.sortable {
         cursor: pointer;
+    }
     }
