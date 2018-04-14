@@ -22,4 +22,8 @@ class BusinessPolicy
 	def approve?
 		@current_account.accountable_type == "Chamber"
 	end
+
+	def report?
+		@current_account
+	end
 end
