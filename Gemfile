@@ -18,7 +18,9 @@ group :production do
 end
 
 gem 'mini_magick'
+gem 'groupdate'
 gem 'fog'
+gem "chartkick"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

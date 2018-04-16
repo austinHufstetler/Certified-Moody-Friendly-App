@@ -11,9 +11,12 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require turbolinks
+//= require Chart.bundle
+//= require chartkick
+//= require highcharts
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require gmaps/google
 //= require bootstrap
