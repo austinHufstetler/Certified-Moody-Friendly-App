@@ -1,18 +1,29 @@
 <h2 class="centered">Hottest Coupons</h2>
-<ul class="catalog">
+ <div class="row ">
+<div class="list-group scroll-box">
+
 	<% @coupons.each do |coupon| %>
-		<li>
-			<%= link_to image_tag(coupon.image_url), coupon %>
-			<br>
-			<h3><%= coupon.title %></h3>
-			<p>
-				<%= sanitize(coupon.description) %>
-				<br>
-				Starts: <%= coupon.start_time %>
-				<br>
-				Ends:   <%= coupon.end_time %>
-			</p>
-			<br>
+
+	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+            <td class="mobi"> <%= image_tag(coupon.image_url, class: 'img-responsive') if coupon.image_url.present? %> </td>
+            <td class="mobi">
+      	    <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1"><%= coupon.title %></h2>
+      	      <p class="mb-1"><%= coupon.description %></p>
+              <%= link_to 'flag as inappropriate', report_coupon_path(coupon.id), remote: true, data: {confirm: 'Are you sure you want to report this coupon?'} %>
+      	    </div>
+          </td>
+          <td class="mobi">
+            <div class="d-flex w-100 justify-content-between">
+      	     
+      	     <small>Expires: <%= coupon.end_time %></small>
+          </div>
+          </td>
+           <td class="mobi"> <%= image_tag(coupon.business.logo_url, style: "width: 150px") %> </td>
+          <td class="mobi">
 			<% if current_account %>
 				<% if current_account.accountable_type == "Military" %>
 					<% if current_account.voted_for? coupon %>
@@ -24,6 +35,11 @@
 					<% end %>
 				<% end %>
 			<% end %>
-		</li>
-	<% end %>
-</ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+	  </a>
+  	<% end %>
+</div>
+  </div>

@@ -14,48 +14,32 @@
 	h2.centered{
 		text-align: center;
 	}
-	ul.catalog {
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
 
-		width: 90%;
-		border-top: solid 0.250em;
-		border-bottom: solid 0.250em;
-		list-style: none;
-		padding: 1%;
-		margin: auto;
-		overflow-y:scroll;
-		height: 325px;
-		background-color: white;
-		padding: 1em;
-		li {
-			padding: 1em;
-			margin: 0;
-			border-bottom: solid thin #ddd;
-			display:inline;
-			float: left;
-			// This makes sure our <li> has enough height
-			// to hold the entire image, since it's floated
-			&::after {
-				clear: both;
-				content: " ";
-				display: block;
-			}
-			p{
-				float:left;
-			}
-			img {
-				float: left;
-				padding: 1em;
-				margin-right: 1em;
-				margin-bottom: 1em;
-				box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,0.75);
-				height: auto;
-				width: 150px;
-			}
-			div.checkbox{
-				float: left;
-				background-color: #E0DA84;
-				padding: 10px;
-			}
-		}
-	}
+    .scroll-box{
+      max-height: 350px;
+      overflow-y: scroll;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid grey;
+    }
+
+
 }
+
+

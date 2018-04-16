@@ -6,10 +6,16 @@ class MilitariesController < ApplicationController
 		current_account
 	end
 
+
 	# GET /buyers/1/edit
 	def edit
 		authorize @military
 	end
+
+	def my_page
+		@liked_stuff = current_account.find_liked_items
+	end
+
 	# PATCH/PUT /buyers/1
 	# PATCH/PUT /buyers/1.json
 	def update

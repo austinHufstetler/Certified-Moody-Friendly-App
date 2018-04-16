@@ -1,5 +1,9 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :like, :unlike, :report]
+
+  def pundit_user
+    current_account
+  end
 
   # GET /events
   # GET /events.json
@@ -19,17 +23,24 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    begin
+      @event = Event.new
+      authorize @event
+    rescue Exception
+      redirect_to business_events_url(current_account.accountable_id)
+    end
   end
 
   # GET /events/1/edit
   def edit
+    authorize @event
   end
 
   # POST /events
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    authorize @event
 
     if(current_account && current_account.accountable_type == "Business")
       @event.business = current_account.accountable
@@ -50,6 +61,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    authorize @event
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -64,10 +76,16 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    authorize @event
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
+      if(current_account and current_account.accountable_type == "Business")
+        format.html { redirect_to business_events_url(current_account.accountable_id), notice: 'Event was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -86,6 +104,16 @@ class EventsController < ApplicationController
       format.js
       end
    end
+
+  def report
+
+    report = @event.reports.new
+    if(current_account)
+      report.email = current_account.email
+    end
+    report.save
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

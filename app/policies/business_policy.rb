@@ -18,4 +18,8 @@ class BusinessPolicy
 	def update?
 		@current_account == @business.account
 	end
+
+	def approve?
+		@current_account.accountable_type == "Chamber"
+	end
 end

@@ -1,12 +1,6 @@
-<script src="//maps.google.com/maps/api/js?key=AIzaSyDjIvow_oNXKMo1tkWEzEeqPA2ZdSdOcH0"></script>
-<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <h1 class="centered">Home</h1>
-<div style='width: 800px;'>
-  <div id="basic_map" style='width: 800px; height: 400px;'></div>
-</div>
 
-
-<div class="container-fluid">
+<div class="container-fluid" >
 	<div style="font-size:10em; text-align: center">
 		<%= link_to '', coupon_search_index_path(), remote: false,
 			class: "glyphicon glyphicon-search" %>
@@ -17,7 +11,7 @@
 
 </div>
 
-<div class="container-fluid" style="padding: 5em">
+<div class="container-fluid">
 	<div style="font-size:10em; text-align: center">
 		<%= link_to '', events_path(), remote: false,
 			class: "glyphicon glyphicon-calendar" %>
@@ -29,12 +23,13 @@
 
 <div class="container-fluid">
 	<div style="font-size:10em; text-align: center">
-		<%= link_to '', coupon_search_index_path(), remote: false,
+		<%= link_to '', businesses_index_path(), remote: false,
 			class: "glyphicon glyphicon-briefcase" %>
 		<h2> Moody Friendly Businesses</h2>
 	</div>
 
 </div>
+
 <div>
 	<%= render 'home/most_popular_coupons' %>
 </div>
@@ -47,7 +42,3 @@
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-<script>
-	handler = Gmaps.build('Google');
-handler.buildMap({ internal: {id: 'basic_map' }});
-</script>
