@@ -461,12 +461,9 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   fog
-<<<<<<< HEAD
   geocoder
   gmaps4rails
-=======
   groupdate
->>>>>>> Stat_Page
   jbuilder (~> 2.5)
   jquery-rails
   mini_magick
