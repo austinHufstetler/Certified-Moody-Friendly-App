@@ -35,13 +35,10 @@ class BusinessesController < ApplicationController
 	def update
 		authorize @business
 		respond_to do |format|
-			p "hello"
 			if @business.update(business_params)
-				p "hello3"
 				format.html { redirect_to home_index_url, notice: "The profile of the business #{@business.name} was successfully updated." }
 				format.json { head :no_content }
 			else
-				p "hello2"
 				format.html { render action: 'edit' }
 				format.json { render json: @business.errors, status: :unprocessable_entity }
 			end
@@ -49,12 +46,25 @@ class BusinessesController < ApplicationController
 	end
 
 	def report
-
+		authorize @business
 		report = @business.reports.new
-		if(current_account)
-			report.email = current_account.email
+	    if(Report.where(:reportable_type => "Business",:reportable_id => @business.id).blank?)
+	      
+	      report.email = current_account.email
+	      report.save
+	  else
+	  	@reports = Report.where(:reportable_type => "Business",:reportable_id => @business.id)
+	  	flag = true
+	  	@reports.each do |current_report|
+	  		if(current_report.email == current_account.email)
+	  			flag = false
+	  		end
+	  	end
+	  	if(flag == true)
+	  		report.email = current_account.email
+	    	report.save
 		end
-		report.save
+	  end
 
 	end
 	

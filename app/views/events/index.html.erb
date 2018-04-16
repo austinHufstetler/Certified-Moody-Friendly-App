@@ -2,8 +2,12 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Events</h1>
 
+<br>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1> Events </h1>      
+  </div>
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
     <% events.each do |event| %>
@@ -12,48 +16,61 @@
     </div>
   <% end %>
 <% end %>
+</div>
+
+<br>
 
 
+<div class="container">    
+  <div class="row">
+<div class="list-group long-scroll-box">
 
-<table>
-  <tfoot>
-    <tr>
-      <td colspan="3">
-        <%= link_to 'New event', new_event_path %>
-      </td>
-    </tr>
-  </tfoot>
-  <tbody>
-    <% @events.each do |event| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td class="image">
-        <%= image_tag(event.image_url, class: 'list_image') %>
-      </td>
-      <td class="description">
-        <h1><%= event.title %></h1>
-        <p>
-          <%= truncate(strip_tags(event.description),
-          length: 80) %>
 
-          <br><br> Start: <%= event.start_time %> <br> End: <%= event.end_time %>
+  <% @events.each do |event| %>
+  <% if event.title != nil %>
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+            <td>
+            <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1"><%= event.title %></h2>
+              <p class="mb-1"><%= event.business.name %></p>
+                  
+                 <p> <%= truncate(strip_tags(event.description),
+                  length: 80) %>
 
-        </p>
-      </td>
-      
-      <td class="actions">
-      <ul>
-        <li><%= link_to 'Show', event %></li>
-        <li><%= link_to 'Edit', edit_event_path(event) %></li>
-        <li>
-        <%= link_to 'Destroy',
-          event,
-          method: :delete,
-          data: { confirm: 'Are you sure?' } 
-        %>
-        </li>
-      </ul>
-      </td>
-    </tr>
+                  <br> Start: <%= event.start_time %> <br> End: <%= event.end_time %> </p>
+                  <%= link_to 'flag as inappropriate', report_event_path(event.id), remote: true, data: {confirm: 'Are you sure you want to report this event?'} %>
+            </div>
+          </td>
+          <td>
+          <% if current_account and (current_account.accountable_type == "Business" or current_account.accountable_type == "Chamber") %>
+          <ul>
+            <li><%= link_to 'Show', event %></li>
+            <li><%= link_to 'Edit', edit_event_path(event) %></li>
+            <li>
+            <%= link_to 'Destroy',
+              event,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } 
+            %>
+            </li>
+          </ul>
+          <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
     <% end %>
-  </tbody>
-</table>
+    <% end %>
+</div>
+  </div>
+</div><br><br>
+
+
+
+
+</body>
