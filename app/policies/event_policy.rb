@@ -15,7 +15,7 @@ class EventPolicy
 
 	def show?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business"  or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
@@ -23,7 +23,7 @@ class EventPolicy
 
 	def new?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" and  current_account.approved == true
 		else
 			false
 		end
@@ -31,7 +31,7 @@ class EventPolicy
 
 	def create?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" and  current_account.approved == true
 		else
 			false
 		end
@@ -39,7 +39,7 @@ class EventPolicy
 
 	def edit?
 		if (@current_account)
-			current_account == @event.business.account
+			current_account == @event.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
@@ -47,7 +47,7 @@ class EventPolicy
 
 	def update?
 		if (@current_account)
-			current_account == @event.business.account
+			current_account == @event.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
@@ -55,10 +55,14 @@ class EventPolicy
 
 	def destroy?
 		if (@current_account)
-			current_account == @event.business.account
+			current_account == @event.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
+	end
+
+	def report?
+		@current_account
 	end
 
 	class Scope < Struct.new(:current_account, :model)

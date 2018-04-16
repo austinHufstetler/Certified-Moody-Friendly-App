@@ -15,7 +15,7 @@ class CouponPolicy
 
 	def show?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" 
 		else
 			false
 		end
@@ -23,7 +23,7 @@ class CouponPolicy
 
 	def new?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" and  current_account.approved == true
 		else
 			false
 		end
@@ -31,7 +31,7 @@ class CouponPolicy
 
 	def create?
 		if (@current_account)
-			current_account.accountable_type == "Business"
+			current_account.accountable_type == "Business" and current_account.approved == true
 		else
 			false
 		end
@@ -39,7 +39,7 @@ class CouponPolicy
 
 	def edit?
 		if (@current_account)
-			current_account == @coupon.business.account
+			current_account == @coupon.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
@@ -47,7 +47,7 @@ class CouponPolicy
 
 	def update?
 		if (@current_account)
-			current_account == @coupon.business.account
+			current_account == @coupon.business.account or @current_account.accountable_type == "Chamber"
 		else
 			false
 		end
@@ -55,7 +55,15 @@ class CouponPolicy
 
 	def destroy?
 		if (@current_account)
-			current_account == @coupon.business.account
+			current_account == @coupon.business.account or @current_account.accountable_type == "Chamber"
+		else
+			false
+		end
+	end
+
+	def report?
+		if(@current_account)
+			true
 		else
 			false
 		end

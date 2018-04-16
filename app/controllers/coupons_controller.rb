@@ -34,9 +34,13 @@ class CouponsController < ApplicationController
   end
 
   # GET /coupons/new
-  def new
-    @coupon = Coupon.new
-    authorize @coupon
+  def new  
+   # begin
+      @coupon = Coupon.new
+      authorize @coupon
+    #rescue Exception
+     # redirect_to business_coupons_url(current_account.accountable_id)
+    #end
   end
 
   # GET /coupons/1/edit
@@ -87,10 +91,10 @@ class CouponsController < ApplicationController
     @coupon.destroy
     respond_to do |format|
       if(current_account and current_account.accountable_type = "Business")
-         format.html { redirect_to business_coupons_url(current_account.accountable_id), notice: 'Coupon was successfully destroyed.' }
+         format.html { redirect_back fallback_location: root_path, notice: 'Coupon was successfully destroyed.' }
          format.json { head :no_content }
       else
-         format.html { redirect_to coupons_url, notice: 'Coupon was successfully destroyed.' }
+         format.html { redirect_back fallback_location: root_path, notice: 'Coupon was successfully destroyed.' }
          format.json { head :no_content }
       end
     end
@@ -113,9 +117,24 @@ class CouponsController < ApplicationController
    end
 
   def report
-
+    authorize @coupon
     report = @coupon.reports.new
-    report.save
+    if(Report.where(:reportable_type => "Coupon",:reportable_id => @coupon.id).blank?)
+      report.email = current_account.email
+      report.save
+    else
+      @reports = Report.where(:reportable_type => "Coupon",:reportable_id => @coupon.id)
+      flag = true
+      @reports.each do |current_report|
+        if(current_report.email == current_account.email)
+          flag = false
+        end
+      end
+      if(flag == true)
+        report.email = current_account.email
+        report.save
+      end
+    end
 
   end
 

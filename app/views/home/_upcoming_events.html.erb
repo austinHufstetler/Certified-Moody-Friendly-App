@@ -13,7 +13,7 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= event.title %></h2>
       	      <p class="mb-1"><%= event.description %></p>
-              <%= link_to 'report', report_event_path(event.id), remote: true %>
+              <%= link_to 'flag as inappropriate', report_event_path(event.id), remote: true, data: {confirm: 'Are you sure you want to report this event?'}  %>
       	    </div>
           </td >
           <td class="mobi">

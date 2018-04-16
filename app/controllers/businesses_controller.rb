@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-	before_action :set_business, only: [:edit, :update, :show, :report]
+	before_action :set_business, only: [:edit, :update, :show, :report, :approve]
 	before_action :set_businesses, only: [:edit, :update, :show, :index]
 	before_action :authenticate_account!, except: [:index, :show, :report]
 
@@ -15,6 +15,20 @@ class BusinessesController < ApplicationController
 	# GET /buyers/1/edit
 	def edit
 		authorize @business
+	end
+
+	def approve
+		authorize @business
+		@business.account.approved = true
+		respond_to do |format|
+			if @business.account.save
+				format.html { redirect_to chambers_approvals_url, notice: "The business #{@business.name} was successfully approved." }
+				format.json { head :no_content }
+			else
+				format.html { redirect_to chambers_approvals_url, notice: "The business #{@business.name} was not successfully approved." }
+				format.json { render json: @business.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 	# PATCH/PUT /buyers/1
 	# PATCH/PUT /buyers/1.json
@@ -32,9 +46,25 @@ class BusinessesController < ApplicationController
 	end
 
 	def report
-
+		authorize @business
 		report = @business.reports.new
-		report.save
+	    if(Report.where(:reportable_type => "Business",:reportable_id => @business.id).blank?)
+	      
+	      report.email = current_account.email
+	      report.save
+	  else
+	  	@reports = Report.where(:reportable_type => "Business",:reportable_id => @business.id)
+	  	flag = true
+	  	@reports.each do |current_report|
+	  		if(current_report.email == current_account.email)
+	  			flag = false
+	  		end
+	  	end
+	  	if(flag == true)
+	  		report.email = current_account.email
+	    	report.save
+		end
+	  end
 
 	end
 	

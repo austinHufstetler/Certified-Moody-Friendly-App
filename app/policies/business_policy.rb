@@ -12,10 +12,18 @@ class BusinessPolicy
 	end
 
 	def edit?
-		@current_account == @business.account
+		@current_account == @business.account or @current_account.accountable_type == "Chamber"
 	end
 
 	def update?
-		@current_account == @business.account
+		@current_account == @business.account or @current_account.accountable_type == "Chamber"
+	end
+
+	def approve?
+		@current_account.accountable_type == "Chamber"
+	end
+
+	def report?
+		@current_account
 	end
 end
