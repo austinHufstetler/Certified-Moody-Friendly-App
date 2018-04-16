@@ -15,7 +15,7 @@
     <h1><%= @business.name %></h1>      
     <p><%= @business.description %></p>
     <p><%= @business.address %></p>
-    <p><%= column_chart @business.coupons.map{|c| [c.title, c.votes_for.size] } %></p>
+    <p> <%= image_tag(@business.logo_url, width: 150) if @business.logo_url.present? %> </p>
   </div>
 </div>
 
@@ -93,11 +93,7 @@
 
 
 <footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
-  <form class="form-inline">Get deals:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Sign Up</button>
-  </form>
+  <%= image_tag("cmf.png", width: 150) %> 
 </footer>
 
 </body>

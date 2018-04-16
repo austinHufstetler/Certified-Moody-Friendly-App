@@ -80,10 +80,10 @@ class EventsController < ApplicationController
     @event.destroy
     respond_to do |format|
       if(current_account and current_account.accountable_type == "Business")
-        format.html { redirect_to business_events_url(current_account.accountable_id), notice: 'Event was successfully destroyed.' }
+        format.html { redirect_back fallback_location: root_path, notice: 'Event was successfully destroyed.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+        format.html { redirect_back fallback_location: root_path, notice: 'Event was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
@@ -106,10 +106,24 @@ class EventsController < ApplicationController
    end
 
   def report
-
     report = @event.reports.new
-    report.save
-
+    if(Report.where(:reportable_type => "Event",:reportable_id => @event.id).blank?)
+      
+      report.email = current_account.email
+      report.save
+    else
+      @reports = Report.where(:reportable_type => "Event",:reportable_id => @event.id)
+      flag = true
+      @reports.each do |current_report|
+        if(current_report.email == current_account.email)
+          flag = false
+        end
+      end
+      if(flag == true)
+        report.email = current_account.email
+        report.save
+      end
+    end
   end
 
   private

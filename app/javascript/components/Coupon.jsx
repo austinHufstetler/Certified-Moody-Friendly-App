@@ -16,7 +16,7 @@ export default class Coupon extends React.Component {
           <img src={this.props.coupon.image_url.url} />
         </td>      
         <td>{this.props.coupon.title}</td>
-        <td dangerouslySetInnerHTML={{__html: this.props.coupon.description}}></td>   
+        <td dangerouslySetInnerHTML={{__html: this.props.coupon.description}}></td> 
         
       </tr>
     )

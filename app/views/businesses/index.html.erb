@@ -37,7 +37,7 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
-                  <%= link_to 'report', report_business_path(business.id), remote: true %>
+                  <%= link_to 'flag as inappropriate', report_business_path(business.id), remote: true, data: {confirm: 'Are you sure you want to report this business?'} %>
       	    </div>
           </td>
           <td>
@@ -54,13 +54,7 @@
 </div><br><br>
 
 
-<footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
-  <form class="form-inline">Get deals:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Sign Up</button>
-  </form>
-</footer>
+
 
 </body>
 

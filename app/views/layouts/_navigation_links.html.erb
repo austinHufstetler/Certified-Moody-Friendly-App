@@ -7,13 +7,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Moody Discounts</a>
+          <a class="navbar-brand" href="#">Certified Moody Friendly Program</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 			<li><%= link_to 'Home', home_index_path %></li>
 			<li><%= link_to 'Coupons', coupon_search_index_path %></li>
 			<li><%= link_to 'Events', events_path %></li>
+			<li><%= link_to 'Businesses', businesses_path %></li>
 			<% if account_signed_in? %>  
 				<% if current_account.accountable_type == "Military" %>
 					<li role="presentation" class="dropdown">
@@ -66,6 +67,7 @@
 							My Pages <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><%= link_to 'Business Approvals', chambers_approvals_path() %></li>
+							<li><%= link_to 'Reports', reports_index_path() %></li>
 						</ul>
 					</li>
 					<li><%= link_to 'Admin', admin_accounts_path() %></li>
