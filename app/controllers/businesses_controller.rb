@@ -10,6 +10,20 @@ class BusinessesController < ApplicationController
 	def show
 		@coupons = @business.coupons
 		@events = @business.events
+		@couponList = @coupons.map do |u|
+  			{ :title => u.title, :votes => u.votes_for.size}
+		end
+		@testChart = @couponList
+	end
+
+	def stats
+		@business = Business.find(params[:id])
+		@coupons = @business.coupons
+		@events = @business.events
+		@couponList = @coupons.map do |u|
+  			{ :title => u.title, :votes => u.votes_for.size}
+		end
+		@testChart = @couponList
 	end
 
 	# GET /buyers/1/edit

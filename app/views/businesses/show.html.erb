@@ -15,6 +15,7 @@
     <h1><%= @business.name %></h1>      
     <p><%= @business.description %></p>
     <p><%= @business.address %></p>
+    <p><%= column_chart @business.coupons.map{|c| [c.title, c.votes_for.size] } %></p>
   </div>
 </div>
 
@@ -38,6 +39,7 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= coupon.title %></h2>
       	      <p class="mb-1"><%= coupon.description %></p>
+              <p class="mb-1"><%= coupon.votes_for.size %></p>
       	    </div>
           </td>
           <td>

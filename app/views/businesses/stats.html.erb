@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<br>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Number of Favorites for each Coupon</h1>      
+    <p><%= bar_chart @business.coupons.map{|c| [c.title, c.votes_for.size] } %></p>
+  </div>
+</div>
+
+<br>
+
+<br>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1> Number of Favorites for each Event </h1>      
+    <p><%= bar_chart @business.events.map{|c| [c.title, c.votes_for.size] } %></p>
+  </div>
+</div>
+
+<br>
+
+
+</body>
