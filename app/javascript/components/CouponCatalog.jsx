@@ -23,11 +23,11 @@ export default class CouponCatalog extends React.Component {
             });
     }; 
 
-    handleSearch = (coupons) => {
+    handleSearch = (coupons) => { // call 
       this.setState({ coupons: coupons });
     }; 
 
-    handleCouponFilter = (name, order) => {
+    handleCouponFilter = (name, order) => { // call 
     if (this.state.sort != name) {
       order = 'asc';
     }
@@ -45,14 +45,14 @@ export default class CouponCatalog extends React.Component {
         alert('Cannot sort events: ', error);
     });
 };
+     
 
     render = () => {
         return (
           <div className="container">
             <div className="row">
                     <div className="col-md-12">
-                        <CouponSearch handleSearch={this.handleSearch}  /> 
-                        
+                        <CouponSearch handleSearch={this.handleSearch}  />     
                     </div>
 
                 </div>

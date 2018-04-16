@@ -4,6 +4,8 @@ import CouponFilter from './CouponFilter';
 
 export default class CouponList extends React.Component {
 
+  // filtering the coupons 
+  
   handleCouponFilter = (name, order) => {
     this.props.handleCouponFilter(name, order);
   };
@@ -17,7 +19,7 @@ export default class CouponList extends React.Component {
                          key={'coupon' + coupon.id}/>);
       }
     );
-
+ // here 
     return(
       <table className="table table-striped" width="auto">
         <thead>
@@ -26,7 +28,7 @@ export default class CouponList extends React.Component {
             <th className="col-md-2 sortable">
                 <CouponFilter name="title"
                             text="Title"
-                            sort={this.props.sort}
+                            sort={this.props.sort} //gives the functionality to be sorted 
                             order={this.props.order}
                             handleCouponFilter={this.handleCouponFilter}/>
              </th>

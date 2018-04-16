@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get 'chambers/approvals'
 
   get 'search', to: 'coupon_search#search'
+  get 'couponSearch', to: 'coupon_search#couponSearch'
 
 
   devise_for :accounts,:controllers => { :registrations => 'registrations' }
