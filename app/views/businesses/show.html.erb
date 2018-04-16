@@ -18,8 +18,8 @@
     <p><%= @business.address %></p>
     <p> <%= image_tag(@business.logo_url, width: 150) if @business.logo_url.present? %> </p>
   </div>
-  <div style='width: 400px;margin: 0 auto 0 auto;'>
-    <div id="one_marker" style='width: 400px; height: 200px;'></div>
+  <div style='width: 600px;margin: 0 auto 0 auto;'>
+    <div id="one_marker" style='width: 600px; height: 400px;'></div>
   </div>
 </div>
 
@@ -111,6 +111,7 @@
   		handler.map.centerOn(marker);
       handler.map.setZoom(12);
 	});
+  handler.getMap().setZoom(16);
 </script>
 
 
