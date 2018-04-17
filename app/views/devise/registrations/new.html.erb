@@ -1,3 +1,4 @@
+
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -10,6 +11,10 @@
 	<%= f.input :type, required: true, as: :radio_buttons, label: "Type of Account", 
 	collection: Account::ACCOUNT_TYPES, checked: 'Military'%>
   </div>
+
+
+  <strong> <p> DISCLAIMER: This app is for military members and Certified Moody Friendly Businesses ONLY </p> </strong>
+
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>

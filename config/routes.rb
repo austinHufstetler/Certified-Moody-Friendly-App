@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     member do
       get 'report'
       get 'approve'
+      get 'stats'
      end
   end
 
