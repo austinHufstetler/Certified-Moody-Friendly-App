@@ -12,6 +12,10 @@ class BusinessesController < ApplicationController
 		@events = @business.events
 	end
 
+	def stats
+		@business = Business.find(params[:id])
+	end
+
 	# GET /buyers/1/edit
 	def edit
 		authorize @business
