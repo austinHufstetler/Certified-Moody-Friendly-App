@@ -103,6 +103,7 @@ image_url:
 open('app/assets/images/cookout.jpg'),
 start_time: DateTime.now,
 end_time:DateTime.now ,
+address: "3320 Bemiss Rd, Valdosta, GA 31605",
 business_id: Business.find_by_name("Cr8ive Zone").id)
 
 Event.create!(title: 'Huge sale event at home depot!',
@@ -112,6 +113,7 @@ description:
 	},
 image_url:
 open('app/assets/images/homedepot.jpg'),
+address: "3320 Bemiss Rd, Valdosta, GA 31605",
 start_time: DateTime.now,
 end_time:DateTime.now ,
 business_id: Business.find_by_name("306 North").id)

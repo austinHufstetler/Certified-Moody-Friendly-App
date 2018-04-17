@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Address:</strong>
+  <%= @event.address %>
+</p>
+
+<p>
   <strong>Image url:</strong>
   <br>
   <%= image_tag(@event.image_url, width: 150) if @event.image_url.present? %>
