@@ -16,6 +16,10 @@ class BusinessesController < ApplicationController
 		@business = Business.find(params[:id])
 	end
 
+	def contact
+		
+	end
+
 	# GET /buyers/1/edit
 	def edit
 		authorize @business

@@ -76,6 +76,9 @@ Rails.application.routes.draw do
    end
 
   get 'home/index'
+  post 'home/index'
+  get 'businesses/contact'
+  post 'businesses/contact'
 
   root 'home#index'
 
