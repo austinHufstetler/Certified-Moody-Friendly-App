@@ -4,10 +4,11 @@
 
 
 .home {
-	background-color: #D2E0EB;
+	background-color: #0C3C60;
 	padding: 5px;
 	width: 100%;
 	border: 2px solid black;
+	color: white;
 	h1.centered{
 		text-align: center;
 	}
@@ -18,6 +19,7 @@
       margin-bottom: 50px;
       border-radius: 0;
     }
+
     
     /* Remove the jumbotron's default bottom margin */ 
      .jumbotron {
@@ -37,6 +39,11 @@
       margin-left: auto;
       margin-right: auto;
       border: 5px solid grey;
+      background-color: #FAFAFA;
+    }
+
+    .white{
+    	color: white;
     }
 
 
