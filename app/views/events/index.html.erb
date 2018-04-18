@@ -4,7 +4,7 @@
 
 
 <br>
-<div class="jumbotron">
+<div class="jumbotron calendar">
   <div class="container text-center">
     <h1> Events </h1>      
   </div>
@@ -23,16 +23,16 @@
 
 <div class="container">    
   <div class="row">
-<div class="list-group long-scroll-box">
+<div class="list-group scroll-box">
 
 
   <% @events.each do |event| %>
   <% if event.title != nil %>
     <div class="list-group-item list-group-item-action flex-column align-items-start">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+            <td class="mobi"> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
             <td>
             <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= event.title %></h2>
