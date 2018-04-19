@@ -2,8 +2,8 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Coupons</h1>
-<table>
+<h1 style="text-align: center">Coupons</h1>
+<table style="margin: auto">
   <tfoot>
     <tr>
       <td colspan="3">
@@ -12,6 +12,7 @@
     </tr>
   </tfoot>
   <tbody>
+
 
     <% @coupons.each do |coupon| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'reports/show'
 
+
   namespace :admin do
     resources :accounts
     resources :businesses
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   get 'militaries/my_page'
 
   get 'chambers/approvals'
+
 
   get 'search', to: 'coupon_search#search'
   get 'couponSearch', to: 'coupon_search#couponSearch'

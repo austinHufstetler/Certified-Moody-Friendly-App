@@ -16,6 +16,8 @@ class ChambersController < ApplicationController
 
 	end
 
+
+
 	# PATCH/PUT /buyers/1
 	# PATCH/PUT /buyers/1.json
 	def update
@@ -30,6 +32,7 @@ class ChambersController < ApplicationController
 		end
 	end
 
+
 	private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_chamber
@@ -40,4 +43,6 @@ class ChambersController < ApplicationController
 	def chamber_params
 		params.require(:chamber).permit(:address)
 	end
+
+
 end
