@@ -22,6 +22,7 @@ It renders the `_table` partial to display details about the resources.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
 %>
+<h1 style="margin-left: 20px; margin-top: 20px;"> <%= link_to 'Home', home_index_url %> </h1>
 
 <% content_for(:title) do %>
   <%= display_resource_name(page.resource_name) %>
