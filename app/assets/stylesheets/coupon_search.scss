@@ -3,8 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .coupon_search{
-background-color: #D2E0EB;
+background-color: #0C3C60;
 padding: 1em;
+border: 5px solid white;
+
+table{
+	border: 5px solid white;
+}
 
 .spa_entry {
 	td {
@@ -22,4 +27,4 @@ padding: 1em;
 th.sortable {
         cursor: pointer;
     }
-    }
+ }
