@@ -77,6 +77,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   post 'home/index'
+  # routes for contact page
   get 'businesses/contact'
   post 'businesses/contact'
 
