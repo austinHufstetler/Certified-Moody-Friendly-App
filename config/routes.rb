@@ -76,10 +76,9 @@ Rails.application.routes.draw do
    end
 
   get 'home/index'
-  post 'home/index'
   # routes for contact page
-  get 'businesses/contact'
-  post 'businesses/contact'
+  resources "contacts", only: [:new, :create]
+  post "contacts/new"
 
   root 'home#index'
 
