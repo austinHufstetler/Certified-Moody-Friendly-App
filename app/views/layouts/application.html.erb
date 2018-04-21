@@ -15,6 +15,12 @@
           <aside id="notice"><%= notice %></aside>
       <% end %>
 
+      <% if current_account and current_account.accountable_type == "Business" and current_account.approved == false %>
+          <p> You currently unapproved so you cannot add coupons or events.</p>
+          <p> 1. You recently made an account and haven't been approved yet </p>
+          <p> 2. You previously approved but your account has expired, please contact the chamber for more details. </p>
+      <% end %>
+
     <main class='<%= controller.controller_name %>'>
 
       <%= yield %>

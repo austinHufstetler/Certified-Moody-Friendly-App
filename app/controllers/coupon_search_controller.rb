@@ -1,6 +1,6 @@
 class CouponSearchController < ApplicationController
   def index
-  	@coupons = Coupon.all
+    Coupon.where("start_time <= ? and end_time >= ?", Time.now, Time.now )
     @business= Business.all 
 
     

@@ -13,7 +13,13 @@ class CouponsController < ApplicationController
       @business = Business.find(params[:business_id])
       @coupons = @business.coupons
     else
-      @coupons = Coupon.all
+      coupons_all = Coupon.where("start_time <= ? and end_time >= ?", Time.now, Time.now )
+      @coupons = []
+      coupons_all.each do |c|
+        if(c.business.account.approved == true)
+          @coupons << c
+        end
+      end
     end
 
 

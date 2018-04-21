@@ -8,7 +8,7 @@
       <table class="table mobi">
         <tbody class="mobi">
           <tr class="mobi">
-            <td class="mobi"> <%= image_tag(coupon.image_url, class: 'img-responsive') if coupon.image_url.present? %> </td>
+            <td class="mobi"> <%= image_tag(coupon.image_url,  width: 150) if coupon.image_url.present? %> </td>
             <td class="mobi">
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= coupon.title %></h2>
