@@ -28,11 +28,11 @@
   <% if business.name != nil %>
     <%= link_to business, class:"link-to-text" do %>
 	  <div class="list-group-item list-group-item-action flex-column align-items-start">
-      <table class="table">
-        <tbody>
-          <tr>
-          	<td> <%= image_tag(business.logo_url, width: 150) if business.logo_url.present? %> </td>
-            <td>
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+          	<td class="mobi"> <%= image_tag(business.logo_url, width: 150) if business.logo_url.present? %> </td>
+            <td class="mobi">
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>

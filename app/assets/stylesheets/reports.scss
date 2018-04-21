@@ -1,3 +1,55 @@
 // Place all the styles related to the reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reports{
+
+    background-color: #D2E0EB;
+
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+      background-color: #0C3C60;
+      color: white;
+    }
+
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .scroll-box{
+      max-height: 350px;
+      overflow-y: scroll;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid grey;
+    }
+
+    .long-scroll-box{
+      max-height: 500px;
+      overflow-y: scroll;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid grey;
+    }
+
+    h2.centered{
+    text-align: center;
+    }
+
+    .link-to-text{
+      color: black;
+    }
+
+}

@@ -21,7 +21,8 @@ export default class CouponList extends React.Component {
     );
  // here 
     return(
-      <table className="table table-striped" width="auto">
+
+      <table className="table bg-info table-hover mobi" width="auto">
         <thead>
           <tr>
             <th className="col-md-2">Image url</th>          
@@ -38,7 +39,7 @@ export default class CouponList extends React.Component {
 
           </tr>
         </thead>
-        <tbody>
+        <tbody className="mobi">
           {coupons}
         </tbody>
       </table>

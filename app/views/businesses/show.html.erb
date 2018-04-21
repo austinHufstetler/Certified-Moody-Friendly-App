@@ -18,8 +18,8 @@
     <p><%= @business.address %></p>
     <p> <%= image_tag(@business.logo_url, width: 150) if @business.logo_url.present? %> </p>
   </div>
-  <div style='width: 600px;margin: 0 auto 0 auto;'>
-    <div id="one_marker" style='width: 600px; height: 400px;'></div>
+  <div style='width: 300px;margin: 0 auto 0 auto;'>
+    <div id="one_marker" style='width: 300px; height: 300px; margin:0;'></div>
   </div>
 </div>
 
@@ -35,11 +35,11 @@
 	<% @coupons.each do |coupon| %>
 
 	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
-            <td>
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+            <td class="mobi"> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
+            <td class="mobi">
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= coupon.title %></h2>
       	      <p class="mb-1"><%= coupon.description %></p>
@@ -67,11 +67,11 @@
 <div class="list-group scroll-box">
 	<% @events.each do |event| %>
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
-            <td>
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+            <td class="mobi"> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+            <td class="mobi">
             <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= event.title %></h2>
               <p class="mb-1"><%= event.description %></p>

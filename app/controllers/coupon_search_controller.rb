@@ -1,14 +1,18 @@
 class CouponSearchController < ApplicationController
   def index
-  	@coupons = Coupon.all
+      coupons_all = Coupon.where("start_time <= ? and end_time >= ?", Time.now, Time.now ).order(sort_by + ' ' + order)
+      @coupons = []
+      coupons_all.each do |c|
+        if(c.business.account.approved == true)
+          @coupons << c
+        end
+      end
     @business= Business.all 
-
-    
     respond_to do |format|
       format.html {
           render 'index'
       }
-      format.json {render json: Coupon.order(sort_by + ' ' + order)}
+      format.json {render json: @coupons}
     end
 
   end
@@ -17,12 +21,24 @@ class CouponSearchController < ApplicationController
   #method to find all coupons with the business id. it is going to be skipped to the coupon method that finds it by title 
       if Business.where("name LIKE '%#{params[:query]}%'").pluck(:id).present?
         business = Business.where("name LIKE '%#{params[:query]}%'").pluck(:id)
-        coupons = Coupon.where(business_id: business)
-        render json: coupons
+        coupons = Coupon.where(business_id: business).where("start_time <= ? and end_time >= ?", Time.now, Time.now)
+        @coupons = []
+        coupons.each do |c|
+          if(c.business.account.approved == true)
+            @coupons << c
+          end
+        end
+        render json: @coupons
       else
         #method that find coupons 
-        coupon = Coupon.where("title LIKE '%#{params[:query]}%'")
-        render json: coupon
+        coupon = Coupon.where("title LIKE '%#{params[:query]}%'").where("start_time <= ? and end_time >= ?", Time.now, Time.now)
+        @coupons = []
+        coupon.each do |c|
+          if(c.business.account.approved == true)
+            @coupons << c
+          end
+        end
+        render json: @coupons
       end
         
 	end

@@ -13,7 +13,7 @@ export default class CouponCatalog extends React.Component {
     componentDidMount = () => {
         var self = this;
         axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
-        axios.get('/coupons')
+        axios.get('/coupon_search/index')
             .then(function (response) {
                 console.log(response.data);
                 self.setState({ coupons: response.data })
@@ -35,7 +35,7 @@ export default class CouponCatalog extends React.Component {
     var self = this;
 
     axios.defaults.headers.common['X-Requested-With'] = "XMLHttpRequest";
-    axios.get('/coupons', {params: {sort_by: name, order: order }})
+    axios.get('/coupon_search/index', {params: {sort_by: name, order: order }})
       .then(function (response) {
         console.log(response.data);
         self.setState({ coupons: response.data, sort: name, order: order });

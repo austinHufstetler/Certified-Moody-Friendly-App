@@ -15,6 +15,8 @@
 		border-collapse: collapse;
 
 	}
+
+
 	
 	td {
 		padding: 0.5em;
@@ -23,8 +25,12 @@
 
 
 	tr.list_line_odd {
-		background-color: #effeef;
+		background-color: white;
 	}
+
+	tr.list_line_even {
+		background-color: lightgrey;
+	}	
 
 
 	td.image {
