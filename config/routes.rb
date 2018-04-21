@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'reports/show'
 
+  get 'coupons/index'
+
 
   namespace :admin do
     resources :accounts

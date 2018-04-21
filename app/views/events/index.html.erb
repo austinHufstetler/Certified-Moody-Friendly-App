@@ -41,7 +41,10 @@
                  <p> <%= truncate(strip_tags(event.description),
                   length: 80) %>
 
-                  <br> Start: <%= event.start_time %> <br> End: <%= event.end_time %> </p>
+                 <small>Starts: <%= event.start_time.to_date %> at <%=event.start_time.strftime("%I:%M %P") %></small>
+                 <br>
+                 <small>Ends: <%= event.end_time.to_date %> at at <%=event.end_time.strftime("%I:%M %P") %> </small>
+                 <br>
                   <%= link_to 'flag as inappropriate', report_event_path(event.id), remote: true, data: {confirm: 'Are you sure you want to report this event?'} %>
             </div>
           </td>
