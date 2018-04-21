@@ -16,6 +16,9 @@ as well as a link to its edit page.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
 %>
 
+<h1 style="margin-left: 20px; margin-top: 20px;"> <%= link_to 'Home', home_index_url %> </h1>
+
+
 <% content_for(:title) { t("administrate.actions.show_resource", name: page.page_title) } %>
 
 <header class="main-content__header" role="banner">

@@ -8,7 +8,8 @@
 .events {
 	background-color: #D2E0EB;
 	margin: 0;
-	padding: 0.5em;
+	padding: 1em;
+	border: 2px solid white;
 	a {
 		padding: 0.354em 0.5em;
 		border-radius: 0.354em;
@@ -29,6 +30,21 @@
 		background-color: #effeef;
 	}
 
+	.calendar{
+		border: 2px solid grey;
+	}
+
+
+
+    .scroll-box{
+      max-height: 350px;
+      overflow-y: scroll;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid grey;
+      background-color: #FAFAFA;
+    }
 
 	td.image {
 

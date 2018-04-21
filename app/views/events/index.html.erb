@@ -4,7 +4,7 @@
 
 
 <br>
-<div class="jumbotron">
+<div class="jumbotron calendar">
   <div class="container text-center">
     <h1> Events </h1>      
   </div>
@@ -23,16 +23,16 @@
 
 <div class="container">    
   <div class="row">
-<div class="list-group long-scroll-box">
+<div class="list-group scroll-box">
 
 
   <% @events.each do |event| %>
   <% if event.title != nil %>
     <div class="list-group-item list-group-item-action flex-column align-items-start">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+            <td class="mobi"> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
             <td>
             <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= event.title %></h2>
@@ -41,7 +41,10 @@
                  <p> <%= truncate(strip_tags(event.description),
                   length: 80) %>
 
-                  <br> Start: <%= event.start_time %> <br> End: <%= event.end_time %> </p>
+                 <small>Starts: <%= event.start_time.to_date %> at <%=event.start_time.strftime("%I:%M %P") %></small>
+                 <br>
+                 <small>Ends: <%= event.end_time.to_date %> at at <%=event.end_time.strftime("%I:%M %P") %> </small>
+                 <br>
                   <%= link_to 'flag as inappropriate', report_event_path(event.id), remote: true, data: {confirm: 'Are you sure you want to report this event?'} %>
             </div>
           </td>
