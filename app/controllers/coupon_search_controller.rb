@@ -1,9 +1,10 @@
 class CouponSearchController < ApplicationController
   def index
-      coupons_all = Coupon.where("start_time <= ? and end_time >= ?", Time.now, Time.now ).order(sort_by + ' ' + order)
+      coupons_all = Coupon.joins(:business).select("Coupons.id, image_url, name, title, Coupons.description, category, business_id").where("start_time <= ? and end_time >= ? and business_id = Businesses.id", Time.now, Time.now).order(sort_by + ' ' + order)
       @coupons = []
       coupons_all.each do |c|
         if(c.business.account.approved == true)
+
           @coupons << c
         end
       end
@@ -21,7 +22,7 @@ class CouponSearchController < ApplicationController
   #method to find all coupons with the business id. it is going to be skipped to the coupon method that finds it by title 
       if Business.where("name LIKE '%#{params[:query]}%'").pluck(:id).present?
         business = Business.where("name LIKE '%#{params[:query]}%'").pluck(:id)
-        coupons = Coupon.where(business_id: business).where("start_time <= ? and end_time >= ?", Time.now, Time.now)
+        coupons = Coupon.joins(:business).select("Coupons.id, image_url, name, title, Coupons.description, category, business_id").where(business_id: business).where("start_time <= ? and end_time >= ?", Time.now, Time.now)
         @coupons = []
         coupons.each do |c|
           if(c.business.account.approved == true)
@@ -31,7 +32,7 @@ class CouponSearchController < ApplicationController
         render json: @coupons
       else
         #method that find coupons 
-        coupon = Coupon.where("title LIKE '%#{params[:query]}%'").where("start_time <= ? and end_time >= ?", Time.now, Time.now)
+        coupon = Coupon.joins(:business).select("Coupons.id, image_url, name, title, Coupons.description, category, business_id").where("title LIKE '%#{params[:query]}%' or category LIKE '%#{params[:query]}%'").where("start_time <= ? and end_time >= ?", Time.now, Time.now)
         @coupons = []
         coupon.each do |c|
           if(c.business.account.approved == true)

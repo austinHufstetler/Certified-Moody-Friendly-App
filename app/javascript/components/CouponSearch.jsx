@@ -27,7 +27,7 @@ export default class CouponSearch extends React.Component {
       <input onChange={this.handleSearch}
              type="text"
              className="form-control"
-             placeholder="Type the title of the coupon you are searching here..."
+             placeholder="Search by title, business name, or category"
              ref="query" />
    
     );
