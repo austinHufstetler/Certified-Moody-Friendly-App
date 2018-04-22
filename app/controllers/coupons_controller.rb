@@ -12,6 +12,7 @@ class CouponsController < ApplicationController
     if(params[:business_id])
       @business = Business.find(params[:business_id])
       @coupons = @business.coupons
+
     else
       coupons_all = Coupon.where("start_time <= ? and end_time >= ?", Time.now, Time.now )
       @coupons = []

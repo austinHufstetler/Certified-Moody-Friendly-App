@@ -36,6 +36,7 @@
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
               <%= link_to 'approve', approve_business_path(business.id), remote: false %>
+              <%= link_to 'disapprove', disapprove_business_path(business.id), remote: false %>
       	    </div>
           </td>
           <td>

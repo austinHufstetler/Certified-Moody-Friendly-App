@@ -13,7 +13,10 @@
 
 <br>
 <div class="jumbotron">
-  <div class="container text-center">   
+  <div class="container text-center">  
+    <% if current_account and current_account.accountable_type == "Military" %>
+      <h1> Welcome <%= @military.name if @military.name.present? %></h1>    
+    <% end %>   
   </div>
 </div>
 
@@ -48,6 +51,19 @@
       	     <small>Expires: <%= coupon.end_time %></small>
           </div>
           </td>
+          <td class="mobi">
+          <% if current_account %>
+            <% if current_account.accountable_type == "Military" %>
+              <% if current_account.voted_for? coupon %>
+                <%= link_to '', unlike_coupon_path(coupon.id), remote: true,
+                                      class: "glyphicon glyphicon-heart like_#{coupon.id}" %>
+              <% else %>
+                <%= link_to '', like_coupon_path(coupon.id), remote: true,
+                                      class: "glyphicon glyphicon-heart-empty like_#{coupon.id}" %>
+              <% end %>
+            <% end %>
+          <% end %>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -81,6 +97,19 @@
              
              <small>Expires: <%= event.end_time %></small>
           </div>
+          </td>
+          <td class="mobi">
+          <% if current_account %>
+            <% if current_account.accountable_type == "Military" %>
+              <% if current_account.voted_for? event %>
+                <%= link_to '', unlike_event_path(event.id), remote: true,
+                                      class: "glyphicon glyphicon-heart like_#{event.id}" %>
+              <% else %>
+                <%= link_to '', like_event_path(event.id), remote: true,
+                                      class: "glyphicon glyphicon-heart-empty like_#{event.id}" %>
+              <% end %>
+            <% end %>
+          <% end %>
           </td>
         </tr>
       </tbody>
