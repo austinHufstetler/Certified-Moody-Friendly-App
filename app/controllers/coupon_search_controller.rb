@@ -16,8 +16,6 @@ class CouponSearchController < ApplicationController
     end
 
   end
-
-
  
  def search
   #method to find all coupons with the business id. it is going to be skipped to the coupon method that finds it by title 
@@ -51,7 +49,7 @@ class CouponSearchController < ApplicationController
     def sort_by
        %w(title).include?(params[:sort_by]) ? params[:sort_by] : 'title'
     end
-# asd and desd
+# asc and desc
     def order
        %w(asc desc).include?(params[:order]) ? params[:order] : 'asc'
     end

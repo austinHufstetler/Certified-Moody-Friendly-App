@@ -1,0 +1,19 @@
+<div align="center">
+  <h3>Send A message to Us</h3>
+</div>
+
+  <%= simple_form_for @contact, :html => {:class => 'form-inputs' } do |f| %>
+   <div class="form-inputs" >
+    <%= f.input :name, :required => true %>
+    <%= f.input :email, :required => true %>
+    <%= f.input :message, :as => :text, :required => true %>
+    <div class= "hidden">
+      <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+    </div>
+    <div>
+      </br>
+      <div align="center">  
+      <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

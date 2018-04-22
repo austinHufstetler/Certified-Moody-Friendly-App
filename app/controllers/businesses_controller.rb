@@ -15,6 +15,8 @@ class BusinessesController < ApplicationController
 	def stats
 		@business = Business.find(params[:id])
 	end
+	
+
 
 	# GET /buyers/1/edit
 	def edit
