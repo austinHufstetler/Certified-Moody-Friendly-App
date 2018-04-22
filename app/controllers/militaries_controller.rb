@@ -13,6 +13,11 @@ class MilitariesController < ApplicationController
 	end
 
 	def my_page
+		if(current_account and current_account.accountable_type == "Military")
+			@military = Military.find(current_account.accountable_id)
+		else
+			@military = Military.new
+		end
 		@liked_stuff = current_account.find_liked_items
 	end
 
