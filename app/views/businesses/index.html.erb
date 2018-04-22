@@ -36,7 +36,9 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
+              <% if current_account %>
                   <%= link_to 'flag as inappropriate', report_business_path(business.id), remote: true, data: {confirm: 'Are you sure you want to report this business?'} %>
+              <% end %>
       	    </div>
           </td>
           <td>

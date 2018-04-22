@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       get 'report'
       get 'approve'
       get 'stats'
+      get 'disapprove'
      end
   end
 
