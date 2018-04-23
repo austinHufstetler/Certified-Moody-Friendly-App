@@ -42,14 +42,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
 # configuration to email sending 
-  config.action_mailer.smtp_settings = {
+ config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "email.com",
+    domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "business1@email.com",
-    password: "changeme"
+    user_name: "faisal.sh13@gmail.com",
+    password: "Faisal1993"
   }
 
   # Print deprecation notices to the Rails logger.
