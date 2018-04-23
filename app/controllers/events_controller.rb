@@ -47,6 +47,7 @@ class EventsController < ApplicationController
 
     end
 
+
   end
 
   # GET /events/1
