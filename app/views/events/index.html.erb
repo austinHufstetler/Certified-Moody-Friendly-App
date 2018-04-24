@@ -1,8 +1,10 @@
-<% if notice %>
-  <aside id="notice"><%= notice %></aside>
+
+
+
+<br>
+<% if current_account and current_account.accountable_type == "Business" %>
+  <h3 style="text-align: center;"><%= link_to 'New Event', new_event_path %></h3>
 <% end %>
-
-
 <br>
 <div class="jumbotron calendar">
   <div class="container text-center">
@@ -11,6 +13,7 @@
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
     <% events.each do |event| %>
+    <br>
     <div>
       <%= link_to event.title, event %> 
     </div>
@@ -25,8 +28,8 @@
   <div class="row">
 <div class="list-group scroll-box">
 
-
-  <% @events.each do |event| %>
+  <h1 style="text-align: center;"> Upcoming Events </h1>
+  <% @upcoming_events.each do |event| %>
   <% if event.title != nil %>
     <div class="list-group-item list-group-item-action flex-column align-items-start">
       <table class="table mobi">
@@ -45,7 +48,9 @@
                  <br>
                  <small>Ends: <%= event.end_time.to_date %> at at <%=event.end_time.strftime("%I:%M %P") %> </small>
                  <br>
+                 <% if current_account %>
                   <%= link_to 'flag as inappropriate', report_event_path(event.id), remote: true, data: {confirm: 'Are you sure you want to report this event?'} %>
+                  <% end %>
             </div>
           </td>
           <td>

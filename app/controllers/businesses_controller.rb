@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-	before_action :set_business, only: [:edit, :update, :show, :report, :approve]
+	before_action :set_business, only: [:edit, :update, :show, :report, :approve, :disapprove]
 	before_action :set_businesses, only: [:edit, :update, :show, :index]
 	before_action :authenticate_account!, except: [:index, :show, :report]
 
@@ -36,6 +36,22 @@ class BusinessesController < ApplicationController
 			end
 		end
 	end
+
+
+	def disapprove
+		authorize @business
+		@business.account.destroy
+		respond_to do |format|
+			if @business.destroy
+				format.html { redirect_to chambers_approvals_url }
+				format.json { head :no_content }
+			else
+				format.html { redirect_to chambers_approvals_url}
+				format.json { head :no_content }
+			end
+		end
+	end
+
 	# PATCH/PUT /buyers/1
 	# PATCH/PUT /buyers/1.json
 	def update

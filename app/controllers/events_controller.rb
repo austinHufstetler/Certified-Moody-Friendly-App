@@ -9,11 +9,44 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     if(params[:business_id])
-      @business = Business.find(params[:business_id])
-      @events = @business.events
+
+
+      upcoming_events_all = Event.where("end_time >= ?", Time.now).where(:business_id => params[:business_id])
+      @upcoming_events = []
+      upcoming_events_all.each do |c|
+        if(c.business.account.approved == true)
+          @upcoming_events << c
+        end
+      end
+
+      events_all = Event.where(:business_id => params[:business_id])
+      @events = []
+      events_all.each do |c|
+        if(c.business.account.approved == true)
+          @events << c
+        end
+      end
+
     else
-      @events = Event.all
+
+      upcoming_events_all = Event.where("end_time >= ?", Time.now)
+      @upcoming_events = []
+      upcoming_events_all.each do |c|
+        if(c.business.account.approved == true)
+          @upcoming_events << c
+        end
+      end
+
+      events_all = Event.all
+      @events = []
+      events_all.each do |c|
+        if(c.business.account.approved == true)
+          @events << c
+        end
+      end
+
     end
+
   end
 
   # GET /events/1

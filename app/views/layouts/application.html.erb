@@ -11,14 +11,17 @@
   </head>
 
   <body>
+    <br>
       <% if notice %>
           <aside id="notice"><%= notice %></aside>
       <% end %>
 
       <% if current_account and current_account.accountable_type == "Business" and current_account.approved == false %>
+        <div style="background-color: #E59979; padding: 2px; border: 2px solid grey; margin: 2px; color: black;">
           <p> You currently unapproved so you cannot add coupons or events.</p>
           <p> 1. You recently made an account and haven't been approved yet </p>
           <p> 2. You previously approved but your account has expired, please contact the chamber for more details. </p>
+        </div>
       <% end %>
 
     <main class='<%= controller.controller_name %>'>
