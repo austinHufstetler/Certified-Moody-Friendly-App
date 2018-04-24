@@ -26,7 +26,7 @@
              <small>Ends: <%= event.end_time.to_date %> at at <%=event.end_time.strftime("%I:%M %P") %> </small>
           </div>
           </td>
-         <td class="mobi"> <%= image_tag(event.business.logo_url, style: "width: 150px;") %> </td>
+         <td class="mobi"> <%= image_tag(event.business.logo_url, style: "width: 100px; height: auto;") %> </td>
           <td class="mobi">
 			<% if current_account %>
 				<% if current_account.accountable_type == "Military" %>

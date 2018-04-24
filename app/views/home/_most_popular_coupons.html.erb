@@ -24,7 +24,7 @@
       	     <small>Expires: <%= coupon.end_time.to_date%></small>
           </div>
           </td>
-           <td class="mobi"> <%= image_tag(coupon.business.logo_url, style: "width: 150px;") %> </td>
+           <td class="mobi"> <%= image_tag(coupon.business.logo_url, style: "width: 100px;") %> </td>
           <td class="mobi">
 			<% if current_account %>
 				<% if current_account.accountable_type == "Military" %>
