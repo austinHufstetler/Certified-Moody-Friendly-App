@@ -19,6 +19,6 @@ public class Business{
 	}
 
 	public String createAccount(){
-		return "Account.create!( :email => \'"+ this.email +"\', :password => \'changeme\', :password_confirmation => \'changeme\', :approve => true, :accountable => Business.find_by_name(\"" + this.name + "\"))";
+		return "Account.create!( :email => \'"+ this.email +"\', :password => \'changeme\', :password_confirmation => \'changeme\', :approved => true, :accountable => Business.find_by_name(\"" + this.name + "\"))";
 	}
 }
