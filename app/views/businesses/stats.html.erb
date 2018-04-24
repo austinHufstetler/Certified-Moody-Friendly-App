@@ -11,7 +11,7 @@
 
 <br>
 <div class="jumbotron">
-  <div class="container text-center">
+  <div class="container text-center" style="background-color: white; color: black; border: 5px solid grey;">
     <h1>Number of Favorites for each Coupon</h1>      
     <p><%= bar_chart @business.coupons.map{|c| [c.title, c.votes_for.size] } %></p>
   </div>
@@ -21,7 +21,7 @@
 
 <br>
 <div class="jumbotron">
-  <div class="container text-center">
+  <div class="container text-center" style="background-color: white; color: black; border: 5px solid grey;">
     <h1> Number of Favorites for each Event </h1>      
     <p><%= bar_chart @business.events.map{|c| [c.title, c.votes_for.size] } %></p>
   </div>
