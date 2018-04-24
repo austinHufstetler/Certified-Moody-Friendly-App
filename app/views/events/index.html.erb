@@ -34,7 +34,8 @@
 
             <br>
             <div>
-              <%= link_to event.title, event %> 
+              <%= link_to event.title, event %>
+              <%= event.start_time.to_date %> at <%=event.start_time.strftime("%I:%M %P") %>
             </div>
           <% end %>
           </div>
@@ -87,8 +88,9 @@
                   <% end %>
             </div>
           </td>
-          <td>
           <% if current_account and (current_account.accountable_type == "Business" or current_account.accountable_type == "Chamber") %>
+          <td>
+          
           <ul>
             <li><%= link_to 'Show', event %></li>
             <li><%= link_to 'Edit', edit_event_path(event) %></li>
@@ -100,8 +102,8 @@
             %>
             </li>
           </ul>
-          <% end %>
-          </td>
+                   </td>  <% end %>
+
         </tr>
       </tbody>
     </table>

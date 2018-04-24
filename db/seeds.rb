@@ -11,20 +11,39 @@
 
 Business.transaction do
 Business.delete_all
-Business.create!( :name => 'Cr8ive Zone', :address => "3320 Bemiss Rd, Valdosta, GA 31605",  logo_url: open('app/assets/images/cr8ivezone.png'))
-Business.create!( :name => 'Ray Norton Tire & Auto Center', :address => "2606 Bemiss Rd, Valdosta, GA 31602",  logo_url: open('app/assets/images/raynorton.png'))
+Business.create!( :name => 'Cr8ive Zone', :address => "3320 Bemiss Rd, Valdosta, GA 31605", logo_url: open('app/assets/images/cr8ivezone.png'))
+Business.create!( :name => 'Ray Norton Tire & Auto Center', :address => "2606 Bemiss Rd, Valdosta, GA 31602", logo_url: open('app/assets/images/raynorton.png'))
 Business.create!( :name => '1st America Home Medical Equipment', :address => "212 Northside Dr, Valdosta, GA 31602",  logo_url: open('app/assets/images/1stamericanhome.png'))
 Business.create!( :name => '1st Franklin Financial Corporation', :address => "1900 Gornto Rd Suite G, Valdosta, GA 31602",  logo_url: open('app/assets/images/1stfranklin.png'))
 Business.create!( :name => '306 North', :address => "306 N Patterson St, Valdosta, GA 31601",  logo_url: open('app/assets/images/306north.jpeg'))
 end
 
+Chamber.transaction do
+Chamber.delete_all
+Chamber.create!( :address => "3320 Bemiss Rd, Valdosta, GA 31604")
+Chamber.create!( :address => "3320 Bemiss Rd, Valdosta, GA 31605")
+end
+
+Military.transaction do
+Military.delete_all
+Military.create!( :name => 'Doug Brown', :address => "1900 Gornto Rd Suite G, Valdosta, GA 31602")
+Military.create!( :name => 'Stacy Herrington', :address => "306 N Patterson St, Valdosta, GA 31601")
+end
+
 Account.transaction do
 Account.delete_all
-Account.create!( :email => 'business1@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("Cr8ive Zone"))
-Account.create!( :email => 'business2@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("Ray Norton Tire & Auto Center"))
-Account.create!( :email => 'business3@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st America Home Medical Equipment"))
-Account.create!( :email => 'business4@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st Franklin Financial Corporation"))
-Account.create!( :email => 'business5@email.com', :password => 'changeme', :password_confirmation => 'changeme',:accountable => Business.find_by_name("306 North"))
+Account.create!( :email => 'business1@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Business.find_by_name("Cr8ive Zone"))
+Account.create!( :email => 'business2@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Business.find_by_name("Ray Norton Tire & Auto Center"))
+Account.create!( :email => 'business3@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st America Home Medical Equipment"))
+Account.create!( :email => 'business4@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Business.find_by_name("1st Franklin Financial Corporation"))
+Account.create!( :email => 'business5@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Business.find_by_name("306 North"))
+
+Account.create!( :email => 'chamber1@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Chamber.find_by_address("3320 Bemiss Rd, Valdosta, GA 31604"))
+Account.create!( :email => 'chamber2@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Chamber.find_by_address("3320 Bemiss Rd, Valdosta, GA 31605"))
+
+Account.create!( :email => 'military1@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Military.find_by_name("Doug Brown"))
+Account.create!( :email => 'military2@email.com', :password => 'changeme', :approved => true, :password_confirmation => 'changeme',:accountable => Military.find_by_name("Stacy Herrington"))
+
 end
 
 Coupon.transaction do
@@ -40,7 +59,7 @@ description:
 image_url:
 open('app/assets/images/tacos.png'),
 start_time: DateTime.now,
-end_time:DateTime.now ,
+end_time:DateTime.new(2020, 2 ,3) ,
 business_id: Business.find_by_name("Cr8ive Zone").id)
 
 Coupon.create!(title: 'Half off oil change',
@@ -51,7 +70,7 @@ description:
 image_url:
 open('app/assets/images/oil.jpg'),
 start_time: DateTime.now,
-end_time:DateTime.now ,
+end_time:DateTime.new(2020, 2 ,3),
 business_id: Business.find_by_name("Cr8ive Zone").id)
 
 Coupon.create!(title: 'Save $10 on your next purchase',
@@ -62,7 +81,7 @@ description:
 image_url:
 open('app/assets/images/money.jpg'),
 start_time: DateTime.now,
-end_time:DateTime.now ,
+end_time: DateTime.new(2020, 2 ,3) ,
 business_id: Business.find_by_name("Cr8ive Zone").id)
 
 Coupon.create!(title: 'Free drink with meal',
@@ -73,7 +92,7 @@ description:
 image_url:
 open('app/assets/images/fastfood.jpg'),
 start_time: DateTime.now,
-end_time:DateTime.now ,
+end_time:DateTime.new(2020, 2 ,3) ,
 business_id: Business.find_by_name("306 North").id)
 
 Coupon.create!(title: 'Save 5 dollars on next purchase',
@@ -84,7 +103,40 @@ description:
 image_url:
 open('app/assets/images/money.jpg'),
 start_time: DateTime.now,
-end_time:DateTime.now ,
+end_time:DateTime.new(2020, 2 ,3) ,
+business_id: Business.find_by_name("306 North").id)
+
+
+
+#306 Norths coupons
+Coupon.create!(title: 'Free salad with meal',
+description:
+%{when you spend over $10},
+image_url:
+open('app/assets/images/salad.jpg'),
+start_time: DateTime.now,
+category: "food",
+end_time: DateTime.new(2020, 2 ,3) ,
+business_id: Business.find_by_name("306 North").id)
+
+Coupon.create!(title: 'Half off burger',
+description:
+%{After 10pm},
+image_url:
+open('app/assets/images/ham.jpg'),
+start_time: DateTime.now,
+category: "food",
+end_time: DateTime.new(2020, 2 ,3) ,
+business_id: Business.find_by_name("306 North").id)
+
+Coupon.create!(title: '10 percent off your check',
+description:
+%{just show us your coupon!},
+image_url:
+open('app/assets/images/resta.jpg'),
+start_time: DateTime.now,
+category: "food",
+end_time: DateTime.new(2020, 2 ,3) ,
 business_id: Business.find_by_name("306 North").id)
 
 end
@@ -96,26 +148,52 @@ Event.delete_all
 # Products owned by Dave
 Event.create!(title: 'Cookout at the park!',
 description:
-%{
-	bring your kids
-	},
+%{bring your kids},
 image_url:
 open('app/assets/images/cookout.jpg'),
-start_time: DateTime.now,
-end_time:DateTime.now ,
+start_time: DateTime.new(2018, 4 , 24),
+end_time: DateTime.new(2018, 4 , 25) ,
 address: "3320 Bemiss Rd, Valdosta, GA 31605",
 business_id: Business.find_by_name("Cr8ive Zone").id)
 
-Event.create!(title: 'Huge sale event at home depot!',
+Event.create!(title: 'Chef special every night this week!',
 description:
-%{
-	its going fast!
-	},
+%{hurry to get yours},
 image_url:
-open('app/assets/images/homedepot.jpg'),
+open('app/assets/images/resta.jpg'),
 address: "3320 Bemiss Rd, Valdosta, GA 31605",
-start_time: DateTime.now,
-end_time:DateTime.now ,
+start_time: DateTime.new(2018, 4 , 24),
+end_time: DateTime.new(2018, 4 , 27) ,
+business_id: Business.find_by_name("306 North").id)
+
+Event.create!(title: 'Party!',
+description:
+%{dont forget!},
+image_url:
+open('app/assets/images/party.jpg'),
+address: "3320 Bemiss Rd, Valdosta, GA 31605",
+start_time: DateTime.new(2018, 5 , 25),
+end_time: DateTime.new(2018, 5 , 27) ,
+business_id: Business.find_by_name("306 North").id)
+
+Event.create!(title: 'Halloween Celebration!',
+description:
+%{come here on halloween!},
+image_url:
+open('app/assets/images/halloween.jpg'),
+address: "3320 Bemiss Rd, Valdosta, GA 31605",
+start_time: DateTime.new(2018, 5 , 25),
+end_time: DateTime.new(2018, 5 , 27) ,
+business_id: Business.find_by_name("306 North").id)
+
+Event.create!(title: 'Christmas Celebration!',
+description:
+%{come here on Christmas!},
+image_url:
+open('app/assets/images/christ.jpg'),
+address: "3320 Bemiss Rd, Valdosta, GA 31605",
+start_time: DateTime.new(2018, 4 , 49),
+end_time: DateTime.new(2018, 4 , 29) ,
 business_id: Business.find_by_name("306 North").id)
 
 end
