@@ -34,6 +34,8 @@ export default class CouponList extends React.Component {
                             handleCouponFilter={this.handleCouponFilter}/>
              </th>
             <th className="col-md-2 ">Description</th>
+            <th className="col-md-2">Category</th>  
+            <th className="col-md-2">Business</th>  
           
           
 

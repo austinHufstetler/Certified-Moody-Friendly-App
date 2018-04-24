@@ -6,7 +6,9 @@ export default class Coupon extends React.Component {
     title: PropTypes.string,
     description: PropTypes.string,
     image_url: PropTypes.string,
-    id: PropTypes.string
+    id: PropTypes.string,
+    name: PropTypes.string,
+    category: PropTypes.string
 
   };
 
@@ -23,6 +25,8 @@ export default class Coupon extends React.Component {
         </td>      
         <td className="mobi">{this.props.coupon.title}</td>
         <td className="mobi" dangerouslySetInnerHTML={{__html: this.props.coupon.description}}></td> 
+        <td className="mobi">{this.props.coupon.category}</td>
+        <td className="mobi">{this.props.coupon.name}</td> 
       </tr>
 
     )

@@ -10,18 +10,53 @@
   <div class="container text-center">
     <h1> Events </h1>      
   </div>
+  <% counter = 0 %>
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
-    <% events.each do |event| %>
-    <br>
-    <div>
-      <%= link_to event.title, event %> 
+    <% if(events.size > 0) %>
+       <!-- Trigger the modal with a button -->
+       <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal<%=counter%>" style="height: 1em; width: 1em;"></button>
+    <% end %>
+
+
+    <!-- Modal -->
+    <div id="myModal<%=counter%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Events</h4>
+          </div>
+          <div class="modal-body">
+            <% events.each do |event| %>
+
+            <br>
+            <div>
+              <%= link_to event.title, event %>
+              <%= event.start_time.to_date %> at <%=event.start_time.strftime("%I:%M %P") %>
+            </div>
+          <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
     </div>
-  <% end %>
+
+    <% counter = counter + 1 %>
+
+
 <% end %>
 </div>
 
 <br>
+
+
+
 
 
 <div class="container">    
@@ -53,8 +88,9 @@
                   <% end %>
             </div>
           </td>
-          <td>
           <% if current_account and (current_account.accountable_type == "Business" or current_account.accountable_type == "Chamber") %>
+          <td>
+          
           <ul>
             <li><%= link_to 'Show', event %></li>
             <li><%= link_to 'Edit', edit_event_path(event) %></li>
@@ -66,8 +102,8 @@
             %>
             </li>
           </ul>
-          <% end %>
-          </td>
+                   </td>  <% end %>
+
         </tr>
       </tbody>
     </table>

@@ -18,9 +18,9 @@
  @import "bourbon";
 
 body {
-	margin-left: 2em;
-	margin-rigth: 2em;
-	padding-top: 60px;
+	margin-left: 0.5em;
+	margin-right: 0em;
+	padding-top: 60px; 
   background-color:   #FAFAFA;
 }
 header.main {
@@ -57,9 +57,6 @@ tr.mobi{
     background-color: #D2E0EB;
 }
 
-td{
- 
-}
 
 @media 
 only screen and (max-width: 760px),
