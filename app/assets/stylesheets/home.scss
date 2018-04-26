@@ -20,6 +20,10 @@
       border-radius: 0;
     }
 
+    td{
+      text-align: center;
+    }
+
     
     /* Remove the jumbotron's default bottom margin */ 
      .jumbotron {
@@ -45,6 +49,16 @@
     .white{
     	color: white;
     }
+
+@media 
+only screen and (min-width: 760px),
+(max-device-width: 768px) and (min-device-width: 1024px)  {
+    td{
+       width:25%;
+      align: center;
+      valign:middle;
+    }
+}
 
 
 }

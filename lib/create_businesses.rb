@@ -2,7 +2,7 @@ Business.transaction do
 Business.delete_all
 Business.create!( :name => '1st America Home Medical Equipment', :address => "428 Northside Drive, Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => '1st Franklin Financial Corporation', :address => "1900 Gornto Rd.  Ste. G-H, Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
-Business.create!( :name => '306 North', :address => "310 N Patterson St, Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
+Business.create!( :name => '306 North', :address => "310 N Patterson St, Valdosta, GA 31602",  logo_url: open('app/assets/images/306north.jpeg'))
 Business.create!( :name => 'Abigail H. Davis/Real Living Realty Advisors', :address => "1817 Green Circle, Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => 'Ameris Bank', :address => "3140 Inner Perimeter Rd., Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => 'Anchored Media Marketing', :address => "Blank, Blank, Blank Blank",  logo_url: open('app/assets/images/placeholder.png'))
@@ -34,7 +34,7 @@ Business.create!( :name => 'Commercial Real Estate Advisors - Andy Deal', :addre
 Business.create!( :name => 'Cooks Pest Control', :address => "823 Gil Harbin Ind Blvd, Valdosta, GA 31601",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => 'Coombs Heating & Air Conditioning', :address => "307 West Lawson Street, Hahira, GA 31632",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => 'Covingtons Dining & Catering', :address => "310 N. Patterson Street, Valdosta, GA 31601",  logo_url: open('app/assets/images/placeholder.png'))
-Business.create!( :name => 'Cre8ive Zone', :address => "3320 Bemiss Road, Valdosta, GA 31605",  logo_url: open('app/assets/images/placeholder.png'))
+Business.create!( :name => 'Cre8ive Zone', :address => "3320 Bemiss Road, Valdosta, GA 31605",  logo_url: open('app/assets/images/cr8ivezone.png'))
 Business.create!( :name => 'C-Tech Water Solutions, LLC', :address => "99 Hamm Street, Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => 'Dairy Queen/The Lyoness Co.', :address => "3277 Inner Perimeter Rd., Valdosta, GA 30602",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => 'Destiny Financial Services - A Family Heritage Life Provider', :address => "806 E. Jane St., Valdosta, GA 31601",  logo_url: open('app/assets/images/placeholder.png'))
