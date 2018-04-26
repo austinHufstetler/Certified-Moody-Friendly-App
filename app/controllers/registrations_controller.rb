@@ -7,10 +7,12 @@ class RegistrationsController < Devise::RegistrationsController
 		build_resource(sign_up_params)
 		if (resource.type=="Military")
 			resource.accountable = Military.new
+			resource.approved = true
 		elsif(resource.type=="Business")
 			resource.accountable = Business.new
 		else
 			resource.accountable = Chamber.new
+			resource.approved = true
 		end
 		resource.save
 		yield resource if block_given?
