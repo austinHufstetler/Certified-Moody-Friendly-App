@@ -89,8 +89,21 @@
                   <% end %>
             </div>
           </td>
+          <% if current_account and current_account.accountable_type == "Military" %>
+            <td class="mobi">
+
+              <% if current_account.voted_for? event %>
+                <%= link_to '', unlike_event_path(event.id), remote: true,
+                                      class: "glyphicon glyphicon-heart like_event_#{event.id}" %>
+              <% else %>
+                <%= link_to '', like_event_path(event.id), remote: true,
+                                      class: "glyphicon glyphicon-heart-empty like_event_#{event.id}" %>
+              <% end %>
+              
+            </td>
+          <% end %>
           <% if current_account and (current_account.accountable_type == "Business" or current_account.accountable_type == "Chamber") %>
-          <td>
+          <td class="mobi">
           
           <ul>
             <li><%= link_to 'Show', event %></li>
