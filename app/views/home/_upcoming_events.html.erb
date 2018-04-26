@@ -1,11 +1,11 @@
-<h2 class="centered">Upcoming Events</h2>
+<a href="../events" style="color: white;"> <h2 class="centered">Upcoming Events</h2> </a>
  <div class="row">
 <div class="list-group scroll-box container">
 
 
 	<% @upcoming_events.each do |event| %>
 
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+	  <a href="../events/<%=event.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
       <table class="table mobi">
         <tbody class="mobi">
           <tr class="mobi">

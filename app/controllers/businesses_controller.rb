@@ -15,6 +15,20 @@ class BusinessesController < ApplicationController
 	def stats
 		@business = Business.find(params[:id])
 	end
+
+	def index
+		
+	 	businesses_all = Business.all
+	  	@businesses = []
+	  	businesses_all.each do |e|
+	  		if(e.account)
+		  		if(e.account.approved == true)
+		  			@businesses << e
+		  		end
+	  		end
+	  	end
+	  	@businesses = @businesses.sort_by{|c| c.name }
+	end
 	
 
 
