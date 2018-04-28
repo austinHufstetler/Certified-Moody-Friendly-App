@@ -1,46 +1,25 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.text_area :description, required: true %>
+    <%= f.input :image_url, as: :file %>
+    <% if @event.id %>
+      <%= f.input :start_time, as: :datetime,
+                              order: [:month, :day, :year] %>
+      <%= f.input :end_time, as: :datetime,
+                              order: [:month, :day, :year] %>
+    <% else %>
+      <%= f.input :start_time, as: :datetime, start_year: Date.today.year,
+                              end_year: Date.today.year + 12,
+                              order: [:month, :day, :year] %> 
+      <%= f.input :end_time, as: :datetime,
+                              order: [:month, :day, :year] %>      
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :event_title %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :event_description, rows: 8, cols: 40 %>
-  </div>
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :event_address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.file_field :image_url, id: :event_image_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :event_start_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time, id: :event_end_time %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
   </div>
 <% end %>
