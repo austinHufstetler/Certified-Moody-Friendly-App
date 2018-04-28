@@ -116,6 +116,10 @@ class BusinessesController < ApplicationController
 	end
 
 	def business_params
-		params.require(:business).permit(:name, :address, :logo_url)
+		if(current_account and current_account.accountable_type=="Chamber") 
+			params.require(:business).permit(:name, :address, :logo_url, :expiration)
+		else
+			params.require(:business).permit(:name, :address, :logo_url)
+		end
 	end
 end
