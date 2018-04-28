@@ -47,7 +47,7 @@
                 <br>
                 <%= link_to 'Edit Business', edit_business_path(business.id) %>
                 <br>
-                <%= link_to 'Delete Report',
+                <%= link_to "Ignore " + "report".pluralize(report.count) ,
                   report, method: :delete,
                   data: { confirm: 'Are you sure?' }
                 %>
@@ -79,7 +79,7 @@
                 <br>
                 <%= link_to 'Edit Coupon', edit_coupon_path(coupon.id) %>
                 <br>
-                <%= link_to 'Delete Report',
+                <%= link_to "Ignore " + "report".pluralize(report.count),
                   report, method: :delete,
                   data: { confirm: 'Are you sure?' }
                 %>
@@ -111,7 +111,7 @@
                 <br>
                 <%= link_to 'Edit Event', edit_event_path(event.id) %>
                 <br>
-                <%= link_to 'Delete Report',
+                <%= link_to "Ignore " + "report".pluralize(report.count),
                   report, method: :delete,
                   data: { confirm: 'Are you sure?' }
                 %>

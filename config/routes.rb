@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   get 'chambers/approvals'
 
+  get 'chambers/expiring'
+
 
   get 'search', to: 'coupon_search#search'
   get 'couponSearch', to: 'coupon_search#couponSearch'

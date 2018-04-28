@@ -15,6 +15,20 @@ class BusinessesController < ApplicationController
 	def stats
 		@business = Business.find(params[:id])
 	end
+
+	def index
+		
+	 	businesses_all = Business.all
+	  	@businesses = []
+	  	businesses_all.each do |e|
+	  		if(e.account)
+		  		if(e.account.approved == true)
+		  			@businesses << e
+		  		end
+	  		end
+	  	end
+	  	@businesses = @businesses.sort_by{|c| c.name }
+	end
 	
 
 
@@ -102,6 +116,10 @@ class BusinessesController < ApplicationController
 	end
 
 	def business_params
-		params.require(:business).permit(:name, :address, :logo_url)
+		if(current_account and current_account.accountable_type=="Chamber") 
+			params.require(:business).permit(:name, :address, :logo_url, :expiration)
+		else
+			params.require(:business).permit(:name, :address, :logo_url)
+		end
 	end
 end

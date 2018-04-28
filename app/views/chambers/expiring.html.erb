@@ -13,7 +13,7 @@
 <br>
 <div class="jumbotron">
   <div class="container text-center">
-    <h1> Businesses Awaiting Approval </h1>      
+    <h1> Expiring Businesses </h1>      
   </div>
 </div>
 
@@ -25,7 +25,7 @@
 <div class="list-group long-scroll-box">
 
 
-	<% @pending_businesses.each do |business| %>
+	<% @expiring_businesses.each do |business| %>
 	  <div class="list-group-item list-group-item-action flex-column align-items-start">
       <table class="table">
         <tbody>
@@ -35,12 +35,11 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
+              <p class="mb-1"><%= business.account.email %></p>
               <p>
-                <%= link_to 'approve', approve_business_path(business.id), remote: false %>
+                <%= link_to 'Edit Business', edit_business_path(business.id) %>
               </p>
-              <p>
-                <%= link_to 'disapprove', disapprove_business_path(business.id), remote: false %>
-              </p>
+
       	    </div>
           </td>
           <td>

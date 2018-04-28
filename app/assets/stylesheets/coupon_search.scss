@@ -11,15 +11,19 @@ table{
 	border: 5px solid white;
 }
 
+
+
 .spa_entry {
 	td {
 	  min-width: 100px;
+	  align: center;
+      valign:middle;
 
 	  p{
 	  }
 
 	  img {
-	    width: 80px;
+	    width: 50%;
 	    margin-bottom: 5px;
 	  }
 	}

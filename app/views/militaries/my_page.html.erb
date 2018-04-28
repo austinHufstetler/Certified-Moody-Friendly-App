@@ -34,21 +34,21 @@
 	<% @liked_stuff.each do |coupon| %>
   <% if coupon.instance_of? Coupon %>
 
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
-            <td>
+	  <a href="../coupons/<%=coupon.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+            <td class="mobi"> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
+            <td class="mobi">
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= coupon.title %></h2>
       	      <p class="mb-1"><%= coupon.description %></p>
       	    </div>
           </td>
-          <td>
+          <td class="mobi">
             <div class="d-flex w-100 justify-content-between">
       	     
-      	     <small>Expires: <%= coupon.end_time %></small>
+      	     <small>Expires: <%= coupon.end_time.to_date %></small>
           </div>
           </td>
           <td class="mobi">
@@ -81,21 +81,21 @@
 <div class="list-group scroll-box">
   <% @liked_stuff.each do |event| %>
   <% if event.instance_of? Event %>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
-            <td>
+  <a href="../events/<%=event.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
+      <table class="table mobi">
+        <tbody class="mobi">
+          <tr class="mobi">
+            <td class="mobi"> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+            <td class="mobi">
             <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= event.title %></h2>
               <p class="mb-1"><%= event.description %></p>
             </div>
           </td>
-          <td>
+          <td class="mobi">
             <div class="d-flex w-100 justify-content-between">
              
-             <small>Expires: <%= event.end_time %></small>
+             <small>Expires: <%= event.start_time.strftime("%I:%M %P") %></small>
           </div>
           </td>
           <td class="mobi">
@@ -103,10 +103,10 @@
             <% if current_account.accountable_type == "Military" %>
               <% if current_account.voted_for? event %>
                 <%= link_to '', unlike_event_path(event.id), remote: true,
-                                      class: "glyphicon glyphicon-heart like_#{event.id}" %>
+                                      class: "glyphicon glyphicon-heart like_event_#{event.id}" %>
               <% else %>
                 <%= link_to '', like_event_path(event.id), remote: true,
-                                      class: "glyphicon glyphicon-heart-empty like_#{event.id}" %>
+                                      class: "glyphicon glyphicon-heart-empty like_event_#{event.id}" %>
               <% end %>
             <% end %>
           <% end %>

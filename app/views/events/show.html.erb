@@ -1,30 +1,49 @@
 
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @event.address %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Image url:</strong>
-  <br>
-  <%= image_tag(@event.image_url, width: 150) if @event.image_url.present? %>
-</p>
+      <!-- Portfolio Item Heading -->
+      <h1 class="my-4"><%= @event.title %>
+        <small><%= @event.business.name %></small>
+      </h1>
 
-<p>
-    Starts: <%= @event.start_time.to_date %> at <%= @event.start_time.strftime("%I:%M %P") %>
-    <br>
-    Ends: <%= @event.end_time.to_date %> at at <%= @event.end_time.strftime("%I:%M %P") %> 
-</p>
+      <!-- Portfolio Item Row -->
+      <div class="row">
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
+        <div class="col-md-2">
+          <%= image_tag(@event.image_url, width: 150) if @event.image_url.present? %>
+        </div>
+
+        <div class="col-md-2">
+          <h3 class="my-3">Description</h3>
+          <p><%=@event.description%></p>
+          <%= @event.start_time.to_date %> at <%= @event.start_time.strftime("%I:%M %P") %>
+          <br>
+          <br>
+          <% if current_account and current_account.accountable_type == "Business" %>
+            <%= link_to 'Edit', edit_event_path(@event) %> |
+        <% end %>
+        </div>
+
+
+        <div class="col-md-2">
+        <% if current_account %>
+              <% if current_account.accountable_type == "Military" %>
+                <% if current_account.voted_for? @event %>
+                  <%= link_to '', unlike_event_path(@event.id), remote: true,
+                                        class: "glyphicon glyphicon-heart like_event_#{@event.id}" %>
+                <% else %>
+                  <%= link_to '', like_event_path(@event.id), remote: true,
+                                        class: "glyphicon glyphicon-heart-empty like_event_#{@event.id}" %>
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>
+
+      </div>
+

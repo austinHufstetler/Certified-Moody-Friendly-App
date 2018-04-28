@@ -1,10 +1,10 @@
-<h2 class="centered">Hottest Coupons</h2>
+<a href="../coupon_search/index" style="color: white;"> <h2 class="centered">Hottest Coupons</h2> </a>
  <div class="row ">
 <div class="list-group scroll-box">
 
 	<% @coupons.each do |coupon| %>
 
-	  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+	  <a href="../coupons/<%=coupon.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
       <table class="table mobi">
         <tbody class="mobi">
           <tr class="mobi">
