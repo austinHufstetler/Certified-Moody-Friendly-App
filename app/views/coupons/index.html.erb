@@ -22,7 +22,7 @@
           <%= truncate(strip_tags(coupon.description),
           length: 80) %>
 
-          <br><br> Start: <%= coupon.start_time %> <br> End: <%= coupon.end_time %>
+          <br><br> Start: <%= coupon.start_time.to_date %> <br> End: <%= coupon.end_time.to_date %>
 
         </p>
       </td>
