@@ -16,7 +16,7 @@
     <h1><%= @business.name %></h1>      
     <p><%= @business.description %></p>
     <p><%= @business.address %></p>
-    <p> <%= image_tag(@business.logo_url, width: 150) if @business.logo_url.present? %> </p>
+    <p> <%= image_tag(@business.logo_url, width: 150 , class:"shadow") if @business.logo_url.present? %> </p>
   </div>
   <div style='width: 300px;margin: 0 auto 0 auto;'>
     <div id="one_marker" style='width: 300px; height: 300px; margin:0;'></div>
@@ -38,7 +38,7 @@
       <table class="table mobi">
         <tbody class="mobi">
           <tr class="mobi">
-            <td class="mobi"> <%= image_tag(coupon.image_url, width: 150) if coupon.image_url.present? %> </td>
+            <td class="mobi"> <%= image_tag(coupon.image_url, width: 150, class:"shadow") if coupon.image_url.present? %> </td>
             <td class="mobi">
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= coupon.title %></h2>
@@ -70,7 +70,7 @@
       <table class="table mobi">
         <tbody class="mobi">
           <tr class="mobi">
-            <td class="mobi"> <%= image_tag(event.image_url, width: 150) if event.image_url.present? %> </td>
+            <td class="mobi"> <%= image_tag(event.image_url, width: 150, class:"shadow") if event.image_url.present? %> </td>
             <td class="mobi">
             <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= event.title %></h2>
@@ -91,6 +91,7 @@
 </div>
   </div>
 </div><br><br>
+
 
 
 
