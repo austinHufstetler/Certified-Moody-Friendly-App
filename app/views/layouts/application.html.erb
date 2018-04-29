@@ -10,12 +10,11 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body>
+  <body  data-turbolinks="false" >
     <br>
       <% if notice %>
           <aside id="notice"><%= notice %></aside>
       <% end %>
-
       <% if current_account and current_account.accountable_type == "Business" and current_account.approved == false %>
         <div style="background-color: #E59979; padding: 2px; border: 2px solid grey; margin: 2px; color: black;">
           <p> You currently unapproved so you cannot add coupons or events.</p>
