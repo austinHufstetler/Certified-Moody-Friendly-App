@@ -24,8 +24,8 @@ image_url:
 open('app/assets/images/oil.jpg'),
 start_time: DateTime.now,
 end_time:DateTime.new(2020, 2 ,3),
-business_id: Business.find_by_name("Cre8ive Zone").id),
-category: "automotive"
+business_id: Business.find_by_name("Cre8ive Zone").id,
+category: "automotive")
 
 Coupon.create!(title: 'Save $10 on your next purchase',
 description:
@@ -36,8 +36,8 @@ image_url:
 open('app/assets/images/money.jpg'),
 start_time: DateTime.now,
 end_time: DateTime.new(2020, 2 ,3) ,
-business_id: Business.find_by_name("Cre8ive Zone").id),
-category: "other"
+business_id: Business.find_by_name("Cre8ive Zone").id,
+category: "other")
 
 Coupon.create!(title: 'Free drink with meal',
 description:
@@ -48,8 +48,8 @@ image_url:
 open('app/assets/images/fastfood.jpg'),
 start_time: DateTime.now,
 end_time:DateTime.new(2020, 2 ,3) ,
-business_id: Business.find_by_name("306 North").id),
-category: "food"
+business_id: Business.find_by_name("306 North").id,
+category: "food")
 
 Coupon.create!(title: 'Save 5 dollars on next purchase',
 description:
@@ -60,8 +60,8 @@ image_url:
 open('app/assets/images/money.jpg'),
 start_time: DateTime.now,
 end_time:DateTime.new(2020, 2 ,3) ,
-business_id: Business.find_by_name("306 North").id),
-category: "other"
+business_id: Business.find_by_name("306 North").id,
+category: "other")
 
 
 
