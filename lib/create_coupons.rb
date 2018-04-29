@@ -1,5 +1,5 @@
 Coupon.transaction do
-Coupon.delete_all
+Coupon.destroy_all
 
 
 # Products owned by Dave
@@ -99,7 +99,7 @@ business_id: Business.find_by_name("306 North").id)
 end
 
 Event.transaction do
-Event.delete_all
+Event.destroy_all
 
 
 # Products owned by Dave
