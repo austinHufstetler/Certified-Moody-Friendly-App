@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
 </head>
 <body>
 
@@ -31,7 +32,7 @@
       <table class="table mobi">
         <tbody class="mobi">
           <tr class="mobi">
-          	<td class="mobi"> <%= image_tag(business.logo_url, width: 150) if business.logo_url.present? %> </td>
+          	<td class="mobi"> <%= image_tag(business.logo_url, width: 150, class:"shadow") if business.logo_url.present? %> </td>
             <td class="mobi">
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>

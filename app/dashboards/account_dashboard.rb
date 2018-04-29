@@ -23,6 +23,7 @@ class AccountDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    approved: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -55,6 +56,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :last_sign_in_ip,
     :created_at,
     :updated_at,
+    :approved,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -73,6 +75,7 @@ class AccountDashboard < Administrate::BaseDashboard
     :last_sign_in_at,
     :current_sign_in_ip,
     :last_sign_in_ip,
+    :approved,
   ].freeze
 
   # Overwrite this method to customize how accounts are displayed
