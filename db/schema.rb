@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180426163544) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
-    t.date "expiration", default: "2019-04-26"
+    t.date "expiration", default: "2019-04-28"
   end
 
   create_table "chambers", force: :cascade do |t|
