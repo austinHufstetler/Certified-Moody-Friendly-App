@@ -16,7 +16,7 @@
       <div class="row">
 
         <div class="col-md-2">
-          <%= image_tag(@event.image_url, width: 150) if @event.image_url.present? %>
+          <%= image_tag(@event.image_url, width: 150, class:"shadow") if @event.image_url.present? %>
         </div>
 
         <div class="col-md-2">

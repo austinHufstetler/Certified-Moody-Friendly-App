@@ -13,7 +13,6 @@ class EventDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     description: Field::Text,
-    image_url: Field::String,
     start_time: Field::DateTime,
     end_time: Field::DateTime,
     created_at: Field::DateTime,
@@ -40,7 +39,6 @@ class EventDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :description,
-    :image_url,
     :start_time,
     :end_time,
     :created_at,
@@ -55,7 +53,6 @@ class EventDashboard < Administrate::BaseDashboard
     :votes_for,
     :title,
     :description,
-    :image_url,
     :start_time,
     :end_time,
   ].freeze

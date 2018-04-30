@@ -27,6 +27,8 @@ class EventsController < ApplicationController
         end
       end
 
+      @all_events = Event.where(:business_id => params[:business_id]).sort_by{|c| c.start_time }
+
     else
 
       upcoming_events_all = Event.where("end_time >= ?", Time.now)

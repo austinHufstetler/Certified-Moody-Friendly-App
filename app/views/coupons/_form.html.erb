@@ -1,49 +1,24 @@
-<%= form_with(model: coupon, local: true) do |form| %>
-  <% if coupon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
+<%= simple_form_for(@coupon) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.text_area :description, required: true %>
+    <%= f.input :image_url, as: :file %>
+    <% if @coupon.id %>
+      <%= f.input :start_time, as: :datetime,
+                              order: [:month, :day, :year] %>
+      <%= f.input :end_time, as: :datetime,
+                              order: [:month, :day, :year] %>
+    <% else %>
+      <%= f.input :start_time, as: :datetime, start_year: Date.today.year,
+                              end_year: Date.today.year + 12,
+                              order: [:month, :day, :year] %> 
+      <%= f.input :end_time, as: :datetime,
+                              order: [:month, :day, :year] %>      
 
-      <ul>
-      <% coupon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :coupon_title %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :coupon_description, rows: 8, cols: 40 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_url %>
-    <%= form.file_field :image_url, id: :coupon_image_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :coupon_start_time %>
-  </div>
-
-   
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.select :category, ['food', 'beauty', 'health', 'automotive', 'other']%>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.datetime_select :end_time, id: :coupon_end_time %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
   </div>
 <% end %>
