@@ -1,17 +1,20 @@
+
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-
+<body>
 
 <div class="container">
 
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4"><%= @coupon.title %>
+      <!--oldcode-->
+      <!--<h1 class="my-4"><%= @coupon.title %>
         <small><%= @coupon.business.name %></small>
-      </h1>
+      </h1>-->
 
       <!-- Portfolio Item Row -->
-      <div class="row">
+     <!-- <div class="row">
 
         <div class="col-md-2">
           <%= image_tag(@coupon.image_url, width: 150, class:"shadow") if @coupon.image_url.present? %>
@@ -20,7 +23,7 @@
         <div class="col-md-2">
           <h3 class="my-3">Description</h3>
           <p><%=@coupon.description%></p>
-          <%= @coupon.end_time %>
+          <%= @coupon.end_time.to_date %>
           <br>
           <br>
           <% if current_account and current_account.accountable_type == "Business" %>
@@ -43,4 +46,56 @@
             <% end %>
         </div>
 
+      </div> -->
+      <!--end of old code-->
+
+      <div class="container">
+        <h1> <center>Coupons for <%= @coupon.business.name %> </center></h1>
+        <div class="row">
+          <div class="col-xs-18 col-sm-16 col-md-3">
+            <div class="thumbnail">
+              <img <%= image_tag(@coupon.image_url) if @coupon.image_url.present? %> 
+              <div class="caption">
+                <h3>
+                  <b><%= @coupon.title %></b>
+                </h3>
+               
+                <p> <b>Description:</b> <%= @coupon.description%></p>
+                <p><b>Expires:</b> <%= @coupon.end_time.to_date%></p>
+                <p>
+                  <% if current_account and current_account.accountable_type == "Business" %>
+                      <%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+                  <% end %>
+                </p>
+                <p >
+                  <center>
+                  <% if current_account %>
+                    <% if current_account.accountable_type == "Military" %>
+                      <% if current_account.voted_for? @coupon %>
+                        <%= link_to '', unlike_coupon_path(@coupon.id), remote: true,
+                                        class: "glyphicon glyphicon-heart like_#{@coupon.id}" %>
+                      <% else %>
+                        <%= link_to '', like_coupon_path(@coupon.id), remote: true,
+                                        class: "glyphicon glyphicon-heart-empty like_#{@coupon.id}" %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </center>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+
+      <br> <br>
+    <div class="container">
+      <!--<button type="button" class="btn btn-secondary btn-lg"> -->
+        <center><%= button_to('Back to Coupons', coupon_search_index_path, :class => 'btn btn-secondary btn-lg') %></center>
+      <!--</button>-->
+    </div>
+</body>
+ 
+
+

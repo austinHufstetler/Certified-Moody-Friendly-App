@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'event_search/index'
 
   get 'coupon_search/index'
+  post 'coupon_search/index'
 
   get 'businesses/index'
 
