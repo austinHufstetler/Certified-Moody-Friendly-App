@@ -6,30 +6,30 @@
 <div class="container">
 
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4"><%= @coupon.title %>
+      <h1 class="my-4" style="text-align: center;"><%= @coupon.title %>
         <small><%= @coupon.business.name %></small>
       </h1>
 
       <!-- Portfolio Item Row -->
       <div class="row">
 
-        <div class="col-md-2">
+        <div style="text-align: center;">
           <%= image_tag(@coupon.image_url, width: 150, class:"shadow") if @coupon.image_url.present? %>
         </div>
 
-        <div class="col-md-2">
+        <div style="text-align: center;"">
           <h3 class="my-3">Description</h3>
           <p><%=@coupon.description%></p>
-          <%= @coupon.end_time %>
+          Expires: <%= @coupon.end_time.to_date %>
           <br>
           <br>
           <% if current_account and current_account.accountable_type == "Business" %>
-            <%= link_to 'Edit', edit_coupon_path(@coupon) %> |
+            <%= link_to 'Edit', edit_coupon_path(@coupon) %>
         <% end %>
         </div>
 
 
-        <div class="col-md-2">
+        <div style="text-align: center;">
         <% if current_account %>
               <% if current_account.accountable_type == "Military" %>
                 <% if current_account.voted_for? @coupon %>
