@@ -1,18 +1,18 @@
 Chamber.transaction do
-Chamber.delete_all
+Chamber.destroy_all
 Chamber.create!( :address => "3320 Bemiss Rd, Valdosta, GA 31604")
 Chamber.create!( :address => "3320 Bemiss Rd, Valdosta, GA 31605")
 end
 
 Military.transaction do
-Military.delete_all
+Military.destroy_all
 Military.create!( :name => 'Doug Brown', :address => "1900 Gornto Rd Suite G, Valdosta, GA 31602")
 Military.create!( :name => 'Stacy Herrington', :address => "306 N Patterson St, Valdosta, GA 31601")
 end
 
 
 Account.transaction do
-Account.delete_all
+Account.destroy_all
 Account.create!( :email => 'mandy@1stamericadrugs.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("1st America Home Medical Equipment"))
 Account.create!( :email => 'cdb4586@1ffc.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("1st Franklin Financial Corporation"))
 Account.create!( :email => 'Blank0@email.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("306 North"))

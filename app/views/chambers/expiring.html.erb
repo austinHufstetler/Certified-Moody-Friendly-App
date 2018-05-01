@@ -36,9 +36,11 @@
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
               <p class="mb-1"><%= business.account.email %></p>
+              <p class="mb-1"> <strong> Expiring </strong> <%= business.expiration.to_date %></p>
               <p>
                 <%= link_to 'Edit Business', edit_business_path(business.id) %>
               </p>
+
 
       	    </div>
           </td>
