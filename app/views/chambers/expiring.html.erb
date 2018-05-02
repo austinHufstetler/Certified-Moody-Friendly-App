@@ -37,8 +37,23 @@
       	      <p class="mb-1"><%= business.address %></p>
               <p class="mb-1"><%= business.account.email %></p>
               <p class="mb-1"> <strong> Expiring </strong> <%= business.expiration.to_date %></p>
+              <% if business.expiration.to_date < Date.today.to_date  %>
+                <p class="mb-1" style="color: red;"> <strong> EXPIRED </strong></p>
+              <p>
+                <% if business.account.approved == true %>
+                  <%= link_to 'Suspend Business', suspend_business_path(business.id) %>
+                <% else %>
+                  <p class="mb-1" style="color: red;"> <strong> SUSPENDED </strong></p>
+                  <%= link_to 'Unuspend Business', unsuspend_business_path(business.id) %>
+                <% end %>
+              </p>
+              <% end %>
               <p>
                 <%= link_to 'Edit Business', edit_business_path(business.id) %>
+                <br>
+                <%= link_to 'Delete Business',
+                  business, method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
               </p>
 
 
@@ -56,13 +71,6 @@
 </div><br><br>
 
 
-<footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
-  <form class="form-inline">Get deals:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Sign Up</button>
-  </form>
-</footer>
 
 </body>
 

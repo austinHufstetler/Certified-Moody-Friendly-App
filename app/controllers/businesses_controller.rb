@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-	before_action :set_business, only: [:edit, :update, :show, :report, :approve, :disapprove]
+	before_action :set_business, only: [:edit, :update, :show, :report, :approve, :disapprove, :suspend, :unsuspend]
 	before_action :set_businesses, only: [:edit, :update, :show, :index]
 	before_action :authenticate_account!, except: [:index, :show, :report]
 
@@ -61,6 +61,34 @@ class BusinessesController < ApplicationController
 				format.json { head :no_content }
 			else
 				format.html { redirect_to chambers_approvals_url}
+				format.json { head :no_content }
+			end
+		end
+	end
+
+	def suspend
+		authorize @business
+		@business.account.approved = false
+		respond_to do |format|
+			if @business.account.save
+				format.html { redirect_to chambers_expiring_url }
+				format.json { head :no_content }
+			else
+				format.html { redirect_to chambers_expiring_url}
+				format.json { head :no_content }
+			end
+		end
+	end
+
+	def unsuspend
+		authorize @business
+		@business.account.approved = true
+		respond_to do |format|
+			if @business.account.save
+				format.html { redirect_to chambers_expiring_url }
+				format.json { head :no_content }
+			else
+				format.html { redirect_to chambers_expiring_url}
 				format.json { head :no_content }
 			end
 		end

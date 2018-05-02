@@ -27,6 +27,14 @@ class BusinessPolicy
 		@current_account.accountable_type == "Chamber"
 	end
 
+	def suspend?
+		@current_account.accountable_type == "Chamber"
+	end
+
+	def unsuspend?
+		@current_account.accountable_type == "Chamber"
+	end
+
 	def report?
 		@current_account
 	end

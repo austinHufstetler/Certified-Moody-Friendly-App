@@ -63,6 +63,8 @@ Rails.application.routes.draw do
       get 'approve'
       get 'stats'
       get 'disapprove'
+      get 'suspend'
+      get 'unsuspend'
      end
   end
 
