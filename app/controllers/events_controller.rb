@@ -55,6 +55,11 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    if(@event.popularity.nil?)
+      @event.popularity = 0
+    end
+    @event.popularity +=1
+    @event.save  
   end
 
   # GET /events/new
