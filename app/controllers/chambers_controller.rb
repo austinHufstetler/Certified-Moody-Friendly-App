@@ -16,6 +16,10 @@ class ChambersController < ApplicationController
 
 	end
 
+	def stats
+		
+	end
+
 	def expiring
 		@expiring_businesses = Business.where('expiration < ?',Time.now.to_date + 2.month)
 

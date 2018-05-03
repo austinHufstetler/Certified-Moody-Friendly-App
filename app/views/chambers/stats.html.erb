@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center" style="background-color: white; color: black; border: 5px solid grey;">
+    <h1>Number of Business signed up per day</h1>      
+    <p><%= line_chart Business.group_by_day(:created_at).count %></p>
+  </div>
+</div>
+
+
+
+<div class="jumbotron">
+  <div class="container text-center" style="background-color: white; color: black; border: 5px solid grey;">
+    <h1>Number of Military members signed up per day</h1>      
+    <p><%= line_chart Military.group_by_day(:created_at).count %></p>
+  </div>
+</div>
+
+
+<div class="jumbotron">
+  <div class="container text-center" style="background-color: white; color: black; border: 5px solid grey;">
+    <h1>Number of Military members signed up per day</h1>      
+    <p><%= pie_chart Coupon.all.map{|c| [c.title, c.votes_for.size] } %></p>
+  </div>
+</div>
+
+</body>
