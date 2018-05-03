@@ -5,7 +5,9 @@ class HomeController < ApplicationController
   	@coupons = []
   	coupons_all.each do |c|
   		if(c.business.account.approved == true)
-  			@coupons << c
+        if(Report.where(:reportable_id => c.id, :reportable_type => "Coupon").blank?)
+  			   @coupons << c
+        end
   		end
   	end
 
@@ -19,7 +21,9 @@ class HomeController < ApplicationController
   	@upcoming_events = []
   	events_all.each do |e|
   		if(e.business.account.approved == true)
-  			@upcoming_events << e
+        if(Report.where(:reportable_id => e.id, :reportable_type => "Event").blank?)
+  			   @upcoming_events << e
+        end
   		end
   	end
 

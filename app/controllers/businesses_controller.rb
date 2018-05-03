@@ -8,8 +8,24 @@ class BusinessesController < ApplicationController
 	end
 
 	def show
-		@coupons = Coupon.where("end_time >= ? and start_time <= ?", Time.now, Time.now).where(:business_id => params[:id])
-		@events = Event.where("end_time >= ?", Time.now).where(:business_id => params[:id])
+		coupons_all = Coupon.where("end_time >= ? and start_time <= ?", Time.now, Time.now).where(:business_id => params[:id])
+		@coupons =[]
+	 	coupons_all.each do |c|
+	  		if(c.business.account.approved == true)
+		        if(Report.where(:reportable_id => c.id, :reportable_type => "Coupon").blank?)
+		  			   @coupons << c
+		        end
+	  		end
+	  	end
+		events_all = Event.where("end_time >= ?", Time.now).where(:business_id => params[:id])
+	     @events = []
+	      events_all.each do |c|
+	        if(c.business.account.approved == true)
+	          if(Report.where(:reportable_id => c.id, :reportable_type => "Event").blank?)
+	          @events << c
+	        end
+	        end
+	      end
 	end
 
 	def stats
