@@ -28,7 +28,7 @@
 
 <div class="jumbotron">
   <div class="container text-center" style="background-color: white; color: black; border: 5px solid grey;">
-    <h1>Number of Military members signed up per day</h1>      
+    <h1>All Coupon Likes</h1>      
     <p><%= pie_chart Coupon.all.map{|c| [c.title, c.votes_for.size] } %></p>
   </div>
 </div>

@@ -63,6 +63,7 @@ class BusinessDashboard < Administrate::BaseDashboard
     :address,
     :description,
     :expiration,
+    :created_at,
   ].freeze
 
   # Overwrite this method to customize how businesses are displayed
