@@ -114,6 +114,7 @@ class BusinessesController < ApplicationController
 	# PATCH/PUT /buyers/1.json
 	def update
 		authorize @business
+		@business.valid
 		respond_to do |format|
 			if @business.update(business_params)
 				format.html { redirect_to home_index_url, notice: "The profile of the business #{@business.name} was successfully updated." }
