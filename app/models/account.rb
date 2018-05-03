@@ -8,7 +8,7 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  ACCOUNT_TYPES=["Military", "Business", "Chamber"]
+  ACCOUNT_TYPES=["Chamber", "Military", "Business"]
   attr_accessor :type
 
 

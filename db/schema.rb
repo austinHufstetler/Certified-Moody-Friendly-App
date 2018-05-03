@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426163544) do
+ActiveRecord::Schema.define(version: 20180502152944) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,7 +43,12 @@ ActiveRecord::Schema.define(version: 20180426163544) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+<<<<<<< HEAD
     t.date "expiration", default: "2019-04-28"
+=======
+    t.date "expiration", default: "2019-05-02"
+    t.string "website"
+>>>>>>> abf6a0f9273ddd99e76e33b4a735a76e70536189
   end
 
   create_table "chambers", force: :cascade do |t|
@@ -62,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180426163544) do
     t.datetime "updated_at", null: false
     t.integer "business_id"
     t.string "category"
+    t.integer "popularity"
     t.index ["business_id"], name: "index_coupons_on_business_id"
   end
 
@@ -75,6 +81,8 @@ ActiveRecord::Schema.define(version: 20180426163544) do
     t.datetime "updated_at", null: false
     t.integer "business_id"
     t.string "address"
+    t.string "fblink"
+    t.integer "popularity"
     t.index ["business_id"], name: "index_events_on_business_id"
   end
 

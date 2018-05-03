@@ -1,5 +1,5 @@
 Coupon.transaction do
-Coupon.delete_all
+Coupon.destroy_all
 
 
 # Products owned by Dave
@@ -12,6 +12,7 @@ image_url:
 open('app/assets/images/tacos.png'),
 start_time: DateTime.now,
 end_time:DateTime.new(2020, 2 ,3) ,
+category: "food",
 business_id: Business.find_by_name("Cre8ive Zone").id)
 
 Coupon.create!(title: 'Half off oil change',
@@ -23,7 +24,8 @@ image_url:
 open('app/assets/images/oil.jpg'),
 start_time: DateTime.now,
 end_time:DateTime.new(2020, 2 ,3),
-business_id: Business.find_by_name("Cre8ive Zone").id)
+business_id: Business.find_by_name("Cre8ive Zone").id,
+category: "automotive")
 
 Coupon.create!(title: 'Save $10 on your next purchase',
 description:
@@ -34,7 +36,8 @@ image_url:
 open('app/assets/images/money.jpg'),
 start_time: DateTime.now,
 end_time: DateTime.new(2020, 2 ,3) ,
-business_id: Business.find_by_name("Cre8ive Zone").id)
+business_id: Business.find_by_name("Cre8ive Zone").id,
+category: "other")
 
 Coupon.create!(title: 'Free drink with meal',
 description:
@@ -45,7 +48,8 @@ image_url:
 open('app/assets/images/fastfood.jpg'),
 start_time: DateTime.now,
 end_time:DateTime.new(2020, 2 ,3) ,
-business_id: Business.find_by_name("306 North").id)
+business_id: Business.find_by_name("306 North").id,
+category: "food")
 
 Coupon.create!(title: 'Save 5 dollars on next purchase',
 description:
@@ -56,7 +60,8 @@ image_url:
 open('app/assets/images/money.jpg'),
 start_time: DateTime.now,
 end_time:DateTime.new(2020, 2 ,3) ,
-business_id: Business.find_by_name("306 North").id)
+business_id: Business.find_by_name("306 North").id,
+category: "other")
 
 
 
@@ -94,7 +99,7 @@ business_id: Business.find_by_name("306 North").id)
 end
 
 Event.transaction do
-Event.delete_all
+Event.destroy_all
 
 
 # Products owned by Dave

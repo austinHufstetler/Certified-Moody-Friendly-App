@@ -37,7 +37,11 @@ class CouponsController < ApplicationController
   # GET /coupons/1
   # GET /coupons/1.json
   def show
-
+    if(@coupon.popularity.nil?)
+      @coupon.popularity = 0
+    end
+    @coupon.popularity +=1
+    @coupon.save  
   end
 
   # GET /coupons/new

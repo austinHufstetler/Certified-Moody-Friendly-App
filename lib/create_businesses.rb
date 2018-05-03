@@ -1,5 +1,5 @@
 Business.transaction do
-Business.delete_all
+Business.destroy_all
 Business.create!( :name => '1st America Home Medical Equipment', :address => "428 Northside Drive, Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => '1st Franklin Financial Corporation', :address => "1900 Gornto Rd.  Ste. G-H, Valdosta, GA 31602",  logo_url: open('app/assets/images/placeholder.png'))
 Business.create!( :name => '306 North', :address => "310 N Patterson St, Valdosta, GA 31602",  logo_url: open('app/assets/images/306north.jpeg'))
