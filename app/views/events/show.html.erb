@@ -3,47 +3,46 @@
 </head>
 
 
-<div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-18 col-sm-16 col-md-3">
+            <div class="thumbnail" style="border: 5px solid grey;">
+              <%= image_tag(@event.image_url) if @event.image_url.present? %>
+              <div class="caption">
+                <h3>
+                  <b><%= @event.title %></b>
+                </h3>
 
-      <!-- Portfolio Item Heading -->
-      <h1 class="my-4" style="text-align: center;"><%= @event.title %>
-        <small><%= @event.business.name %></small>
-      </h1>
+                <p> <b>Description:</b> <%= @event.description%></p>
+                <p><b>Starts:</b> <%= @event.start_time.to_date %> at <%= @event.start_time.strftime("%I:%M %P") %></p>
 
-      <!-- Portfolio Item Row -->
-      <div class="row">
-
-        <div style="text-align: center;">
-          <%= image_tag(@event.image_url, width: 150, class:"shadow") if @event.image_url.present? %>
-        </div>
-
-        <div style="text-align: center;">
-          <h3 class="my-3">Description</h3>
-          <p><%=@event.description%></p>
-          <%= @event.start_time.to_date %> at <%= @event.start_time.strftime("%I:%M %P") %>
-          <% if @event.fblink %>
-            <p><strong><a href="//<%=@event.fblink%>">Visit our facebook page!</a></strong></p>
-          <% end %>
-          <br>
-          <br>
-          <% if current_account and current_account.accountable_type == "Business" %>
-            <%= link_to 'Edit', edit_event_path(@event) %>
-        <% end %>
-        </div>
-
-
-        <div style="text-align: center;">
-        <% if current_account %>
-              <% if current_account.accountable_type == "Military" %>
-                <% if current_account.voted_for? @event %>
-                  <%= link_to '', unlike_event_path(@event.id), remote: true,
-                                        class: "glyphicon glyphicon-heart like_event_#{@event.id}" %>
-                <% else %>
-                  <%= link_to '', like_event_path(@event.id), remote: true,
-                                        class: "glyphicon glyphicon-heart-empty like_event_#{@event.id}" %>
+                 <% if @event.fblink %>
+                  <p><strong><a href="//<%=@event.fblink%>">Visit our facebook page!</a></strong></p>
                 <% end %>
-              <% end %>
-            <% end %>
-        </div>
 
+                <br>
+                <% if current_account and current_account.accountable_type == "Business" %>
+                  <p><%= link_to 'Edit', edit_event_path(@event) %></p>
+                 <% end %>
+
+                 <p>
+                   <center>
+                     <% if current_account %>
+                        <% if current_account.accountable_type == "Military" %>
+                            <% if current_account.voted_for? @event %>
+                                <%= link_to '', unlike_event_path(@event.id), remote: true,
+                                        class: "glyphicon glyphicon-heart like_event_#{@event.id}" %>
+                            <% else %>
+                              <%= link_to '', like_event_path(@event.id), remote: true,
+                                        class: "glyphicon glyphicon-heart-empty like_event_#{@event.id}" %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                   </center>
+                 </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
