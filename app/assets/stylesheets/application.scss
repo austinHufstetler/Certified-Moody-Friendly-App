@@ -70,13 +70,15 @@ tr.mobi{
 
 
 @media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+only screen and (max-width: 700px),
+(min-device-width: 300px) and (max-device-width: 500px)  {
 
   /* Force table to not be like tables anymore */
   table.mobi, thead.mobi, tbody.mobi, th.mobi, td.mobi, tr.mobi { 
     display: block; 
     text-align: center;
+    justify-content: center;
+
   }
 
   h2{
@@ -86,6 +88,8 @@ only screen and (max-width: 760px),
   img{
     height: auto;
     width: 100%;
+    margin: 0;
+    max-width: 250px;
   }
   
   /* Hide table headers (but not display: none;, for accessibility) */
@@ -95,7 +99,7 @@ only screen and (max-width: 760px),
     left: -9999px;
   }
   
-  tr { border: 1px solid #ccc; }
+  tr { border: 1px solid #ccc; text-align: center }
   
   td { 
     /* Behave  like a "row" */
