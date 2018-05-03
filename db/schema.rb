@@ -43,12 +43,8 @@ ActiveRecord::Schema.define(version: 20180502152944) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
-<<<<<<< HEAD
     t.date "expiration", default: "2019-04-28"
-=======
-    t.date "expiration", default: "2019-05-02"
     t.string "website"
->>>>>>> abf6a0f9273ddd99e76e33b4a735a76e70536189
   end
 
   create_table "chambers", force: :cascade do |t|
@@ -67,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180502152944) do
     t.datetime "updated_at", null: false
     t.integer "business_id"
     t.string "category"
-    t.integer "popularity"
+    t.integer "popularity", default: 0
     t.index ["business_id"], name: "index_coupons_on_business_id"
   end
 
