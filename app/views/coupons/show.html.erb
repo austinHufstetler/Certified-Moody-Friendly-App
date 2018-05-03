@@ -1,60 +1,10 @@
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<div class="container">
-
-      <!-- Portfolio Item Heading -->
-      <!--oldcode-->
-      <!--<h1 class="my-4"><%= @coupon.title %>
-=======
-      <h1 class="my-4" style="text-align: center;"><%= @coupon.title %>
->>>>>>> abf6a0f9273ddd99e76e33b4a735a76e70536189
-        <small><%= @coupon.business.name %></small>
-      </h1>-->
-
-      <!-- Portfolio Item Row -->
-     <!-- <div class="row">
-
-        <div style="text-align: center;">
-          <%= image_tag(@coupon.image_url, width: 150, class:"shadow") if @coupon.image_url.present? %>
-        </div>
-
-        <div style="text-align: center;"">
-          <h3 class="my-3">Description</h3>
-          <p><%=@coupon.description%></p>
-<<<<<<< HEAD
-          <%= @coupon.end_time.to_date %>
-=======
-          Expires: <%= @coupon.end_time.to_date %>
->>>>>>> abf6a0f9273ddd99e76e33b4a735a76e70536189
-          <br>
-          <br>
-          <% if current_account and current_account.accountable_type == "Business" %>
-            <%= link_to 'Edit', edit_coupon_path(@coupon) %>
-        <% end %>
-        </div>
-
-
-        <div style="text-align: center;">
-        <% if current_account %>
-              <% if current_account.accountable_type == "Military" %>
-                <% if current_account.voted_for? @coupon %>
-                  <%= link_to '', unlike_coupon_path(@coupon.id), remote: true,
-                                        class: "glyphicon glyphicon-heart like_#{@coupon.id}" %>
-                <% else %>
-                  <%= link_to '', like_coupon_path(@coupon.id), remote: true,
-                                        class: "glyphicon glyphicon-heart-empty like_#{@coupon.id}" %>
-                <% end %>
-              <% end %>
-            <% end %>
-        </div>
-
-      </div> -->
-      <!--end of old code-->
 
       <div class="container">
        <!-- <h1> <center>Coupons for <%= @coupon.business.name %> </center></h1> -->
