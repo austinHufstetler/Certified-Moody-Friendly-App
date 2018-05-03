@@ -15,7 +15,7 @@ class HomeController < ApplicationController
   	@coupons = @coupons.reverse.first(15)
   	#get 15 most upcoming events sorted by recency
 
- 	events_all = Event.where("start_time <= ? and end_time >= ?", Time.now, Time.now )
+ 	events_all = Event.where("end_time >= ?", Time.now )
   	@upcoming_events = []
   	events_all.each do |e|
   		if(e.business.account.approved == true)

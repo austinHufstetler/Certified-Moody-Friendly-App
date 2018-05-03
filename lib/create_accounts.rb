@@ -15,7 +15,9 @@ Account.transaction do
 Account.destroy_all
 Account.create!( :email => 'mandy@1stamericadrugs.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("1st America Home Medical Equipment"))
 Account.create!( :email => 'cdb4586@1ffc.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("1st Franklin Financial Corporation"))
+
 Account.create!( :email => 'Blank0@email.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("306 North"))
+
 Account.create!( :email => 'abigail.davis.abr@gmail.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("Abigail H. Davis/Real Living Realty Advisors"))
 Account.create!( :email => 'michael.lee@amerisbank.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("Ameris Bank"))
 Account.create!( :email => 'anchoredmediamarketing@gmail.com', :password => 'changeme', :password_confirmation => 'changeme', :approved => true, :accountable => Business.find_by_name("Anchored Media Marketing"))

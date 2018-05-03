@@ -8,8 +8,8 @@ class BusinessesController < ApplicationController
 	end
 
 	def show
-		@coupons = @business.coupons
-		@events = @business.events
+		@coupons = Coupon.where("end_time >= ? and start_time <= ?", Time.now, Time.now).where(:business_id => params[:id])
+		@events = Event.where("end_time >= ?", Time.now).where(:business_id => params[:id])
 	end
 
 	def stats
