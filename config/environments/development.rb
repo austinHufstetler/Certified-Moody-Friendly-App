@@ -38,19 +38,47 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
+ # config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  #config.action_mailer.delivery_method = :smtp
 
 # configuration to email sending 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "gmail.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "faisal.sh13@gmail.com",
-    password: "Faisal1993"
+
+ # config.action_mailer.smtp_settings = {
+ #   address: "smtp.gmail.com",
+  #  port: 587,
+  #  domain: "gmail.com",
+  #  authentication: "plain",
+  #  enable_starttls_auto: true,
+  #  user_name: "faisal.sh13@gmail.com",
+  #  password: "Faisal1993"
+  #}
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'localhost'
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  ActionMailer::Base.smtp_settings = {
+   address: 'smtp.gmail.com',
+   port: 587,
+   domain: "gmail.com",
+   authentication: "plain",
+   user_name:  "senior.sem18@gmail.com",
+   password:  "Faisal1993",
+   
+   enable_starttls_auto:  true
   }
+# config.action_mailer.smtp_settings = {
+ #   address: "smtp.gmail.com",
+  #  port: 587,
+   # domain: "gmail.com",
+    #authentication: "plain",
+    #enable_starttls_auto: true,
+    #user_name: "faisal.sh13@gmail.com",
+    #password: "Faisal1993"
+
+  #}
+
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
