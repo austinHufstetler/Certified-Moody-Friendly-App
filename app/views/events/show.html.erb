@@ -1,5 +1,3 @@
-
-
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -8,12 +6,12 @@
 <div class="container">
 
       <!-- Portfolio Item Heading -->
-     <!-- <h1 class="my-4" style="text-align: center;"><%= @event.title %> -->
-       <!--  <small><%= @event.business.name %></small> 
-      </h1>-->
+      <h1 class="my-4" style="text-align: center;"><%= @event.title %>
+        <small><%= @event.business.name %></small>
+      </h1>
 
       <!-- Portfolio Item Row -->
-     <!-- <div class="row">
+      <div class="row">
 
         <div style="text-align: center;">
           <%= image_tag(@event.image_url, width: 150, class:"shadow") if @event.image_url.present? %>
@@ -48,60 +46,4 @@
             <% end %>
         </div>
 
-      </div> -->
-
-
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-18 col-sm-16 col-md-3">
-            <div class="thumbnail">
-              <%= image_tag(@event.image_url) if @event.image_url.present? %>
-              <div class="caption">
-                <h3>
-                  <b><%= @event.title %></b>
-                </h3>
-
-                <p> <b>Description:</b> <%= @event.description%></p>
-                <p><b>Starts:</b> <%= @event.start_time.to_date %> at <%= @event.start_time.strftime("%I:%M %P") %></p>
-
-                 <% if @event.fblink %>
-                  <p><strong><a href="//<%=@event.fblink%>">Visit our facebook page!</a></strong></p>
-                <% end %>
-
-                <br>
-                <% if current_account and current_account.accountable_type == "Business" %>
-                  <p><%= link_to 'Edit', edit_event_path(@event) %></p>
-                 <% end %>
-
-                 <p>
-                   <center>
-                     <% if current_account %>
-                        <% if current_account.accountable_type == "Military" %>
-                            <% if current_account.voted_for? @event %>
-                                <%= link_to '', unlike_event_path(@event.id), remote: true,
-                                        class: "glyphicon glyphicon-heart like_event_#{@event.id}" %>
-                            <% else %>
-                              <%= link_to '', like_event_path(@event.id), remote: true,
-                                        class: "glyphicon glyphicon-heart-empty like_event_#{@event.id}" %>
-                            <% end %>
-                        <% end %>
-                    <% end %>
-                   </center>
-                 </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-      <br> <br>
-    <div class="container">
-      <!--<button type="button" class="btn btn-secondary btn-lg"> -->
-        <center><%= button_to('Back to Coupons', events_path, :class => 'btn btn-secondary btn-lg', :method => :get) %></center>
-      <!--</button>-->
-    </div>
-
-
-              
-
-
