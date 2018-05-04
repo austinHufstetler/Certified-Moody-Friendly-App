@@ -16,7 +16,7 @@
                 <p> <b>Description:</b> <%= @event.description%></p>
                 <p><b>Starts:</b> <%= @event.start_time.to_date %> at <%= @event.start_time.strftime("%I:%M %P") %></p>
 
-                 <% if @event.fblink %>
+                 <% if @event.fblink.present? %>
                   <p><strong><a href="//<%=@event.fblink%>">Visit our facebook page!</a></strong></p>
                 <% end %>
 

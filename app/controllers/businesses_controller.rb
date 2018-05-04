@@ -8,8 +8,24 @@ class BusinessesController < ApplicationController
 	end
 
 	def show
-		@coupons = @business.coupons
-		@events = @business.events
+		coupons_all = Coupon.where("end_time >= ? and start_time <= ?", Time.now, Time.now).where(:business_id => params[:id])
+		@coupons =[]
+	 	coupons_all.each do |c|
+	  		if(c.business.account.approved == true)
+		        if(Report.where(:reportable_id => c.id, :reportable_type => "Coupon").blank?)
+		  			   @coupons << c
+		        end
+	  		end
+	  	end
+		events_all = Event.where("end_time >= ?", Time.now).where(:business_id => params[:id])
+	     @events = []
+	      events_all.each do |c|
+	        if(c.business.account.approved == true)
+	          if(Report.where(:reportable_id => c.id, :reportable_type => "Event").blank?)
+	          @events << c
+	        end
+	        end
+	      end
 	end
 
 	def stats
@@ -98,7 +114,6 @@ class BusinessesController < ApplicationController
 	# PATCH/PUT /buyers/1.json
 	def update
 		authorize @business
-		@business.valid
 		respond_to do |format|
 			if @business.update(business_params)
 				format.html { redirect_to home_index_url, notice: "The profile of the business #{@business.name} was successfully updated." }

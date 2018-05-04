@@ -15,7 +15,9 @@ class EventsController < ApplicationController
       @upcoming_events = []
       upcoming_events_all.each do |c|
         if(c.business.account.approved == true)
-          @upcoming_events << c
+          if(Report.where(:reportable_id => c.id, :reportable_type => "Event").blank?)
+            @upcoming_events << c
+          end
         end
       end
 
@@ -34,8 +36,10 @@ class EventsController < ApplicationController
       upcoming_events_all = Event.where("end_time >= ?", Time.now)
       @upcoming_events = []
       upcoming_events_all.each do |c|
-        if(c.business.account.approved == true)
+         if(c.business.account.approved == true)
+        if(Report.where(:reportable_id => c.id, :reportable_type => "Event").blank?)
           @upcoming_events << c
+        end
         end
       end
 
@@ -43,7 +47,9 @@ class EventsController < ApplicationController
       @events = []
       events_all.each do |c|
         if(c.business.account.approved == true)
+          if(Report.where(:reportable_id => c.id, :reportable_type => "Event").blank?)
           @events << c
+        end
         end
       end
 

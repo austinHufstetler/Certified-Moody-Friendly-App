@@ -5,7 +5,9 @@ class HomeController < ApplicationController
   	@coupons = []
   	coupons_all.each do |c|
   		if(c.business.account.approved == true)
-  			@coupons << c
+        if(Report.where(:reportable_id => c.id, :reportable_type => "Coupon").blank?)
+  			   @coupons << c
+        end
   		end
   	end
 
@@ -15,11 +17,13 @@ class HomeController < ApplicationController
   	@coupons = @coupons.reverse.first(15)
   	#get 15 most upcoming events sorted by recency
 
- 	events_all = Event.where("start_time <= ? and end_time >= ?", Time.now, Time.now )
+ 	events_all = Event.where("end_time >= ?", Time.now )
   	@upcoming_events = []
   	events_all.each do |e|
   		if(e.business.account.approved == true)
-  			@upcoming_events << e
+        if(Report.where(:reportable_id => e.id, :reportable_type => "Event").blank?)
+  			   @upcoming_events << e
+        end
   		end
   	end
 

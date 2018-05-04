@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180502152944) do
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
-    t.date "expiration", default: "2019-04-26"
+    t.date "expiration", default: "2019-05-03"
     t.string "website"
   end
 

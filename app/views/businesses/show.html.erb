@@ -33,7 +33,6 @@
  <h2 class="centered"> Coupons </h2>
 <div class="list-group scroll-box">
 
-
 	<% @coupons.each do |coupon| %>
 
 	  <a href="../coupons/<%=coupon.id%>" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -48,10 +47,10 @@
               
       	    </div>
           </td>
-          <td>
+          <td class="mobi">
             <div class="d-flex w-100 justify-content-between">
       	     
-      	     <small>Expires: <%= coupon.end_time.to_date %></small>
+      	      <small>Expires: <%= coupon.end_time.to_date %></small> 
           </div>
           </td>
         </tr>
@@ -79,7 +78,7 @@
               <p class="mb-1"><%= event.description %></p>
             </div>
           </td>
-          <td>
+          <td class="mobi">
             <div class="d-flex w-100 justify-content-between">
              
              <small>Starts: <%= event.start_time.to_date %> at  <%= event.start_time.strftime("%I:%M %P") %></small>
@@ -100,7 +99,7 @@
 <footer class="container-fluid text-center">
   <%= image_tag("cmf.png", width: 150) %> 
   <!-- contact us button -->
-  <%= button_to 'Contact Us', new_contact_path%>
+  <!-- <%= button_to 'Contact Us', new_contact_path%> -->
   
 </footer>
 

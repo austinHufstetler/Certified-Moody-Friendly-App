@@ -22,8 +22,8 @@
 
 <div class="container">    
   <div class="row">
+    <p style="text-align: center;"> <strong> It is recommended that you edit each business before approving and change their expiration date </strong></p>
 <div class="list-group long-scroll-box">
-
 
 	<% @pending_businesses.each do |business| %>
 	  <div class="list-group-item list-group-item-action flex-column align-items-start">
@@ -35,6 +35,8 @@
       	    <div class="d-flex w-100 justify-content-between">
               <h2 class="mb-1"><%= business.name %></h2>
       	      <p class="mb-1"><%= business.address %></p>
+              <p class="mb-1">Expiration: <%= business.expiration %></p>
+              <p><%= link_to 'Edit Business', edit_business_path(business.id) %> </p>
               <p>
                 <%= link_to 'approve', approve_business_path(business.id), remote: false %>
               </p>
@@ -55,13 +57,6 @@
 </div><br><br>
 
 
-<footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
-  <form class="form-inline">Get deals:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Sign Up</button>
-  </form>
-</footer>
 
 </body>
 

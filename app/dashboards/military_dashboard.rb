@@ -49,6 +49,7 @@ class MilitaryDashboard < Administrate::BaseDashboard
     :name,
     :address,
     :branch,
+    :created_at,
   ].freeze
 
   # Overwrite this method to customize how militaries are displayed

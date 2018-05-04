@@ -108,8 +108,8 @@ description:
 %{bring your kids},
 image_url:
 open('app/assets/images/cookout.jpg'),
-start_time: DateTime.new(2018,4,20,4,5,6),
-end_time: DateTime.new(2018,5,1,4,5,6),
+start_time: DateTime.new(2018,6,20,4,5,6),
+end_time: DateTime.new(2018,6,21,4,5,6),
 address: "3320 Bemiss Rd, Valdosta, GA 31605",
 business_id: Business.find_by_name("Cre8ive Zone").id)
 
@@ -119,8 +119,8 @@ description:
 image_url:
 open('app/assets/images/resta.jpg'),
 address: "3320 Bemiss Rd, Valdosta, GA 31605",
-start_time: DateTime.new(2018,4,20,4,5,6),
-end_time: DateTime.new(2018,5,1,4,5,6),
+start_time: DateTime.new(2018,5,7,4,5,6),
+end_time: DateTime.new(2018,5,9,4,5,6),
 business_id: Business.find_by_name("306 North").id)
 
 Event.create!(title: 'Party!',
@@ -129,8 +129,8 @@ description:
 image_url:
 open('app/assets/images/party.jpg'),
 address: "3320 Bemiss Rd, Valdosta, GA 31605",
-start_time: DateTime.new(2018,4,20,4,5,6),
-end_time: DateTime.new(2018,5,1,4,5,6),
+start_time: DateTime.new(2018,5,9,4,5,6),
+end_time: DateTime.new(2018,5,11,4,5,6),
 business_id: Business.find_by_name("306 North").id)
 
 Event.create!(title: 'Halloween Celebration!',
@@ -139,8 +139,8 @@ description:
 image_url:
 open('app/assets/images/halloween.jpg'),
 address: "3320 Bemiss Rd, Valdosta, GA 31605",
-start_time: DateTime.new(2018,4,20,4,5,6),
-end_time: DateTime.new(2018,5,1,4,5,6),
+start_time: DateTime.new(2018,7,20,4,5,6),
+end_time: DateTime.new(2018,7,23,4,5,6),
 business_id: Business.find_by_name("306 North").id)
 
 Event.create!(title: 'Christmas Celebration!',
@@ -149,8 +149,8 @@ description:
 image_url:
 open('app/assets/images/christ.jpg'),
 address: "3320 Bemiss Rd, Valdosta, GA 31605",
-start_time: DateTime.new(2018,4,20,4,5,6),
-end_time: DateTime.new(2018,5,1,4,5,6),
+start_time: DateTime.new(2018,5,15,4,5,6),
+end_time: DateTime.new(2018,5,5,18,5,6),
 business_id: Business.find_by_name("306 North").id)
 
 
